@@ -15,28 +15,43 @@ class _JoinUsPageState extends State<JoinUsPage> {
   final emailController = TextEditingController();
   final messageController = TextEditingController();
 
-  void _sendEmail() async {
-    final name = nameController.text;
-    final email = emailController.text;
-    final message = messageController.text;
+  Future<void> _sendEmail() async {
+  final serviceId = 'service_e232d8q';
+  final templateId = 'template_dffdno6';
+  final publicKey = 'OZK9TzN-ypEQtxYZu';
 
-    final Uri emailUri = Uri(
-      scheme: 'mailto',
-      path: 'ds2fc.club@gmail.com',
-      queryParameters: {
-        'subject': 'Join Đ.S 2 FC / Contact Form',
-        'body': 'Name: $name\nEmail: $email\n\n$message',
-      },
+  final url = Uri.parse('https://api.emailjs.com/api/v1.0/email/send');
+  final response = await http.post(
+    url,
+    headers: {
+      'origin': 'http://ds2fc.club',
+      'Content-Type': 'application/json',
+    },
+    body: json.encode({
+      'service_id': serviceId,
+      'template_id': templateId,
+      'user_id': publicKey,
+      'template_params': {
+        'name': nameController.text,
+        'email': emailController.text,
+        'message': messageController.text,
+      }
+    }),
+  );
+
+  if (response.statusCode == 200) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text('join_us.success'.tr())),
     );
-
-    if (await canLaunchUrl(emailUri)) {
-      await launchUrl(emailUri);
-    } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('join_us.error_open_email'.tr())),
-      );
-    }
+    nameController.clear();
+    emailController.clear();
+    messageController.clear();
+  } else {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text('join_us.error_send'.tr())),
+    );
   }
+}
 
   @override
   Widget build(BuildContext context) {
