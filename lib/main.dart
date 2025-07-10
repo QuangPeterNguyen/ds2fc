@@ -130,43 +130,50 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
       drawer: Drawer(
-        child: ListView(
-          children: [
-            DrawerHeader(
-              decoration: BoxDecoration(color: Theme.of(context).primaryColor),
-              child: const Text('Đ.S 2 FC', style: TextStyle(color: Colors.white, fontSize: 24)),
-            ),
-            ListTile(
-              title: Text('Home'.tr()),
-              onTap: () {
-                _onItemTapped(0);
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              title: Text('Players'.tr()),
-              onTap: () {
-                _onItemTapped(1);
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              title: Text('Fixtures'.tr()),
-              onTap: () {
-                _onItemTapped(2);
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              title: Text('Results'.tr()),
-              onTap: () {
-                _onItemTapped(3);
-                Navigator.pop(context);
-              },
-            ),
-          ],
-        ),
+  child: ListView(
+    children: [
+      DrawerHeader(
+  decoration: BoxDecoration(
+    color: Colors.white,
+  ),
+  child: Image.asset(
+    'assets/images/drawer_icon.png',
+    fit: BoxFit.contain, // or BoxFit.cover depending on style
+    width: double.infinity,
+    height: double.infinity,
+  ),
+),
+      ListTile(
+        title: Text('Home'.tr()),
+        onTap: () {
+          _onItemTapped(0);
+          Navigator.pop(context);
+        },
       ),
+      ListTile(
+        title: Text('Players'.tr()),
+        onTap: () {
+          _onItemTapped(1);
+          Navigator.pop(context);
+        },
+      ),
+      ListTile(
+        title: Text('Fixtures'.tr()),
+        onTap: () {
+          _onItemTapped(2);
+          Navigator.pop(context);
+        },
+      ),
+      ListTile(
+        title: Text('Results'.tr()),
+        onTap: () {
+          _onItemTapped(3);
+          Navigator.pop(context);
+        },
+      ),
+    ],
+  ),
+),
       body: pages[_selectedIndex],
     );
   }
