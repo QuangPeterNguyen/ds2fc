@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:url_launcher/url_launcher.dart';
+
 import 'PlayersPage.dart';
 import 'FixturesPage.dart';
+import 'ResultsPage.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -101,6 +104,7 @@ class _HomePageState extends State<HomePage> {
       _HomeContent(),
       const PlayersPage(),
       const FixturesPage(),
+      const ResultsPage(),
     ];
 
     return Scaffold(
@@ -153,6 +157,13 @@ class _HomePageState extends State<HomePage> {
                 Navigator.pop(context);
               },
             ),
+            ListTile(
+              title: Text('Results'.tr()),
+              onTap: () {
+                _onItemTapped(3);
+                Navigator.pop(context);
+              },
+            ),
           ],
         ),
       ),
@@ -161,7 +172,82 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
-class _HomeContent extends StatelessWidget {
+class _HomeContent extends StatefulWidget {
+  @override
+  State<_HomeContent> createState() => _HomeContentState();
+}
+
+class _HomeContentState extends State<_HomeContent> {
+  final List<String> bannerImages = [
+    'assets/images/banner1.jpg',
+    'assets/images/banner2.jpg',
+    'assets/images/banner3.jpg',
+    'assets/images/banner4.jpg',
+    'assets/images/banner5.jpg',
+        'assets/images/banner6.jpg',
+    'assets/images/banner7.jpg',
+    'assets/images/banner8.jpg',
+    'assets/images/banner9.jpg',
+    'assets/images/banner10.jpg',
+        'assets/images/banner11.jpg',
+    'assets/images/banner12.jpg',
+    'assets/images/banner13.jpg',
+    'assets/images/banner14.jpg',
+    'assets/images/banner15.jpg',
+  ];
+
+  final PageController _pageController = PageController();
+  int _currentPage = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    _startAutoScroll();
+  }
+
+  void _startAutoScroll() {
+    Future.delayed(const Duration(seconds: 5), () {
+      if (!mounted) return;
+      setState(() {
+        _currentPage = (_currentPage + 1) % bannerImages.length;
+        _pageController.animateToPage(
+          _currentPage,
+          duration: const Duration(milliseconds: 300),
+          curve: Curves.easeInOut,
+        );
+      });
+      _startAutoScroll();
+    });
+  }
+
+  void _goToPrevious() {
+    setState(() {
+      _currentPage = (_currentPage - 1 + bannerImages.length) % bannerImages.length;
+      _pageController.animateToPage(
+        _currentPage,
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.easeInOut,
+      );
+    });
+  }
+
+  void _goToNext() {
+    setState(() {
+      _currentPage = (_currentPage + 1) % bannerImages.length;
+      _pageController.animateToPage(
+        _currentPage,
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.easeInOut,
+      );
+    });
+  }
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     final List<String> opponents = [
@@ -173,63 +259,125 @@ class _HomeContent extends StatelessWidget {
       'MIỀN NAM FC',
     ];
 
+    final double bannerHeight = MediaQuery.of(context).size.width * 0.4;
+
     return SingleChildScrollView(
       padding: const EdgeInsets.all(20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            'home.title'.tr(),
-            style: const TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
-          ),
+          Text('home.title'.tr(), style: const TextStyle(fontSize: 28, fontWeight: FontWeight.bold)),
           const SizedBox(height: 10),
-          Text(
-            'home.subtitle'.tr(),
-            style: const TextStyle(fontSize: 18),
-          ),
-          const SizedBox(height: 30),
-          Container(
-            width: double.infinity,
-            height: 200,
-            decoration: BoxDecoration(
-              image: const DecorationImage(
-                image: AssetImage('assets/images/banner.png'),
-                fit: BoxFit.cover,
-              ),
-              borderRadius: BorderRadius.circular(12),
+          Text('home.subtitle'.tr(), style: const TextStyle(fontSize: 18)),
+          const SizedBox(height: 20),
+
+          // Banner Carousel
+          SizedBox(
+            height: bannerHeight,
+            child: Stack(
+              children: [
+                PageView.builder(
+                  controller: _pageController,
+                  itemCount: bannerImages.length,
+                  itemBuilder: (context, index) {
+                    return ClipRRect(
+                      borderRadius: BorderRadius.circular(12),
+                      child: Image.asset(
+                        bannerImages[index],
+                        fit: BoxFit.cover,
+                        width: double.infinity,
+                      ),
+                    );
+                  },
+                  onPageChanged: (index) {
+                    setState(() {
+                      _currentPage = index;
+                    });
+                  },
+                ),
+                Positioned(
+                  bottom: 10,
+                  left: 0,
+                  right: 0,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: List.generate(bannerImages.length, (index) {
+                      return Container(
+                        margin: const EdgeInsets.symmetric(horizontal: 4),
+                        width: 8,
+                        height: 8,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: _currentPage == index
+                              ? Theme.of(context).primaryColor
+                              : Colors.grey,
+                        ),
+                      );
+                    }),
+                  ),
+                ),
+                Positioned(
+                  left: 10,
+                  top: 0,
+                  bottom: 0,
+                  child: IconButton(
+                    icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
+                    onPressed: _goToPrevious,
+                  ),
+                ),
+                Positioned(
+                  right: 10,
+                  top: 0,
+                  bottom: 0,
+                  child: IconButton(
+                    icon: const Icon(Icons.arrow_forward_ios, color: Colors.white),
+                    onPressed: _goToNext,
+                  ),
+                ),
+              ],
             ),
           ),
+
           const SizedBox(height: 30),
-          Text(
-            'home.schedule_title'.tr(),
-            style: const TextStyle(fontSize: 22, fontWeight: FontWeight.w600),
-          ),
+          Text('home.schedule_title'.tr(), style: const TextStyle(fontSize: 22, fontWeight: FontWeight.w600)),
           const SizedBox(height: 10),
           Text('home.schedule_description'.tr()),
           const SizedBox(height: 30),
-          Text(
-            'home.event_title'.tr(),
-            style: const TextStyle(fontSize: 22, fontWeight: FontWeight.w600),
-          ),
+          Text('home.event_title'.tr(), style: const TextStyle(fontSize: 22, fontWeight: FontWeight.w600)),
           const SizedBox(height: 10),
           Text('home.event_description'.tr()),
           const SizedBox(height: 30),
-          Text(
-            'home.upcoming_matches'.tr(),
-            style: const TextStyle(fontSize: 22, fontWeight: FontWeight.w600),
-          ),
+          Text('home.upcoming_matches'.tr(), style: const TextStyle(fontSize: 22, fontWeight: FontWeight.w600)),
           const SizedBox(height: 10),
           Text('home.month_location'.tr()),
           const SizedBox(height: 8),
           ...opponents.map((team) => Text(tr('home.match_vs', args: [team]))),
           const SizedBox(height: 30),
-          Text(
-            'home.last_result'.tr(),
-            style: const TextStyle(fontSize: 22, fontWeight: FontWeight.w600),
-          ),
+          Text('home.last_result'.tr(), style: const TextStyle(fontSize: 22, fontWeight: FontWeight.w600)),
           const SizedBox(height: 10),
           Text('home.last_score'.tr()),
           Text('home.scorers'.tr()),
+const SizedBox(height: 16),
+ElevatedButton.icon(
+  onPressed: () async {
+    const url = 'https://www.facebook.com/share/v/1CPgDwRomb/?mibextid=wwXIfr'; // Replace with actual livestream URL
+    if (await canLaunchUrl(Uri.parse(url))) {
+      await launchUrl(Uri.parse(url), mode: LaunchMode.externalApplication);
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Could not open livestream link')),
+      );
+    }
+  },
+  icon: const Icon(Icons.live_tv),
+  label: const Text('Watch Livestream'),
+  style: ElevatedButton.styleFrom(
+    backgroundColor: Theme.of(context).primaryColor,
+    foregroundColor: Colors.white,
+    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+    textStyle: const TextStyle(fontSize: 16),
+  ),
+),
         ],
       ),
     );

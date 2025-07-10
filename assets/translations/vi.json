@@ -16,7 +16,7 @@
   "home.schedule_description": "Đội Đ.S 2 FC thi đấu vào mỗi Thứ 2 và Thứ 6 lúc 18:00 hàng tuần.",
   "home.event_title": "Giải đấu địa phương",
   "home.event_description": "Tháng này, chúng tôi đã tham gia giải KINHDO PREMIER LEAGUE 2025 với 8 đội bóng. Trận khai mạc đã diễn ra vào ngày hôm qua giữa Đ.S 2 FC và ANH KHÔI FC.",
-  "home.upcoming_matches": "Các trận đấu sắp tới",
+  "home.upcoming_matches": "Các trận giải KINHDO PREMIER LEAGUE 2025 sắp tới",
   "home.month_location": "Tháng 7-8/2025 - Sân Kinh Đô",
   "home.match_vs": "Đ.S 2 FC vs {}",
   "home.last_result": "Kết quả gần nhất",
@@ -27,8 +27,19 @@
     "match_vs": "Đ.S 2 FC gặp {}",
       "regular_schedule": "Lịch đá hàng tuần",
   "regular_description": "Đội Đ.S 2 FC thi đấu vào mỗi Thứ 2 và Thứ 6 lúc 18:00 hàng tuần.",
-  "upcoming_matches": "Các trận giải sắp tới",
+  "upcoming_matches": "Các trận giải KINHDO PREMIER LEAGUE 2025 sắp tới",
   "match_vs": "Đ.S 2 FC gặp {}",
   "time_location": "Thời gian: 17:45 • Sân KINH ĐÔ"
-  }
+  },
+  "results": {
+  "title": "Kết quả",
+  "kinhdo_league": "Giải KINHDO PREMIER LEAGUE 2025",
+  "date": "Ngày",
+  "opponent": "Đối thủ",
+  "score": "Tỉ số",
+  "location": "Địa điểm",
+  "scorers": "Cầu thủ ghi bàn",
+  "goal": "bàn",
+  "watch_livestream": "Xem livestream"
+}
 }
