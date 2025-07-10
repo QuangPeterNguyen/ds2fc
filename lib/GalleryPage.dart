@@ -27,7 +27,7 @@ class GalleryPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('gallery.title'.tr())),
+      appBar: AppBar(title: Text('gallery.title'.tr())),
       body: Padding(
         padding: const EdgeInsets.all(12),
         child: GridView.builder(
