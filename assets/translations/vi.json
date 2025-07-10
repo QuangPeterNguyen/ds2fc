@@ -5,5 +5,30 @@
   "Results": "Kết quả",
   "Gallery": "Thư viện",
   "Contact": "Liên hệ",
-  "Welcome to Đ.S 2 FC!": "Chào mừng đến với Đ.S 2 FC!"
+  "Welcome to Đ.S 2 FC!": "Chào mừng đến với Đ.S 2 FC!",
+  "home.title": "Chào mừng đến với Đ.S 2 FC!",
+  "home.subtitle": "Trang web chính thức của đội bóng Đ.S 2 FC.",
+  "home.next_match": "Trận đấu tiếp theo",
+  "home.opponent": "Đối thủ: Đội đang chờ xác định",
+  "home.date_time": "Thời gian: 18:00, Thứ 2 hoặc Thứ 6",
+  "home.location": "Sân Kinh Đô",
+  "home.schedule_title": "Lịch thi đấu định kỳ",
+  "home.schedule_description": "Đội Đ.S 2 FC thi đấu vào mỗi Thứ 2 và Thứ 6 lúc 18:00 hàng tuần.",
+  "home.event_title": "Giải đấu địa phương",
+  "home.event_description": "Tháng này, chúng tôi đã tham gia giải KINHDO PREMIER LEAGUE 2025 với 8 đội bóng. Trận khai mạc đã diễn ra vào ngày hôm qua giữa Đ.S 2 FC và ANH KHÔI FC.",
+  "home.upcoming_matches": "Các trận đấu sắp tới",
+  "home.month_location": "Tháng 7-8/2025 - Sân Kinh Đô",
+  "home.match_vs": "Đ.S 2 FC vs {}",
+  "home.last_result": "Kết quả gần nhất",
+  "home.last_score": "Đ.S 2 FC 6 - 5 ANH KHÔI FC",
+  "home.scorers": "Người ghi bàn: HOÀNG HÀ (3), VĂN THỎA (1), ĐỨC CHINH (1), QUANG LÃM (1)",
+  "fixtures": {
+    "title": "Lịch Thi Đấu",
+    "match_vs": "Đ.S 2 FC gặp {}",
+      "regular_schedule": "Lịch đá hàng tuần",
+  "regular_description": "Đội Đ.S 2 FC thi đấu vào mỗi Thứ 2 và Thứ 6 lúc 18:00 hàng tuần.",
+  "upcoming_matches": "Các trận giải sắp tới",
+  "match_vs": "Đ.S 2 FC gặp {}",
+  "time_location": "Thời gian: 17:45 • Sân KINH ĐÔ"
+  }
 }

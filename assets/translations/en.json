@@ -5,5 +5,30 @@
   "Results": "Results",
   "Gallery": "Gallery",
   "Contact": "Contact",
-  "Welcome to Đ.S 2 FC!": "Welcome to Đ.S 2 FC!"
+  "Welcome to Đ.S 2 FC!": "Welcome to Đ.S 2 FC!",
+  "home.title": "Welcome to Đ.S 2 FC!",
+  "home.subtitle": "The official website of the Đ.S 2 FC football team.",
+  "home.next_match": "Next Match",
+  "home.opponent": "Opponent: To be announced",
+  "home.date_time": "Time: 6:00 PM, Monday or Friday",
+  "home.location": "Kinh Đô Stadium",
+  "home.schedule_title": "Regular Match Schedule",
+  "home.schedule_description": "Đ.S 2 FC plays every Monday and Friday at 6 PM.",
+  "home.event_title": "Local Championship",
+  "home.event_description": "This month, we joined the KINHDO PREMIER LEAGUE 2025 event featuring 8 teams. The opening match was held yesterday between Đ.S 2 FC and ANH KHÔI FC.",
+  "home.upcoming_matches": "Upcoming Matches",
+  "home.month_location": "July-August 2025 - Kinh Đô Stadium",
+  "home.match_vs": "Đ.S 2 FC vs {}",
+  "home.last_result": "Last Match Result",
+  "home.last_score": "Đ.S 2 FC 6 - 5 ANH KHÔI FC",
+  "home.scorers": "Scorers: HOÀNG HÀ (3), VĂN THỎA (1), ĐỨC CHINH (1), QUANG LÃM (1)",
+  "fixtures": {
+    "title": "Fixtures",
+    "match_vs": "Đ.S 2 FC vs {}",
+      "regular_schedule": "Weekly Schedule",
+  "regular_description": "Đ.S 2 FC plays every Monday and Friday at 6 PM.",
+  "upcoming_matches": "Upcoming Tournament Matches",
+  "match_vs": "Đ.S 2 FC vs {}",
+  "time_location": "Kickoff: 17:45 • KINH DO Stadium"
+  }
 }
