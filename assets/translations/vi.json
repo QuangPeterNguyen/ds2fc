@@ -41,5 +41,31 @@
   "scorers": "Cầu thủ ghi bàn",
   "goal": "bàn",
   "watch_livestream": "Xem livestream"
+},
+  "join_us": {
+    "title": "Tham gia / Liên hệ",
+    "subtitle": "Chúng tôi rất mong được nghe từ bạn!",
+    "name": "Tên của bạn",
+    "email": "Email của bạn",
+    "message": "Tin nhắn hoặc lý do tham gia",
+    "send": "Gửi",
+    "error_name": "Vui lòng nhập tên của bạn",
+    "error_email": "Vui lòng nhập email của bạn",
+    "error_message": "Vui lòng viết một tin nhắn",
+    "error_open_email": "Không thể mở ứng dụng email"
+  },
+  "join_us": {
+  "title": "Tham Gia / Liên Hệ",
+  "subtitle": "Chúng tôi rất mong nhận được phản hồi từ bạn!",
+  "name": "Tên của bạn",
+  "email": "Email của bạn",
+  "message": "Tin nhắn hoặc Lý do muốn tham gia",
+  "send": "Gửi",
+  "error_name": "Vui lòng nhập tên của bạn",
+  "error_email": "Vui lòng nhập email của bạn",
+  "error_message": "Vui lòng viết nội dung tin nhắn",
+  "error_open_email": "Không thể mở ứng dụng email",
+  "error_send": "Không thể gửi tin nhắn. Vui lòng thử lại.",
+  "success": "Cảm ơn bạn! Chúng tôi đã nhận được tin nhắn."
 }
 }

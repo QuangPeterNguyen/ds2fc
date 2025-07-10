@@ -41,5 +41,19 @@
   "scorers": "Scorers",
   "goal": "goal(s)",
   "watch_livestream": "Watch Livestream"
-    }
+    },
+"join_us": {
+  "title": "Join Us / Contact",
+  "subtitle": "We'd love to hear from you!",
+  "name": "Your Name",
+  "email": "Your Email",
+  "message": "Message or Reason to Join",
+  "send": "Send",
+  "error_name": "Please enter your name",
+  "error_email": "Please enter your email",
+  "error_message": "Please write a message",
+  "error_open_email": "Could not open email app",
+  "error_send": "Could not send your message. Please try again.",
+  "success": "Thank you! We have received your message."
+}
 }

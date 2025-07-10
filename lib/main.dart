@@ -5,6 +5,8 @@ import 'package:url_launcher/url_launcher.dart';
 import 'PlayersPage.dart';
 import 'FixturesPage.dart';
 import 'ResultsPage.dart';
+import 'JoinUsPage.dart';
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -105,6 +107,7 @@ class _HomePageState extends State<HomePage> {
       const PlayersPage(),
       const FixturesPage(),
       const ResultsPage(),
+      const JoinUsPage(),
     ];
 
     return Scaffold(
@@ -168,6 +171,13 @@ class _HomePageState extends State<HomePage> {
         title: Text('Results'.tr()),
         onTap: () {
           _onItemTapped(3);
+          Navigator.pop(context);
+        },
+      ),
+      ListTile(
+        title: Text('join_us.title'.tr()),
+        onTap: () {
+          _onItemTapped(4);
           Navigator.pop(context);
         },
       ),
