@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:easy_localization/easy_localization.dart';
 
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+
 class JoinUsPage extends StatefulWidget {
   const JoinUsPage({super.key});
 
