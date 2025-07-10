@@ -55,5 +55,10 @@
   "error_open_email": "Could not open email app",
   "error_send": "Could not send your message. Please try again.",
   "success": "Thank you! We have received your message."
-}
+},
+  "gallery": {
+    "title": "Gallery",
+    "no_images": "No images available",
+    "view_image": "View Full Image"
+  }
 }
