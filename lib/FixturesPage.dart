@@ -7,12 +7,12 @@ class FixturesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final List<Map<String, String>> fixtures = [
-      {'date': 'Thứ 4, 17/07/2025', 'opponent': 'OBD FC'},
-      {'date': 'Thứ 4, 24/07/2025', 'opponent': 'FAST FC'},
-      {'date': 'Thứ 4, 31/07/2025', 'opponent': 'ANH EM FC'},
-      {'date': 'Thứ 4, 07/08/2025', 'opponent': 'NHÀ FC'},
-      {'date': 'Thứ 4, 14/08/2025', 'opponent': 'THIẾT BỊ VĂN PHÒNG FC'},
-      {'date': 'Thứ 4, 21/08/2025', 'opponent': 'MIỀN NAM FC'},
+      {'date': '17/07/2025', 'opponent': 'OBD FC'},
+      {'date': '24/07/2025', 'opponent': 'FAST FC'},
+      {'date': '31/07/2025', 'opponent': 'ANH EM FC'},
+      {'date': '07/08/2025', 'opponent': 'NHÀ FC'},
+      {'date': '14/08/2025', 'opponent': 'THIẾT BỊ VĂN PHÒNG FC'},
+      {'date': '21/08/2025', 'opponent': 'MIỀN NAM FC'},
     ];
 
     final Color primaryColor = const Color(0xFF50BFE6); // Sky blue
