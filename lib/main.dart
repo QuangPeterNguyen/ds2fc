@@ -6,6 +6,8 @@ import 'PlayersPage.dart';
 import 'FixturesPage.dart';
 import 'ResultsPage.dart';
 import 'JoinUsPage.dart';
+import 'GalleryPage.dart';
+
 
 
 void main() async {
@@ -108,6 +110,7 @@ class _HomePageState extends State<HomePage> {
       const FixturesPage(),
       const ResultsPage(),
       const JoinUsPage(),
+      const GalleryPage(),
     ];
 
     return Scaffold(
@@ -140,7 +143,7 @@ class _HomePageState extends State<HomePage> {
     color: Colors.white, // Use dark to see transparent areas
   ),
   child: Image.asset(
-    'assets/images/drawer_icon.png',
+    'assets/images/logo/drawer_icon.png',
     fit: BoxFit.contain,
     width: double.infinity,
     height: double.infinity,
@@ -171,6 +174,13 @@ class _HomePageState extends State<HomePage> {
         title: Text('Results'.tr()),
         onTap: () {
           _onItemTapped(3);
+          Navigator.pop(context);
+        },
+      ),
+      ListTile(
+        title:  Text('gallery.title'.tr()),
+        onTap: () {
+          _onItemTapped(5);
           Navigator.pop(context);
         },
       ),

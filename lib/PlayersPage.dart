@@ -84,7 +84,7 @@ class PlayersPage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     CircleAvatar(
-                      backgroundImage: const AssetImage('assets/images/avatar_placeholder.png'),
+                      backgroundImage: const AssetImage('assets/images/logo/avatar_placeholder.png'),
                       radius: 32,
                       backgroundColor: Theme.of(context).brightness == Brightness.dark
                           ? primaryColor.withOpacity(0.2)

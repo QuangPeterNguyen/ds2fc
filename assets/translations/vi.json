@@ -67,5 +67,10 @@
   "error_open_email": "Không thể mở ứng dụng email",
   "error_send": "Không thể gửi tin nhắn. Vui lòng thử lại.",
   "success": "Cảm ơn bạn! Chúng tôi đã nhận được tin nhắn."
-}
+},
+  "gallery": {
+    "title": "Thư viện ảnh",
+    "no_images": "Không có hình ảnh nào",
+    "view_image": "Xem ảnh đầy đủ"
+  }
 }
