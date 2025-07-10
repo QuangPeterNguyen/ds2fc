@@ -133,12 +133,12 @@ class _HomePageState extends State<HomePage> {
   child: ListView(
     children: [
       DrawerHeader(
-  decoration: BoxDecoration(
-    color: Colors.white,
+  decoration: const BoxDecoration(
+    color: Colors.white, // Use dark to see transparent areas
   ),
   child: Image.asset(
     'assets/images/drawer_icon.png',
-    fit: BoxFit.contain, // or BoxFit.cover depending on style
+    fit: BoxFit.contain,
     width: double.infinity,
     height: double.infinity,
   ),
@@ -377,7 +377,7 @@ ElevatedButton.icon(
     }
   },
   icon: const Icon(Icons.live_tv),
-  label: const Text('Watch Livestream'),
+  label: Text('results.watch_livestream'.tr()),
   style: ElevatedButton.styleFrom(
     backgroundColor: Theme.of(context).primaryColor,
     foregroundColor: Colors.white,
