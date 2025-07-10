@@ -7,7 +7,6 @@ class FixturesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final List<Map<String, String>> fixtures = [
-      {'date': 'Thứ 4, 10/07/2025', 'opponent': 'ANH KHÔI FC'},
       {'date': 'Thứ 4, 17/07/2025', 'opponent': 'OBD FC'},
       {'date': 'Thứ 4, 24/07/2025', 'opponent': 'FAST FC'},
       {'date': 'Thứ 4, 31/07/2025', 'opponent': 'ANH EM FC'},
