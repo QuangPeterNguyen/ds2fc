@@ -20,7 +20,7 @@ class _JoinUsPageState extends State<JoinUsPage> {
 
   Future<void> _sendEmail() async {
   final serviceId = 'service_e232d8q';
-  final templateId = 'template_dffdno6';
+  final templateId = 'template_hp7xvg8';
   final publicKey = 'OZK9TzN-ypEQtxYZu';
 
   final url = Uri.parse('https://api.emailjs.com/api/v1.0/email/send');
