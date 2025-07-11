@@ -216,6 +216,7 @@ class _HomeContent extends StatefulWidget {
 
 class _HomeContentState extends State<_HomeContent> {
   final List<String> bannerImages = [
+    'assets/images/about_us_banner.png',
     'assets/images/banner1.jpg',
     'assets/images/banner2.jpg',
     'assets/images/banner3.jpg',
