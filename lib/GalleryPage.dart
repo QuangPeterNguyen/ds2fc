@@ -24,8 +24,11 @@ class GalleryPage extends StatelessWidget {
     // Add more as needed
   ];
 
+
   @override
   Widget build(BuildContext context) {
+
+    context.locale;
     return Scaffold(
       appBar: AppBar(title: Text('gallery.title'.tr())),
       body: Padding(
