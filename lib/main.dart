@@ -7,6 +7,8 @@ import 'FixturesPage.dart';
 import 'ResultsPage.dart';
 import 'JoinUsPage.dart';
 import 'GalleryPage.dart';
+import 'AboutUsPage.dart';
+
 
 
 
@@ -109,8 +111,9 @@ class _HomePageState extends State<HomePage> {
       const PlayersPage(),
       const FixturesPage(),
       const ResultsPage(),
-      const JoinUsPage(),
       const GalleryPage(),
+      const JoinUsPage(),
+      const AboutUsPage(),
     ];
 
     return Scaffold(
@@ -180,14 +183,21 @@ class _HomePageState extends State<HomePage> {
       ListTile(
         title:  Text('gallery.title'.tr()),
         onTap: () {
-          _onItemTapped(5);
+          _onItemTapped(4);
           Navigator.pop(context);
         },
       ),
       ListTile(
         title: Text('join_us.title'.tr()),
         onTap: () {
-          _onItemTapped(4);
+          _onItemTapped(5);
+          Navigator.pop(context);
+        },
+      ),
+      ListTile(
+        title: Text('about_us.title'.tr()),
+        onTap: () {
+          _onItemTapped(6);
           Navigator.pop(context);
         },
       ),
