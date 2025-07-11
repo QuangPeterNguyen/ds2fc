@@ -41377,7 +41377,7 @@ $0(){this.a.nc(6)
 A.iz(this.b,!1).my(null)},
 $S:0}
 A.DJ.prototype={
-az(){return new A.DK(A.a(["assets/images/banner1.jpg","assets/images/banner2.jpg","assets/images/banner3.jpg","assets/images/banner4.jpg","assets/images/banner5.jpg","assets/images/banner6.jpg","assets/images/banner7.jpg","assets/images/banner8.jpg","assets/images/banner9.jpg","assets/images/banner10.jpg","assets/images/banner11.jpg","assets/images/banner12.jpg","assets/images/banner13.jpg","assets/images/banner14.jpg","assets/images/banner15.jpg"],t.s),A.aP4())}}
+az(){return new A.DK(A.a(["assets/images/about_us_banner.png","assets/images/banner1.jpg","assets/images/banner2.jpg","assets/images/banner3.jpg","assets/images/banner4.jpg","assets/images/banner5.jpg","assets/images/banner6.jpg","assets/images/banner7.jpg","assets/images/banner8.jpg","assets/images/banner9.jpg","assets/images/banner10.jpg","assets/images/banner11.jpg","assets/images/banner12.jpg","assets/images/banner13.jpg","assets/images/banner14.jpg","assets/images/banner15.jpg"],t.s),A.aP4())}}
 A.DK.prototype={
 aL(){this.b_()
 this.PF()},
@@ -41386,10 +41386,10 @@ a5T(){this.aB(new A.aqk(this))},
 a5R(){this.aB(new A.aqj(this))},
 l(){this.e.l()
 this.aR()},
-V(a){var s,r,q=this,p=null,o=A.a(["OBD FC","FAST FC","ANH EM FC","NH\xc0 FC","THI\u1ebeT B\u1eca V\u0102N PH\xd2NG FC","MI\u1ec0N NAM FC"],t.s),n=A.bN(a,p,t.l).w,m=A.bb(A.bp("home.title",p),p,p,p,B.a6S,p,p),l=A.bb(A.bp("home.subtitle",p),p,p,p,B.FY,p,p),k=J.aCQ(15,t.l7)
-for(s=0;s<15;++s)k[s]=A.Iy(p,p,B.I,p,new A.dU(q.f===s?A.W(a).dx:B.YG,p,p,p,p,p,B.fS),p,8,B.hn,p,p,p,8)
+V(a){var s,r,q=this,p=null,o=A.a(["OBD FC","FAST FC","ANH EM FC","NH\xc0 FC","THI\u1ebeT B\u1eca V\u0102N PH\xd2NG FC","MI\u1ec0N NAM FC"],t.s),n=A.bN(a,p,t.l).w,m=A.bb(A.bp("home.title",p),p,p,p,B.a6S,p,p),l=A.bb(A.bp("home.subtitle",p),p,p,p,B.FY,p,p),k=J.aCQ(16,t.l7)
+for(s=0;s<16;++s)k[s]=A.Iy(p,p,B.I,p,new A.dU(q.f===s?A.W(a).dx:B.YG,p,p,p,p,p,B.fS),p,8,B.hn,p,p,p,8)
 r=t.E
-r=A.a([m,B.c2,l,B.ds,A.f6(A.q1(B.d_,A.a([new A.zW(q.e,new A.aqo(q),new A.Bi(new A.aqp(q),15,!0,!0,!0,p),p),A.A4(10,A.AI(k,B.bi,B.lz,B.c_),p,p,0,0,p,p),A.A4(0,A.yo(p,p,B.Lu,p,p,q.ga5S(),p,p,p),p,p,10,p,0,p),A.A4(0,A.yo(p,p,B.Ls,p,p,q.ga5Q(),p,p,p),p,p,p,10,0,p)],r),B.P,B.dt),n.a.a*0.4,p),B.jf,A.bb(A.bp("home.schedule_title",p),p,p,p,B.jm,p,p),B.c2,A.bb(A.bp("home.schedule_description",p),p,p,p,p,p,p),B.jf,A.bb(A.bp("home.event_title",p),p,p,p,B.jm,p,p),B.c2,A.bb(A.bp("home.event_description",p),p,p,p,p,p,p),B.jf,A.bb(A.bp("home.upcoming_matches",p),p,p,p,B.jm,p,p),B.c2,A.bb(A.bp("home.month_location",p),p,p,p,p,p,p),B.jg],r)
+r=A.a([m,B.c2,l,B.ds,A.f6(A.q1(B.d_,A.a([new A.zW(q.e,new A.aqo(q),new A.Bi(new A.aqp(q),16,!0,!0,!0,p),p),A.A4(10,A.AI(k,B.bi,B.lz,B.c_),p,p,0,0,p,p),A.A4(0,A.yo(p,p,B.Lu,p,p,q.ga5S(),p,p,p),p,p,10,p,0,p),A.A4(0,A.yo(p,p,B.Ls,p,p,q.ga5Q(),p,p,p),p,p,p,10,0,p)],r),B.P,B.dt),n.a.a*0.4,p),B.jf,A.bb(A.bp("home.schedule_title",p),p,p,p,B.jm,p,p),B.c2,A.bb(A.bp("home.schedule_description",p),p,p,p,p,p,p),B.jf,A.bb(A.bp("home.event_title",p),p,p,p,B.jm,p,p),B.c2,A.bb(A.bp("home.event_description",p),p,p,p,p,p,p),B.jf,A.bb(A.bp("home.upcoming_matches",p),p,p,p,B.jm,p,p),B.c2,A.bb(A.bp("home.month_location",p),p,p,p,p,p,p),B.jg],r)
 B.b.a4(r,new A.aj(o,new A.aqq(),t.bg))
 r.push(B.jf)
 r.push(A.bb(A.bp("home.last_result",p),p,p,p,B.jm,p,p))
@@ -41406,17 +41406,17 @@ s.aB(new A.aql(s))
 s.PF()},
 $S:18}
 A.aql.prototype={
-$0(){var s=this.a,r=B.i.bE(s.f+1,15)
+$0(){var s=this.a,r=B.i.bE(s.f+1,16)
 s.f=r
 s.e.EV(r,B.eL,B.bE)},
 $S:0}
 A.aqk.prototype={
-$0(){var s=this.a,r=B.i.bE(s.f-1+15,15)
+$0(){var s=this.a,r=B.i.bE(s.f-1+16,16)
 s.f=r
 s.e.EV(r,B.eL,B.bE)},
 $S:0}
 A.aqj.prototype={
-$0(){var s=this.a,r=B.i.bE(s.f+1,15)
+$0(){var s=this.a,r=B.i.bE(s.f+1,16)
 s.f=r
 s.e.EV(r,B.eL,B.bE)},
 $S:0}
