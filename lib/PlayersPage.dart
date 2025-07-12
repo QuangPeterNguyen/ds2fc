@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
 
@@ -7,44 +8,44 @@ class PlayersPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final players = [
-      'Buithanhvu',
-      'Hưng Đoàn',
-      'Dung Nguyen',
-      'Hồ Công Hòa',
-      'Hà Hoàng',
-      'Trung Lê',
-      'Sinhgia2020',
-      'ABC',
-      'Nguyễn Định',
-      'Quang Tèo',
-      'Nguyễn Thanh Tâm',
-      'Hậu Lê',
-      'Thanh Tra',
-      'Tran Nguyen Thailand',
-      'V Hiếu',
-      'Tiến Nguyễn',
-      'Tung Lam',
-      'Quang Lãm',
-      'Đình Lâm',
-      'Binh Nguyen Danh',
-      'Vietho Cons',
-      'Trương Tuấn Phương',
-      'Hoàng Trí',
-      'Hoanglich',
-      'Hoàng',
-      'Hoàng Doãn Viên',
-      'NGUYENCUONG',
-      'Hiếu',
-      'Duy Mập',
-      'Khải',
-      'Buôn Sỉ Nội Y Backda',
-      'Tuấn',
-      'Việt Tiến',
-      'Hưng',
-      'Thỏa Lê',
-      'Trần Hưng',
-      'Nguyen Thuy',
-    ];
+            {'name': 'Buithanhvu', 'image': 'assets/images/players/buithanhvu.png'},
+            {'name': 'Hưng Đoàn', 'image': 'assets/images/players/hungdoan.jpg'},
+            {'name': 'Dung Nguyen', 'image': 'assets/images/players/dungnguyen.jpg'},
+            {'name': 'Hồ Công Hòa', 'image': 'assets/images/players/hoconghoa.jpg'},
+            {'name': 'Hà Hoàng', 'image': 'assets/images/players/haohoang.jpg'},
+            {'name': 'Trung Lê', 'image': 'assets/images/players/trungle.jpg'},
+            {'name': 'Sinhgia2020', 'image': 'assets/images/players/sinhgia2020.jpg'},
+            {'name': 'ABC', 'image': 'assets/images/players/abc.png'},
+            {'name': 'Nguyễn Định', 'image': 'assets/images/players/nguyendinh.png'},
+            {'name': 'Quang Tèo', 'image': 'assets/images/players/quangteo.png'},
+            {'name': 'Nguyễn Thanh Tâm', 'image': 'assets/images/players/nguyenthanhtam.png'},
+            {'name': 'Hậu Lê', 'image': 'assets/images/players/haule.jpg'},
+            {'name': 'Thanh Tra', 'image': 'assets/images/players/thanhtra.jpg'},
+            {'name': 'Tran Nguyen Thailand', 'image': 'assets/images/players/trannguyenthailand.jpg'},
+            {'name': 'V Hiếu', 'image': 'assets/images/players/vhieu.png'},
+            {'name': 'Tiến Nguyễn', 'image': 'assets/images/players/tiennguyen.png'},
+            {'name': 'Tung Lam', 'image': 'assets/images/players/tunglam.png'},
+            {'name': 'Quang Lãm', 'image': 'assets/images/players/quanglam.png'},
+            {'name': 'Đình Lâm', 'image': 'assets/images/players/dinhlam.png'},
+            {'name': 'Binh Nguyen Danh', 'image': 'assets/images/players/binhnguyendanh.png'},
+            {'name': 'Vietho Cons', 'image': 'assets/images/players/viethocons.png'},
+            {'name': 'Trương Tuấn Phương', 'image': 'assets/images/players/truongtuanphuong.png'},
+            {'name': 'Hoàng Trí', 'image': 'assets/images/players/hoangtri.png'},
+            {'name': 'Hoanglich', 'image': 'assets/images/players/hoanglich.png'},
+            {'name': 'Hoàng', 'image': 'assets/images/players/hoang.jpg'},
+            {'name': 'Hoàng Doãn Viên', 'image': 'assets/images/players/hoangdoanvien.png'},
+            {'name': 'NGUYENCUONG', 'image': 'assets/images/players/nguyencuong.png'},
+            {'name': 'Hiếu', 'image': 'assets/images/players/hieu.png'},
+            {'name': 'Duy Mập', 'image': 'assets/images/players/duymap.jpg'},
+            {'name': 'Khải', 'image': 'assets/images/players/khai.png'},
+            {'name': 'Buôn Sỉ Nội Y Backda', 'image': 'assets/images/players/buonsinoiybackda.png'},
+            {'name': 'Tuấn', 'image': 'assets/images/players/tuan.png'},
+            {'name': 'Việt Tiến', 'image': 'assets/images/players/viettien.png'},
+            {'name': 'Hưng', 'image': 'assets/images/players/hung.png'},
+            {'name': 'Thỏa Lê', 'image': 'assets/images/players/thoale.jpg'},
+            {'name': 'Trần Hưng', 'image': 'assets/images/players/tranhung.png'},
+            {'name': 'Nguyen Thuy', 'image': 'assets/images/players/nguyenthuy.png'},
+          ];
 
     final Color primaryColor = const Color(0xFF50BFE6); // Sky blue
     final Color accentColor = const Color(0xFF003366); // Navy blue
@@ -63,47 +64,89 @@ class PlayersPage extends StatelessWidget {
             crossAxisCount: 2,
             crossAxisSpacing: 16,
             mainAxisSpacing: 16,
-            childAspectRatio: 3 / 2,
+            childAspectRatio: 2 / 3, // for portrait images
           ),
           itemCount: players.length,
           itemBuilder: (context, index) {
-            return Card(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
-                side: BorderSide(
-                  color: Theme.of(context).brightness == Brightness.dark
-                      ? primaryColor.withOpacity(0.3)
-                      : accentColor.withOpacity(0.2),
-                ),
-              ),
-              elevation: 2,
-              color: Theme.of(context).cardColor,
-              child: Padding(
-                padding: const EdgeInsets.all(12),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    CircleAvatar(
-                      backgroundImage: const AssetImage('assets/images/logo/avatar_placeholder.png'),
-                      radius: 32,
-                      backgroundColor: Theme.of(context).brightness == Brightness.dark
-                          ? primaryColor.withOpacity(0.2)
-                          : accentColor.withOpacity(0.1),
-                    ),
-                    const SizedBox(height: 10),
-                    Text(
-                      players[index],
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+            final player = players[index];
+            return PlayerCard(
+              name: player['name']!,
+              imagePath: player['image']!,
             );
           },
+        ),
+      ),
+    );
+  }
+}
+
+class PlayerCard extends StatelessWidget {
+  final String name;
+  final String imagePath;
+
+  const PlayerCard({
+    super.key,
+    required this.name,
+    required this.imagePath,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final Color primaryColor = const Color(0xFF50BFE6);
+    final Color accentColor = const Color(0xFF003366);
+
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(12),
+      child: Card(
+        margin: EdgeInsets.zero, // important to avoid extra spacing
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(12),
+          side: BorderSide(
+            color: Theme.of(context).brightness == Brightness.dark
+                ? primaryColor.withOpacity(0.3)
+                : accentColor.withOpacity(0.2),
+          ),
+        ),
+        elevation: 2,
+        color: Theme.of(context).cardColor,
+        child: Column(
+          children: [
+            Expanded(
+              flex: 4,
+              child: Image.asset(
+                imagePath,
+                fit: BoxFit.cover,
+                width: double.infinity,
+                errorBuilder: (context, error, stackTrace) {
+                  return Stack(
+                    fit: StackFit.expand,
+                    children: [
+                      Image.asset(
+                        'assets/images/logo/avatar_placeholder.png',
+                        fit: BoxFit.cover,
+                      ),
+                      Align(
+                        alignment: Alignment.bottomCenter,
+                        child: Container(
+                          color: Colors.black.withOpacity(0.6),
+                          padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 6.0),
+                          child: Text(
+                            name,
+                            textAlign: TextAlign.center,
+                            style: const TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w600,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  );
+                },
+              ),
+            ),
+          ],
         ),
       ),
     );
