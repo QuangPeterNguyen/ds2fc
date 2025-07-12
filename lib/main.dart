@@ -143,7 +143,7 @@ class _HomePageState extends State<HomePage> {
     children: [
       DrawerHeader(
   decoration: const BoxDecoration(
-    color: Colors.white, // Use dark to see transparent areas
+
   ),
   child: Image.asset(
     'assets/images/logo/drawer_icon.png',
