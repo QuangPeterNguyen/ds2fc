@@ -41171,7 +41171,7 @@ this.c.ap(t.IB).r.a===$&&A.b()},
 V(a){var s=null
 return A.tM(A.qW(s,s,A.bb(A.bp("about_us.title",s),s,s,s,s,s,s)),A.ayx(A.a([A.a4K(A.i7(12),A.oR("assets/images/about_us_banner.png",s,B.eu,s,s)),B.dr,A.bb(A.bp("about_us.intro",s),s,s,s,B.FX,s,s),B.dr,A.bb(A.bp("about_us.mission_title",s),s,s,s,B.jm,s,s),B.cm,A.bb(A.bp("about_us.mission",s),s,s,s,s,s,s),B.dr,A.bb(A.bp("about_us.history_title",s),s,s,s,B.jm,s,s),B.cm,A.bb(A.bp("about_us.history",s),s,s,s,s,s,s),B.dr,A.bb(A.bp("about_us.culture_title",s),s,s,s,B.jm,s,s),B.cm,A.bb(A.bp("about_us.culture",s),s,s,s,s,s,s)],t.D),B.hl),s)}}
 A.Lq.prototype={
-V(a){var s,r,q,p=null,o=t.N,n=A.a([A.X(["date","17/07/2025","opponent","OBD FC"],o,o),A.X(["date","24/07/2025","opponent","FAST FC"],o,o),A.X(["date","31/07/2025","opponent","ANH EM FC"],o,o),A.X(["date","07/08/2025","opponent","NH\xc0 FC"],o,o),A.X(["date","14/08/2025","opponent","THI\u1ebeT B\u1eca V\u0102N PH\xd2NG FC"],o,o),A.X(["date","21/08/2025","opponent","MI\u1ec0N NAM FC"],o,o)],t.m0)
+V(a){var s,r,q,p=null,o=t.N,n=A.a([A.X(["date","16/07/2025","opponent","FAST FC"],o,o),A.X(["date","23/07/2025","opponent","OBD FC"],o,o),A.X(["date","30/07/2025","opponent","ANH EM FC"],o,o),A.X(["date","06/08/2025","opponent","NH\xc0 FC"],o,o),A.X(["date","13/08/2025","opponent","THI\u1ebeT B\u1eca V\u0102N PH\xd2NG FC"],o,o),A.X(["date","20/08/2025","opponent","MI\u1ec0N NAM FC"],o,o)],t.m0)
 o=A.bb(A.bp("fixtures.title",p),p,p,p,p,p,p)
 o=A.qW(p,A.W(a).ax.a===B.a_?B.cF:B.bD,o)
 s=A.bp("fixtures.regular_schedule",p)
