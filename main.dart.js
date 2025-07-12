@@ -41339,7 +41339,7 @@ r=s.gcW(0)==="vi"
 s=A.yo(o,o,B.Lr,o,o,p.a.c,o,o,"Toggle Light/Dark Mode")
 q=t.E
 s=A.qV(A.a([s,A.yo(o,o,A.yr(r?"assets/icons/us.png":"assets/icons/vn.png",o,24,24),o,o,new A.aqt(a,r),o,o,"Toggle Language")],q),o,B.a7t)
-q=A.ayv(A.a([new A.L3(B.He,A.yr("assets/images/logo/drawer_icon.png",B.n8,1/0,1/0),o),A.t7(new A.aqu(p,a),A.bb(A.bp("Home",o),o,o,o,o,o,o)),A.t7(new A.aqv(p,a),A.bb(A.bp("Players",o),o,o,o,o,o,o)),A.t7(new A.aqw(p,a),A.bb(A.bp("Fixtures",o),o,o,o,o,o,o)),A.t7(new A.aqx(p,a),A.bb(A.bp("Results",o),o,o,o,o,o,o)),A.t7(new A.aqy(p,a),A.bb(A.bp("gallery.title",o),o,o,o,o,o,o)),A.t7(new A.aqz(p,a),A.bb(A.bp("join_us.title",o),o,o,o,o,o,o)),A.t7(new A.aqA(p,a),A.bb(A.bp("about_us.title",o),o,o,o,o,o,o))],q),o)
+q=A.ayv(A.a([new A.L3(B.Hd,A.yr("assets/images/logo/drawer_icon.png",B.n8,1/0,1/0),o),A.t7(new A.aqu(p,a),A.bb(A.bp("Home",o),o,o,o,o,o,o)),A.t7(new A.aqv(p,a),A.bb(A.bp("Players",o),o,o,o,o,o,o)),A.t7(new A.aqw(p,a),A.bb(A.bp("Fixtures",o),o,o,o,o,o,o)),A.t7(new A.aqx(p,a),A.bb(A.bp("Results",o),o,o,o,o,o,o)),A.t7(new A.aqy(p,a),A.bb(A.bp("gallery.title",o),o,o,o,o,o,o)),A.t7(new A.aqz(p,a),A.bb(A.bp("join_us.title",o),o,o,o,o,o,o)),A.t7(new A.aqA(p,a),A.bb(A.bp("about_us.title",o),o,o,o,o,o,o))],q),o)
 return A.tM(s,[new A.DJ(o),B.a_E,B.L7,B.a0a,B.Lf,B.M2,B.GB][p.d],new A.L_(q,o))}}
 A.aqs.prototype={
 $0(){this.a.d=this.b},
@@ -42564,7 +42564,7 @@ m=A.aH2(new A.a7s(q,q,m,B.II))
 m.toString
 s=B.JI.cM(a)
 r=new A.bk(B.JM.cM(a),1,B.B,-1)
-return new A.co(new A.aI(8,p,8,8),new A.kc(new A.KK(o),A.Iy(q,A.aLh(A.xs(new A.co(B.KP,n,q),new A.dU(s,q,new A.dg(r,r,r,r),B.n4,q,q,B.br),B.dL),new A.CQ(new A.wR(m),new A.CP(20,20,q))),B.P,q,B.Hd,q,q,q,q,q,q,222),q),q)}}
+return new A.co(new A.aI(8,p,8,8),new A.kc(new A.KK(o),A.Iy(q,A.aLh(A.xs(new A.co(B.KP,n,q),new A.dU(s,q,new A.dg(r,r,r,r),B.n4,q,q,B.br),B.dL),new A.CQ(new A.wR(m),new A.CP(20,20,q))),B.P,q,B.He,q,q,q,q,q,q,222),q),q)}}
 A.oh.prototype={
 az(){return new A.D0()}}
 A.D0.prototype={
@@ -91537,14 +91537,13 @@ B.Ex=new A.Qy(1,"fast")
 B.Hb=new A.wF(B.Ex,B.lP)
 B.Hc=new A.ar(280,1/0,0,1/0)
 B.n7=new A.ar(1/0,1/0,1/0,1/0)
+B.br=new A.HT(0,"rectangle")
+B.Hd=new A.dU(null,null,null,null,null,null,B.br)
 B.Jk=new A.E(0.23529411764705882,0,0,0,B.j)
 B.Zj=new A.i(0,4)
 B.Hi=new A.dV(0.5,B.fP,B.Jk,B.Zj,10)
 B.Sa=A.a(s([B.Hi]),t.sq)
-B.br=new A.HT(0,"rectangle")
-B.Hd=new A.dU(null,null,null,B.n4,B.Sa,null,B.br)
-B.l=new A.E(1,1,1,1,B.j)
-B.He=new A.dU(B.l,null,null,null,null,null,B.br)
+B.He=new A.dU(null,null,null,B.n4,B.Sa,null,B.br)
 B.n8=new A.wG(1,"contain")
 B.fR=new A.wG(2,"cover")
 B.n9=new A.wG(6,"scaleDown")
@@ -91833,6 +91832,7 @@ B.k2=new A.ri(0,"pasteable")
 B.k3=new A.ri(1,"unknown")
 B.II=new A.a4Y(1,"matrix")
 B.ka=new A.E(1,0.403921568627451,0.3137254901960784,0.6431372549019608,B.j)
+B.l=new A.E(1,1,1,1,B.j)
 B.h2=new A.E(1,0.9176470588235294,0.8666666666666667,1,B.j)
 B.h8=new A.E(1,0.30980392156862746,0.21568627450980393,0.5450980392156862,B.j)
 B.eD=new A.E(1,0.8156862745098039,0.7372549019607844,1,B.j)
