@@ -26,10 +26,13 @@ class PlayersPage extends StatelessWidget {
             {'name': 'Tung Lam', 'image': 'assets/images/players/tunglam.png'},
             {'name': 'Binh Nguyen Danh', 'image': 'assets/images/players/binhnguyendanh.png'},
             {'name': 'Quang Lãm', 'image': 'assets/images/players/quanglam.png'},
+            {'name': 'Vietho Cons', 'image': 'assets/images/players/viethocons.png'},
+            {'name': 'Buôn Sỉ Nội Y Backda', 'image': 'assets/images/players/buonsinoiybackda.png'},
+
             {'name': 'Quang Tèo', 'image': 'assets/images/players/quangteo.png'},
             {'name': 'Đình Lâm', 'image': 'assets/images/players/dinhlam.png'},
             {'name': 'Nguyễn Thanh Tâm', 'image': 'assets/images/players/nguyenthanhtam.png'},
-            {'name': 'Vietho Cons', 'image': 'assets/images/players/viethocons.png'},
+
             {'name': 'Trương Tuấn Phương', 'image': 'assets/images/players/truongtuanphuong.png'},
             {'name': 'Hoàng Trí', 'image': 'assets/images/players/hoangtri.png'},
             {'name': 'Hoanglich', 'image': 'assets/images/players/hoanglich.png'},
@@ -37,7 +40,7 @@ class PlayersPage extends StatelessWidget {
             {'name': 'NGUYENCUONG', 'image': 'assets/images/players/nguyencuong.png'},
             {'name': 'Hiếu', 'image': 'assets/images/players/hieu.png'},
             {'name': 'Khải', 'image': 'assets/images/players/khai.png'},
-            {'name': 'Buôn Sỉ Nội Y Backda', 'image': 'assets/images/players/buonsinoiybackda.png'},
+
             {'name': 'Tuấn', 'image': 'assets/images/players/tuan.png'},
             {'name': 'Việt Tiến', 'image': 'assets/images/players/viettien.png'},
             {'name': 'Hưng', 'image': 'assets/images/players/hung.png'},
