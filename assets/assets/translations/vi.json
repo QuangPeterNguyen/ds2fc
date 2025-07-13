@@ -23,6 +23,7 @@
   "home.last_score": "Đ.S 2 FC 6 - 5 ANH KHÔI FC",
   "home.scorers": "Người ghi bàn: HOÀNG HÀ (3), VĂN THỎA (1), ĐỨC CHINH (1), QUANG LÃM (1)",
   "home.recent_scorers": "Cầu thủ ghi bàn gần đây",
+  "home.stadium": "Sân KINH ĐÔ",
   "fixtures": {
     "title": "Lịch Thi Đấu",
     "match_vs": "Đ.S 2 FC gặp {}",
@@ -83,5 +84,17 @@
 "about_us.values_title": "Giá Trị Cốt Lõi",
 "about_us.values_content": "Tinh thần đồng đội, Đam mê, Tôn trọng và Phát triển.",
 "about_us.culture_title": "Tinh Thần Cộng Đồng",
-"about_us.culture": "Chúng tôi chào đón mọi thành viên và tập trung vào sự hòa nhập và phát triển."
+"about_us.culture": "Chúng tôi chào đón mọi thành viên và tập trung vào sự hòa nhập và phát triển.",
+  "match_countdown": {
+    "title": "⚽ Trận đấu tiếp theo bắt đầu sau:",
+    "days": "Ngày",
+    "hours": "Giờ",
+    "minutes": "Phút",
+    "seconds": "Giây",
+    "match_started": "⚽ Trận đấu đã bắt đầu!",
+    "kickoff": "Thời gian: {}",
+    "location": "Địa điểm: {}",
+    "matchup": "{} vs {}",
+    "watch_livestream": "Xem trực tiếp"
+  }
 }
