@@ -9,6 +9,7 @@ import 'JoinUsPage.dart';
 import 'GalleryPage.dart';
 import 'AboutUsPage.dart';
 import 'components/PlayerCard.dart';
+import 'widgets/MatchCountdownWidget.dart';
 
 
 
@@ -316,6 +317,12 @@ class _HomeContentState extends State<_HomeContent> {
           Text('home.subtitle'.tr(), style: const TextStyle(fontSize: 18)),
           const SizedBox(height: 20),
 
+          MatchCountdownWidget(
+            matchDateTime: DateTime(2025, 7, 16, 17, 45),
+            livestreamUrl: 'https://www.facebook.com/Phuisg.tv',
+            backgroundImage: 'assets/images/stadium.png',
+          ),
+          const SizedBox(height: 20),
           // Banner Carousel
           SizedBox(
             height: bannerHeight,
