@@ -3,17 +3,24 @@ import 'package:intl/intl.dart';
 import 'dart:async';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:shimmer/shimmer.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class MatchCountdownWidget extends StatefulWidget {
   final DateTime matchDateTime;
   final String livestreamUrl;
   final String backgroundImage;
+  final String team1;
+  final String team2;
+  final String stadium;
 
   const MatchCountdownWidget({
     super.key,
     required this.matchDateTime,
     required this.livestreamUrl,
     required this.backgroundImage,
+    required this.team1,
+    required this.team2,
+    required this.stadium,
   });
 
   @override
@@ -67,7 +74,10 @@ class _MatchCountdownWidgetState extends State<MatchCountdownWidget> {
     if (_timeRemaining!.isNegative) {
       return Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Text("⚽ Match has started!", style: TextStyle(fontSize: 20)),
+        child: Text(
+          tr("match_countdown.match_started"),
+          style: TextStyle(fontSize: 20),
+        ),
       );
     }
 
@@ -95,37 +105,39 @@ class _MatchCountdownWidgetState extends State<MatchCountdownWidget> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Text(
-            "⚽ Next Match Starts In:",
+            tr("match_countdown.title"),
             style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.white),
           ),
           SizedBox(height: 10),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              _timeCard('$days', 'Days'),
-              _timeCard('$hours', 'Hours'),
-              _timeCard('$minutes', 'Minutes'),
-              _timeCard('$seconds', 'Seconds'),
+              _timeCard('$days', tr("match_countdown.days")),
+              _timeCard('$hours', tr("match_countdown.hours")),
+              _timeCard('$minutes', tr("match_countdown.minutes")),
+              _timeCard('$seconds', tr("match_countdown.seconds")),
             ],
           ),
           SizedBox(height: 14),
           Text(
-            "Đ.S 2 FC vs FAST FC",
+            tr("match_countdown.matchup", args: [widget.team1, widget.team2]),
             style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600, color: Colors.white),
           ),
           Text(
-            "Kickoff: ${DateFormat('HH:mm, EEEE dd/MM/yyyy').format(widget.matchDateTime)}",
+            tr("match_countdown.kickoff", args: [
+              DateFormat('HH:mm, dd/MM/yyyy').format(widget.matchDateTime)
+            ]),
             style: TextStyle(fontSize: 16, color: Colors.white70),
           ),
           Text(
-            "Location: Đường Số 2 Stadium",
+            tr("match_countdown.location", args: [widget.stadium]),
             style: TextStyle(fontSize: 16, color: Colors.white70),
           ),
           SizedBox(height: 16),
           ElevatedButton.icon(
             onPressed: () => launchUrl(Uri.parse(widget.livestreamUrl)),
             icon: Icon(Icons.live_tv),
-            label: Text("Watch Livestream"),
+            label: Text(tr("match_countdown.watch_livestream")),
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.redAccent,
               foregroundColor: Colors.white,

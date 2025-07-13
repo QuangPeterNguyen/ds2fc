@@ -23,6 +23,7 @@
   "home.last_score": "Đ.S 2 FC 6 - 5 ANH KHÔI FC",
   "home.scorers": "Scorers: HOÀNG HÀ (3), VĂN THỎA (1), ĐỨC CHINH (1), QUANG LÃM (1)",
   "home.recent_scorers": "Recent Goal Scorers",
+  "home.stadium": "KINH ĐÔ Stadium",
   "fixtures": {
     "title": "Fixtures",
     "match_vs": "Đ.S 2 FC vs {}",
@@ -71,5 +72,17 @@
 "about_us.values_title": "Our Core Values",
 "about_us.values_content": "Teamwork, Passion, Respect, and Growth.",
 "about_us.culture_title": "Community Spirit",
-"about_us.culture": "We welcome players of all backgrounds and focus on inclusiveness and development."
+"about_us.culture": "We welcome players of all backgrounds and focus on inclusiveness and development.",
+  "match_countdown": {
+    "title": "⚽ Next Match Starts In:",
+    "days": "Days",
+    "hours": "Hours",
+    "minutes": "Minutes",
+    "seconds": "Seconds",
+    "match_started": "⚽ Match has started!",
+    "kickoff": "Kickoff: {}",
+    "location": "Location: {}",
+    "matchup": "{} vs {}",
+    "watch_livestream": "Watch Livestream"
+  }
 }

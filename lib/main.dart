@@ -321,6 +321,9 @@ class _HomeContentState extends State<_HomeContent> {
             matchDateTime: DateTime(2025, 7, 16, 17, 45),
             livestreamUrl: 'https://www.facebook.com/Phuisg.tv',
             backgroundImage: 'assets/images/stadium.png',
+              team1: 'Đ.S 2 FC',
+              team2: 'FAST FC',
+              stadium: 'home.stadium'.tr(),
           ),
           const SizedBox(height: 20),
           // Banner Carousel
