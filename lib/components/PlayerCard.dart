@@ -1,0 +1,74 @@
+import 'package:flutter/material.dart';
+
+class PlayerCard extends StatelessWidget {
+  final String name;
+  final String imagePath;
+
+  const PlayerCard({
+    super.key,
+    required this.name,
+    required this.imagePath,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final Color primaryColor = const Color(0xFF50BFE6);
+    final Color accentColor = const Color(0xFF003366);
+
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(12),
+      child: Card(
+        margin: EdgeInsets.zero,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(12),
+          side: BorderSide(
+            color: Theme.of(context).brightness == Brightness.dark
+                ? primaryColor.withOpacity(0.3)
+                : accentColor.withOpacity(0.2),
+          ),
+        ),
+        elevation: 2,
+        color: Theme.of(context).cardColor,
+        child: Column(
+          children: [
+            Expanded(
+              flex: 4,
+              child: Image.asset(
+                imagePath,
+                fit: BoxFit.cover,
+                width: double.infinity,
+                errorBuilder: (context, error, stackTrace) {
+                  return Stack(
+                    fit: StackFit.expand,
+                    children: [
+                      Image.asset(
+                        'assets/images/logo/avatar_placeholder.png',
+                        fit: BoxFit.cover,
+                      ),
+                      Align(
+                        alignment: Alignment.bottomCenter,
+                        child: Container(
+                          color: Colors.black.withOpacity(0.6),
+                          padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 6.0),
+                          child: Text(
+                            name,
+                            textAlign: TextAlign.center,
+                            style: const TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w600,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  );
+                },
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}

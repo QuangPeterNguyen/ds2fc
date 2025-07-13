@@ -8,7 +8,7 @@ import 'ResultsPage.dart';
 import 'JoinUsPage.dart';
 import 'GalleryPage.dart';
 import 'AboutUsPage.dart';
-
+import 'components/PlayerCard.dart';
 
 
 
@@ -234,6 +234,13 @@ class _HomeContentState extends State<_HomeContent> {
     'assets/images/banner15.jpg',
   ];
 
+  final List<Map<String, String>> recentScorers = [
+        {'name': 'Hà Hoàng', 'image': 'assets/images/recent_scorers/haohoang.jpg'},
+        {'name': 'Tran Nguyen Thailand', 'image': 'assets/images/recent_scorers/trannguyenthailand.jpg'},
+        {'name': 'Thỏa Lê', 'image': 'assets/images/recent_scorers/thoale.jpg'},
+        {'name': 'Quang Lãm', 'image': 'assets/images/recent_scorers/quanglam.jpg'},
+  ];
+
   final PageController _pageController = PageController();
   int _currentPage = 0;
 
@@ -375,6 +382,33 @@ class _HomeContentState extends State<_HomeContent> {
               ],
             ),
           ),
+
+
+
+const SizedBox(height: 30),
+Text('home.recent_scorers'.tr(), style: const TextStyle(fontSize: 22, fontWeight: FontWeight.w600)),
+const SizedBox(height: 10),
+GridView.builder(
+  shrinkWrap: true,
+  physics: const NeverScrollableScrollPhysics(),
+  itemCount: recentScorers.length,
+  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+    crossAxisCount: 2,
+    crossAxisSpacing: 16,
+    mainAxisSpacing: 16,
+    childAspectRatio: 2 / 3,
+  ),
+  itemBuilder: (context, index) {
+    final player = recentScorers[index];
+    return PlayerCard(
+      name: player['name']!,
+      imagePath: player['image']!,
+    );
+  },
+),
+
+
+
 
           const SizedBox(height: 30),
           Text('home.schedule_title'.tr(), style: const TextStyle(fontSize: 22, fontWeight: FontWeight.w600)),
