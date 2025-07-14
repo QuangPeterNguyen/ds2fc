@@ -86,6 +86,10 @@
 "about_us.culture_title": "Tinh Thần Cộng Đồng",
 "about_us.culture": "Chúng tôi chào đón mọi thành viên và tập trung vào sự hòa nhập và phát triển.",
   "match_countdown": {
+
+    "title_external": "⚽ Trận đấu sắp tới gặp {} bắt đầu sau:",
+    "internal_title": "Trận đấu nội bộ: Giao hữu của {}",
+
     "title": "⚽ Trận đấu tiếp theo bắt đầu sau:",
     "days": "Ngày",
     "hours": "Giờ",
