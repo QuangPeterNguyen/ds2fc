@@ -11,6 +11,8 @@ import 'AboutUsPage.dart';
 import 'components/PlayerCard.dart';
 import 'widgets/MatchCountdownWidget.dart';
 
+import 'data/fixtures.dart';
+
 
 
 void main() async {
@@ -240,15 +242,6 @@ class _HomeContentState extends State<_HomeContent> {
     {'name': 'Tran Nguyen Thailand', 'image': 'assets/images/recent_scorers/trannguyenthailand.jpg'},
     {'name': 'Thỏa Lê', 'image': 'assets/images/recent_scorers/thoale.jpg'},
     {'name': 'Quang Lãm', 'image': 'assets/images/recent_scorers/quanglam.jpg'},
-  ];
-
-  final List<Map<String, String>> fixtures = [
-    {'date': '16/07/2025', 'opponent': 'FAST FC'},
-    {'date': '23/07/2025', 'opponent': 'OBD FC'},
-    {'date': '30/07/2025', 'opponent': 'ANH EM FC'},
-    {'date': '06/08/2025', 'opponent': 'NHÀ FC'},
-    {'date': '13/08/2025', 'opponent': 'THIẾT BỊ VĂN PHÒNG FC'},
-    {'date': '20/08/2025', 'opponent': 'MIỀN NAM FC'},
   ];
 
   final PageController _pageController = PageController();
