@@ -139,19 +139,21 @@ void _updateCountdown() {
             tr("match_countdown.location", args: [widget.stadium]),
             style: TextStyle(fontSize: 16, color: Colors.white70),
           ),
-          SizedBox(height: 16),
-          if (widget.isExternalMatch)
+
+          if (widget.isExternalMatch) ...[
+              const SizedBox(height: 16),
               ElevatedButton.icon(
                 onPressed: () => launchUrl(Uri.parse(widget.livestreamUrl)),
-                icon: Icon(Icons.live_tv),
+                icon: const Icon(Icons.live_tv),
                 label: Text(tr("match_countdown.watch_livestream")),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.redAccent,
                   foregroundColor: Colors.white,
-                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
                 ),
-              )
+              ),
+            ],
         ],
       ),
     );
