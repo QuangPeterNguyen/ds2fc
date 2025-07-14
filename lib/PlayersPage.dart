@@ -29,6 +29,7 @@ class PlayersPage extends StatelessWidget {
             {'name': 'Quang Lãm', 'image': 'assets/images/players/quanglam.png'},
             {'name': 'Vietho Cons', 'image': 'assets/images/players/viethocons.png'},
             {'name': 'Buôn Sỉ Nội Y Backda', 'image': 'assets/images/players/buonsinoiybackda.png'},
+            {'name': 'Hưng', 'image': 'assets/images/players/hung.png'},            
 
             {'name': 'Quang Tèo', 'image': 'assets/images/players/quangteo.png'},
             {'name': 'Đình Lâm', 'image': 'assets/images/players/dinhlam.png'},
@@ -44,7 +45,7 @@ class PlayersPage extends StatelessWidget {
 
             {'name': 'Tuấn', 'image': 'assets/images/players/tuan.png'},
             {'name': 'Việt Tiến', 'image': 'assets/images/players/viettien.png'},
-            {'name': 'Hưng', 'image': 'assets/images/players/hung.png'},
+
             {'name': 'Trần Hưng', 'image': 'assets/images/players/tranhung.png'},
             {'name': 'ABC', 'image': 'assets/images/players/abc.png'},
             {'name': 'Nguyễn Định', 'image': 'assets/images/players/nguyendinh.png'},
