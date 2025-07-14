@@ -74,6 +74,10 @@
 "about_us.culture_title": "Community Spirit",
 "about_us.culture": "We welcome players of all backgrounds and focus on inclusiveness and development.",
   "match_countdown": {
+
+    "title_external": "⚽ Next Match vs {} Starts In:",
+    "internal_title": "Internal Match: Friendly game for {}",
+
     "title": "⚽ Next Match Starts In:",
     "days": "Days",
     "hours": "Hours",

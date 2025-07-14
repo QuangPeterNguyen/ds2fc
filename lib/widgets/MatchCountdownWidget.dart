@@ -12,6 +12,7 @@ class MatchCountdownWidget extends StatefulWidget {
   final String team1;
   final String team2;
   final String stadium;
+  final bool isExternalMatch; // ✅ NEW PARAM
 
   const MatchCountdownWidget({
     super.key,
@@ -21,6 +22,7 @@ class MatchCountdownWidget extends StatefulWidget {
     required this.team1,
     required this.team2,
     required this.stadium,
+    required this.isExternalMatch, // ✅ NEW PARAM
   });
 
   @override
@@ -38,15 +40,15 @@ class _MatchCountdownWidgetState extends State<MatchCountdownWidget> {
     _timer = Timer.periodic(Duration(seconds: 1), (_) => _updateCountdown());
   }
 
-  void _updateCountdown() {
-    final now = DateTime.now();
-    final difference = widget.matchDateTime.difference(now);
-    if (!difference.isNegative) {
-      setState(() {
-        _timeRemaining = difference;
-      });
-    }
+void _updateCountdown() {
+  final now = DateTime.now().toUtc().add(const Duration(hours: 7)); // match your timezone
+  final difference = widget.matchDateTime.difference(now);
+  if (!difference.isNegative) {
+    setState(() {
+      _timeRemaining = difference;
+    });
   }
+}
 
   @override
   void dispose() {
@@ -104,8 +106,10 @@ class _MatchCountdownWidgetState extends State<MatchCountdownWidget> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Text(
-            tr("match_countdown.title"),
+                    Text(
+            widget.isExternalMatch
+                ? tr("match_countdown.title")  // vs other team
+                : tr("match_countdown.title"), // internal match title
             style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.white),
           ),
           SizedBox(height: 10),
@@ -120,9 +124,11 @@ class _MatchCountdownWidgetState extends State<MatchCountdownWidget> {
           ),
           SizedBox(height: 14),
           Text(
-            tr("match_countdown.matchup", args: [widget.team1, widget.team2]),
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600, color: Colors.white),
-          ),
+  widget.team1 == widget.team2
+      ? tr("match_countdown.internal_title", args: [widget.team1])
+      : tr("match_countdown.matchup", args: [widget.team1, widget.team2]),
+  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600, color: Colors.white),
+),
           Text(
             tr("match_countdown.kickoff", args: [
               DateFormat('HH:mm, dd/MM/yyyy').format(widget.matchDateTime)

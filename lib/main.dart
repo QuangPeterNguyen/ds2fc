@@ -223,12 +223,12 @@ class _HomeContentState extends State<_HomeContent> {
     'assets/images/banner3.jpg',
     'assets/images/banner4.jpg',
     'assets/images/banner5.jpg',
-        'assets/images/banner6.jpg',
+    'assets/images/banner6.jpg',
     'assets/images/banner7.jpg',
     'assets/images/banner8.jpg',
     'assets/images/banner9.jpg',
     'assets/images/banner10.jpg',
-        'assets/images/banner11.jpg',
+    'assets/images/banner11.jpg',
     'assets/images/banner12.jpg',
     'assets/images/banner13.jpg',
     'assets/images/banner14.jpg',
@@ -236,10 +236,19 @@ class _HomeContentState extends State<_HomeContent> {
   ];
 
   final List<Map<String, String>> recentScorers = [
-        {'name': 'Hà Hoàng', 'image': 'assets/images/recent_scorers/haohoang.jpg'},
-        {'name': 'Tran Nguyen Thailand', 'image': 'assets/images/recent_scorers/trannguyenthailand.jpg'},
-        {'name': 'Thỏa Lê', 'image': 'assets/images/recent_scorers/thoale.jpg'},
-        {'name': 'Quang Lãm', 'image': 'assets/images/recent_scorers/quanglam.jpg'},
+    {'name': 'Hà Hoàng', 'image': 'assets/images/recent_scorers/haohoang.jpg'},
+    {'name': 'Tran Nguyen Thailand', 'image': 'assets/images/recent_scorers/trannguyenthailand.jpg'},
+    {'name': 'Thỏa Lê', 'image': 'assets/images/recent_scorers/thoale.jpg'},
+    {'name': 'Quang Lãm', 'image': 'assets/images/recent_scorers/quanglam.jpg'},
+  ];
+
+  final List<Map<String, String>> fixtures = [
+    {'date': '16/07/2025', 'opponent': 'FAST FC'},
+    {'date': '23/07/2025', 'opponent': 'OBD FC'},
+    {'date': '30/07/2025', 'opponent': 'ANH EM FC'},
+    {'date': '06/08/2025', 'opponent': 'NHÀ FC'},
+    {'date': '13/08/2025', 'opponent': 'THIẾT BỊ VĂN PHÒNG FC'},
+    {'date': '20/08/2025', 'opponent': 'MIỀN NAM FC'},
   ];
 
   final PageController _pageController = PageController();
@@ -294,17 +303,112 @@ class _HomeContentState extends State<_HomeContent> {
     super.dispose();
   }
 
+  // GMT+7 safe time
+DateTime getNowInGMT7() {
+  return DateTime.now().toUtc().add(const Duration(hours: 7));
+}
+DateTime getNextInternalMatchDateTime() {
+  final now = getNowInGMT7();
+
+  // Today at 6PM (in GMT+7)
+  final todayAt6PM = DateTime.utc(now.year, now.month, now.day, 11); // 6PM GMT+7 = 11AM UTC
+
+  // Check if it's Monday or Friday and still before 6PM
+  if ((now.weekday == DateTime.monday || now.weekday == DateTime.friday) &&
+      now.isBefore(todayAt6PM.add(Duration(hours: 7)))) {
+    return todayAt6PM.add(Duration(hours: 7)); // Return in GMT+7
+  }
+
+  // Otherwise find next Monday or Friday
+  for (int i = 1; i <= 7; i++) {
+    final candidate = now.add(Duration(days: i));
+    if (candidate.weekday == DateTime.monday || candidate.weekday == DateTime.friday) {
+      return DateTime.utc(candidate.year, candidate.month, candidate.day, 11)
+          .add(Duration(hours: 7)); // Return 6PM GMT+7
+    }
+  }
+
+  return now;
+}
+
+  List<Map<String, dynamic>> parseExternalFixtures(List<Map<String, String>> fixtures) {
+    final now = getNowInGMT7();
+    final upcoming = <Map<String, dynamic>>[];
+
+    for (var fixture in fixtures) {
+      try {
+        final dateParts = fixture['date']!.split('/');
+        final matchDate = DateTime(
+          int.parse(dateParts[2]),
+          int.parse(dateParts[1]),
+          int.parse(dateParts[0]),
+          18,
+        );
+
+        if (matchDate.isAfter(now)) {
+          upcoming.add({
+            'datetime': matchDate,
+            'opponent': fixture['opponent'],
+          });
+        }
+      } catch (_) {}
+    }
+
+    upcoming.sort((a, b) => a['datetime'].compareTo(b['datetime']));
+    return upcoming;
+  }
+
+Map<String, dynamic> getNextMatch(List<Map<String, String>> fixtures) {
+  final now = getNowInGMT7();
+
+  // Skip internal match if it's over (past 2 hours)
+  final internal = getNextInternalMatchDateTime();
+  final internalEnd = internal.add(const Duration(hours: 2));
+  final internalAvailable = now.isBefore(internalEnd);
+
+  DateTime? externalTime;
+  String? externalOpponent;
+
+  for (var fixture in fixtures) {
+    try {
+      final parts = fixture['date']!.split('/');
+      final dt = DateTime(
+        int.parse(parts[2]),
+        int.parse(parts[1]),
+        int.parse(parts[0]),
+        18,
+      );
+      final matchEnd = dt.add(const Duration(hours: 2));
+
+      if (now.isBefore(matchEnd)) {
+        if (externalTime == null || dt.isBefore(externalTime)) {
+          externalTime = dt;
+          externalOpponent = fixture['opponent'];
+        }
+      }
+    } catch (_) {}
+  }
+
+  // ✅ External only overrides internal if earlier and still not ended
+  if (externalTime != null && (!internalAvailable || externalTime.isBefore(internal))) {
+    return {
+      'datetime': externalTime,
+      'opponent': externalOpponent ?? '',
+      'isExternal': true,
+    };
+  }
+
+  // ✅ Otherwise fallback to internal match
+  return {
+    'datetime': internal,
+    'opponent': 'Đ.S 2 FC',
+    'isExternal': false,
+  };
+}
+
   @override
   Widget build(BuildContext context) {
-    final List<String> opponents = [
-      'OBD FC',
-      'FAST FC',
-      'ANH EM FC',
-      'NHÀ FC',
-      'THIẾT BỊ VĂN PHÒNG FC',
-      'MIỀN NAM FC',
-    ];
-
+    final nextMatch = getNextMatch(fixtures);
     final double bannerHeight = MediaQuery.of(context).size.width * 0.4;
 
     return SingleChildScrollView(
@@ -317,16 +421,18 @@ class _HomeContentState extends State<_HomeContent> {
           Text('home.subtitle'.tr(), style: const TextStyle(fontSize: 18)),
           const SizedBox(height: 20),
 
+          // ✅ Countdown
           MatchCountdownWidget(
-            matchDateTime: DateTime(2025, 7, 16, 17, 45),
+            matchDateTime: nextMatch['datetime'],
             livestreamUrl: 'https://www.facebook.com/Phuisg.tv',
             backgroundImage: 'assets/images/stadium.png',
-              team1: 'Đ.S 2 FC',
-              team2: 'FAST FC',
-              stadium: 'home.stadium'.tr(),
+            team1: 'Đ.S 2 FC',
+            team2: nextMatch['opponent'],
+            stadium: 'home.stadium'.tr(),
+            isExternalMatch: nextMatch['isExternal'],
           ),
+
           const SizedBox(height: 20),
-          // Banner Carousel
           SizedBox(
             height: bannerHeight,
             child: Stack(
@@ -392,34 +498,27 @@ class _HomeContentState extends State<_HomeContent> {
               ],
             ),
           ),
-
-
-
-const SizedBox(height: 30),
-Text('home.recent_scorers'.tr(), style: const TextStyle(fontSize: 22, fontWeight: FontWeight.w600)),
-const SizedBox(height: 10),
-GridView.builder(
-  shrinkWrap: true,
-  physics: const NeverScrollableScrollPhysics(),
-  itemCount: recentScorers.length,
-  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-    crossAxisCount: 2,
-    crossAxisSpacing: 16,
-    mainAxisSpacing: 16,
-    childAspectRatio: 2 / 3,
-  ),
-  itemBuilder: (context, index) {
-    final player = recentScorers[index];
-    return PlayerCard(
-      name: player['name']!,
-      imagePath: player['image']!,
-    );
-  },
-),
-
-
-
-
+          const SizedBox(height: 30),
+          Text('home.recent_scorers'.tr(), style: const TextStyle(fontSize: 22, fontWeight: FontWeight.w600)),
+          const SizedBox(height: 10),
+          GridView.builder(
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            itemCount: recentScorers.length,
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              crossAxisSpacing: 16,
+              mainAxisSpacing: 16,
+              childAspectRatio: 2 / 3,
+            ),
+            itemBuilder: (context, index) {
+              final player = recentScorers[index];
+              return PlayerCard(
+                name: player['name']!,
+                imagePath: player['image']!,
+              );
+            },
+          ),
           const SizedBox(height: 30),
           Text('home.schedule_title'.tr(), style: const TextStyle(fontSize: 22, fontWeight: FontWeight.w600)),
           const SizedBox(height: 10),
@@ -433,33 +532,33 @@ GridView.builder(
           const SizedBox(height: 10),
           Text('home.month_location'.tr()),
           const SizedBox(height: 8),
-          ...opponents.map((team) => Text(tr('home.match_vs', args: [team]))),
+          ...fixtures.map((match) => Text(tr('home.match_vs', args: [match['opponent']!]))),
           const SizedBox(height: 30),
           Text('home.last_result'.tr(), style: const TextStyle(fontSize: 22, fontWeight: FontWeight.w600)),
           const SizedBox(height: 10),
           Text('home.last_score'.tr()),
           Text('home.scorers'.tr()),
-const SizedBox(height: 16),
-ElevatedButton.icon(
-  onPressed: () async {
-    const url = 'https://www.facebook.com/share/v/1CPgDwRomb/?mibextid=wwXIfr'; // Replace with actual livestream URL
-    if (await canLaunchUrl(Uri.parse(url))) {
-      await launchUrl(Uri.parse(url), mode: LaunchMode.externalApplication);
-    } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Could not open livestream link')),
-      );
-    }
-  },
-  icon: const Icon(Icons.live_tv),
-  label: Text('results.watch_livestream'.tr()),
-  style: ElevatedButton.styleFrom(
-    backgroundColor: Theme.of(context).primaryColor,
-    foregroundColor: Colors.white,
-    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-    textStyle: const TextStyle(fontSize: 16),
-  ),
-),
+          const SizedBox(height: 16),
+          ElevatedButton.icon(
+            onPressed: () async {
+              const url = 'https://www.facebook.com/share/v/1CPgDwRomb/?mibextid=wwXIfr';
+              if (await canLaunchUrl(Uri.parse(url))) {
+                await launchUrl(Uri.parse(url), mode: LaunchMode.externalApplication);
+              } else {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text('Could not open livestream link')),
+                );
+              }
+            },
+            icon: const Icon(Icons.live_tv),
+            label: Text('results.watch_livestream'.tr()),
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Theme.of(context).primaryColor,
+              foregroundColor: Colors.white,
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+              textStyle: const TextStyle(fontSize: 16),
+            ),
+          ),
         ],
       ),
     );
