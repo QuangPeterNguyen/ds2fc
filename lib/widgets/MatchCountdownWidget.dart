@@ -40,8 +40,12 @@ class _MatchCountdownWidgetState extends State<MatchCountdownWidget> {
     _timer = Timer.periodic(Duration(seconds: 1), (_) => _updateCountdown());
   }
 
+DateTime getNowInGMT7() {
+  return DateTime.now().toUtc().add(const Duration(hours: 7));
+}
+
 void _updateCountdown() {
-  final now = DateTime.now().toUtc().add(const Duration(hours: 7)); // match your timezone
+  final now = getNowInGMT7(); // match your timezone
   final difference = widget.matchDateTime.difference(now);
   if (!difference.isNegative) {
     setState(() {

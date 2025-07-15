@@ -302,7 +302,7 @@ DateTime getNowInGMT7() {
 }
 DateTime getNextInternalMatchDateTime() {
   final now = getNowInGMT7();
-
+  print("getNextInternalMatchDateTime = $now");
   // Today at 6PM (in GMT+7)
   final todayAt6PM = DateTime.utc(now.year, now.month, now.day, 11); // 6PM GMT+7 = 11AM UTC
 
@@ -324,32 +324,15 @@ DateTime getNextInternalMatchDateTime() {
   return now;
 }
 
-  List<Map<String, dynamic>> parseExternalFixtures(List<Map<String, String>> fixtures) {
-    final now = getNowInGMT7();
-    final upcoming = <Map<String, dynamic>>[];
-
-    for (var fixture in fixtures) {
-      try {
-        final dateParts = fixture['date']!.split('/');
-        final matchDate = DateTime(
-          int.parse(dateParts[2]),
-          int.parse(dateParts[1]),
-          int.parse(dateParts[0]),
-          18,
-        );
-
-        if (matchDate.isAfter(now)) {
-          upcoming.add({
-            'datetime': matchDate,
-            'opponent': fixture['opponent'],
-          });
-        }
-      } catch (_) {}
-    }
-
-    upcoming.sort((a, b) => a['datetime'].compareTo(b['datetime']));
-    return upcoming;
+DateTime parseFixtureDate(String? dateStr) {
+  try {
+    final formatter = DateFormat('HH:mm, dd/MM/yyyy');
+    if (dateStr == null) throw FormatException("Date string is null");
+    return formatter.parse(dateStr).toUtc().add(const Duration(hours: 7));
+  } catch (_) {
+    return DateTime.now();
   }
+}
 
 Map<String, dynamic> getNextMatch(List<Map<String, String>> fixtures) {
   final now = getNowInGMT7();
@@ -364,13 +347,7 @@ Map<String, dynamic> getNextMatch(List<Map<String, String>> fixtures) {
 
   for (var fixture in fixtures) {
     try {
-      final parts = fixture['date']!.split('/');
-      final dt = DateTime(
-        int.parse(parts[2]),
-        int.parse(parts[1]),
-        int.parse(parts[0]),
-        18,
-      );
+      final dt = parseFixtureDate(fixture['date']);
       final matchEnd = dt.add(const Duration(hours: 2));
 
       if (now.isBefore(matchEnd)) {
@@ -402,6 +379,8 @@ Map<String, dynamic> getNextMatch(List<Map<String, String>> fixtures) {
   @override
   Widget build(BuildContext context) {
     final nextMatch = getNextMatch(fixtures);
+    final time = nextMatch['datetime'];
+    print("nextMatch == $time");
     final double bannerHeight = MediaQuery.of(context).size.width * 0.4;
 
     return SingleChildScrollView(

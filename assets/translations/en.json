@@ -31,7 +31,7 @@
   "regular_description": "Đ.S 2 FC plays every Monday and Friday at 6 PM.",
   "upcoming_matches": "The upcoming matches of the KINHDO PREMIER LEAGUE 2025",
   "match_vs": "Đ.S 2 FC vs {}",
-  "time_location": "Kickoff: 17:45 • KINH DO Stadium"
+  "time_location": "Location: KINH DO Stadium"
   },
     "results": {
   "title": "Results",
@@ -84,7 +84,7 @@
     "minutes": "Minutes",
     "seconds": "Seconds",
     "match_started": "⚽ Match has started!",
-    "kickoff": "Kickoff: {}",
+    "kickoff": "Kickoff: {} (GMT+7)",
     "location": "Location: {}",
     "matchup": "{} vs {}",
     "watch_livestream": "Watch Livestream"

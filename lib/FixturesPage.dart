@@ -54,6 +54,7 @@ class FixturesPage extends StatelessWidget {
               itemCount: fixtures.length,
               itemBuilder: (context, index) {
                 final match = fixtures[index];
+                final dateTime = match['date']!;
                 return Card(
                   color: Theme.of(context).cardColor,
                   shape: RoundedRectangleBorder(
@@ -67,7 +68,7 @@ class FixturesPage extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          match['date']!,
+                          "$dateTime (GMT+7)",
                           style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
