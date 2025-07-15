@@ -170,7 +170,7 @@ class _MatchCountdownWidgetState extends State<MatchCountdownWidget> {
           ),
 
           // External livestream button only when match not started
-          if (widget.isExternalMatch && !_isMatchHappening) ...[
+          if (widget.isExternalMatch) ...[
             const SizedBox(height: 16),
             ElevatedButton.icon(
               onPressed: () => launchUrl(Uri.parse(widget.livestreamUrl)),
