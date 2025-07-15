@@ -12,7 +12,8 @@ class MatchCountdownWidget extends StatefulWidget {
   final String team1;
   final String team2;
   final String stadium;
-  final bool isExternalMatch; // ✅ NEW PARAM
+  final int duration;
+  final bool isExternalMatch;
 
   const MatchCountdownWidget({
     super.key,
@@ -22,7 +23,8 @@ class MatchCountdownWidget extends StatefulWidget {
     required this.team1,
     required this.team2,
     required this.stadium,
-    required this.isExternalMatch, // ✅ NEW PARAM
+    required this.duration,
+    required this.isExternalMatch,
   });
 
   @override
@@ -32,6 +34,7 @@ class MatchCountdownWidget extends StatefulWidget {
 class _MatchCountdownWidgetState extends State<MatchCountdownWidget> {
   late Timer _timer;
   Duration? _timeRemaining;
+  bool _isMatchHappening = false;
 
   @override
   void initState() {
@@ -40,19 +43,26 @@ class _MatchCountdownWidgetState extends State<MatchCountdownWidget> {
     _timer = Timer.periodic(Duration(seconds: 1), (_) => _updateCountdown());
   }
 
-DateTime getNowInGMT7() {
-  return DateTime.now().toUtc().add(const Duration(hours: 7));
-}
+  DateTime getNowInGMT7() {
+    return DateTime.now().toUtc().add(const Duration(hours: 7));
+  }
 
-void _updateCountdown() {
-  final now = getNowInGMT7(); // match your timezone
-  final difference = widget.matchDateTime.difference(now);
-  if (!difference.isNegative) {
+  void _updateCountdown() {
+    final now = getNowInGMT7();
+    final matchStart = widget.matchDateTime;
+    int hours = widget.duration ~/ 60;    // Integer division
+    int minutes = widget.duration % 60;   // Remainder
+    int duration = widget.duration;
+    final matchEnd = matchStart.add(Duration(hours: hours, minutes: minutes)); // Match is 2 hours long
+
+    final isDuringMatch = now.isAfter(matchStart) && now.isBefore(matchEnd);
+    final difference = matchStart.difference(now);
+
     setState(() {
-      _timeRemaining = difference;
+      _isMatchHappening = isDuringMatch;
+      _timeRemaining = isDuringMatch ? Duration.zero : difference;
     });
   }
-}
 
   @override
   void dispose() {
@@ -73,16 +83,6 @@ void _updateCountdown() {
             color: Colors.grey,
             borderRadius: BorderRadius.circular(20),
           ),
-        ),
-      );
-    }
-
-    if (_timeRemaining!.isNegative) {
-      return Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Text(
-          tr("match_countdown.match_started"),
-          style: TextStyle(fontSize: 20),
         ),
       );
     }
@@ -110,54 +110,80 @@ void _updateCountdown() {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-                    Text(
+          if(!_isMatchHappening)
+          Text(
             widget.isExternalMatch
-                ? tr("match_countdown.title")  // vs other team
-                : tr("match_countdown.title"), // internal match title
+                ? tr("match_countdown.title")
+                : tr("match_countdown.title"),
             style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.white),
           ),
-          SizedBox(height: 10),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              _timeCard('$days', tr("match_countdown.days")),
-              _timeCard('$hours', tr("match_countdown.hours")),
-              _timeCard('$minutes', tr("match_countdown.minutes")),
-              _timeCard('$seconds', tr("match_countdown.seconds")),
-            ],
-          ),
-          SizedBox(height: 14),
+
+          const SizedBox(height: 10),
+
+          // Countdown or "Match is happening" label
+          _isMatchHappening
+              ? Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                  tr("match_countdown.match_happening"),
+                  style: TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.orangeAccent,
+                  ),
+                )
+                  ],
+                )
+              : Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    _timeCard('$days', tr("match_countdown.days")),
+                    _timeCard('$hours', tr("match_countdown.hours")),
+                    _timeCard('$minutes', tr("match_countdown.minutes")),
+                    _timeCard('$seconds', tr("match_countdown.seconds")),
+                  ],
+                ),
+
+          const SizedBox(height: 14),
+
+          // Match Teams
           Text(
-  widget.team1 == widget.team2
-      ? tr("match_countdown.internal_title", args: [widget.team1])
-      : tr("match_countdown.matchup", args: [widget.team1, widget.team2]),
-  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600, color: Colors.white),
-),
+            widget.team1 == widget.team2
+                ? tr("match_countdown.internal_title", args: [widget.team1])
+                : tr("match_countdown.matchup", args: [widget.team1, widget.team2]),
+            style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600, color: Colors.white),
+          ),
+
+          // Kickoff Time
           Text(
             tr("match_countdown.kickoff", args: [
               DateFormat('HH:mm, dd/MM/yyyy').format(widget.matchDateTime)
             ]),
             style: TextStyle(fontSize: 16, color: Colors.white70),
           ),
+
+          // Stadium
           Text(
             tr("match_countdown.location", args: [widget.stadium]),
             style: TextStyle(fontSize: 16, color: Colors.white70),
           ),
 
-          if (widget.isExternalMatch) ...[
-              const SizedBox(height: 16),
-              ElevatedButton.icon(
-                onPressed: () => launchUrl(Uri.parse(widget.livestreamUrl)),
-                icon: const Icon(Icons.live_tv),
-                label: Text(tr("match_countdown.watch_livestream")),
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.redAccent,
-                  foregroundColor: Colors.white,
-                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
-                ),
+          // External livestream button only when match not started
+          if (widget.isExternalMatch && !_isMatchHappening) ...[
+            const SizedBox(height: 16),
+            ElevatedButton.icon(
+              onPressed: () => launchUrl(Uri.parse(widget.livestreamUrl)),
+              icon: const Icon(Icons.live_tv),
+              label: Text(tr("match_countdown.watch_livestream")),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.redAccent,
+                foregroundColor: Colors.white,
+                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
               ),
-            ],
+            ),
+          ],
         ],
       ),
     );

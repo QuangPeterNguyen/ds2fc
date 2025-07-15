@@ -302,7 +302,6 @@ DateTime getNowInGMT7() {
 }
 DateTime getNextInternalMatchDateTime() {
   final now = getNowInGMT7();
-  print("getNextInternalMatchDateTime = $now");
   // Today at 6PM (in GMT+7)
   final todayAt6PM = DateTime.utc(now.year, now.month, now.day, 11); // 6PM GMT+7 = 11AM UTC
 
@@ -339,21 +338,31 @@ Map<String, dynamic> getNextMatch(List<Map<String, String>> fixtures) {
 
   // Skip internal match if it's over (past 2 hours)
   final internal = getNextInternalMatchDateTime();
-  final internalEnd = internal.add(const Duration(hours: 2));
+
+  int internalDuration = int.parse(internal_match_minutes!);
+  int hours = internalDuration ~/ 60;    // Integer division
+  int minutes = internalDuration % 60;   // Remainder
+  final internalEnd = internal.add(Duration(hours: hours, minutes: minutes)); // Match is 2 hours long
   final internalAvailable = now.isBefore(internalEnd);
 
   DateTime? externalTime;
   String? externalOpponent;
+  String? duration;
 
   for (var fixture in fixtures) {
     try {
       final dt = parseFixtureDate(fixture['date']);
-      final matchEnd = dt.add(const Duration(hours: 2));
+      int fixtureDuration = int.parse(fixture['duration']!);  
+      int hours = fixtureDuration ~/ 60;    // Integer division
+      int minutes = fixtureDuration % 60;   // Remainder
+      
+      final matchEnd = dt.add(Duration(hours: hours, minutes: minutes)); // Match is 2 hours long
 
       if (now.isBefore(matchEnd)) {
         if (externalTime == null || dt.isBefore(externalTime)) {
           externalTime = dt;
           externalOpponent = fixture['opponent'];
+          duration = fixture['duration'];
         }
       }
     } catch (_) {}
@@ -365,6 +374,7 @@ Map<String, dynamic> getNextMatch(List<Map<String, String>> fixtures) {
       'datetime': externalTime,
       'opponent': externalOpponent ?? '',
       'isExternal': true,
+      'duration':duration,
     };
   }
 
@@ -373,6 +383,7 @@ Map<String, dynamic> getNextMatch(List<Map<String, String>> fixtures) {
     'datetime': internal,
     'opponent': 'Đ.S 2 FC',
     'isExternal': false,
+    'duration':internal_match_minutes,
   };
 }
 
@@ -380,7 +391,6 @@ Map<String, dynamic> getNextMatch(List<Map<String, String>> fixtures) {
   Widget build(BuildContext context) {
     final nextMatch = getNextMatch(fixtures);
     final time = nextMatch['datetime'];
-    print("nextMatch == $time");
     final double bannerHeight = MediaQuery.of(context).size.width * 0.4;
 
     return SingleChildScrollView(
@@ -401,6 +411,7 @@ Map<String, dynamic> getNextMatch(List<Map<String, String>> fixtures) {
             team1: 'Đ.S 2 FC',
             team2: nextMatch['opponent'],
             stadium: 'home.stadium'.tr(),
+            duration: int.parse(nextMatch['duration']),
             isExternalMatch: nextMatch['isExternal'],
           ),
 

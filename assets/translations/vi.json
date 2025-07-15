@@ -96,6 +96,7 @@
     "minutes": "Phút",
     "seconds": "Giây",
     "match_started": "⚽ Trận đấu đã bắt đầu!",
+    "match_happening": "Trận đấu đang diễn ra!",
     "kickoff": "Thời gian: {} (GMT+7)",
     "location": "Địa điểm: {}",
     "matchup": "{} vs {}",
