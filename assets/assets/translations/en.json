@@ -84,6 +84,7 @@
     "minutes": "Minutes",
     "seconds": "Seconds",
     "match_started": "⚽ Match has started!",
+    "match_happening": "Match is happening now!",
     "kickoff": "Kickoff: {} (GMT+7)",
     "location": "Location: {}",
     "matchup": "{} vs {}",
