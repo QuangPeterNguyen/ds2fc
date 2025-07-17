@@ -29,7 +29,7 @@ do
   git commit -m "Deploy $club on $(date)"
 
   echo "📤 Step 5: Pushing to GitHub Pages"
-  git push
+  git push origin release
 
   echo "✅ FINISHED deployment for $club"
   echo "------------------------------"

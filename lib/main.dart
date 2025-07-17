@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'PlayersPage.dart';
@@ -12,8 +13,6 @@ import 'components/PlayerCard.dart';
 import 'widgets/MatchCountdownWidget.dart';
 
 import 'data/fixtures.dart';
-
-
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -38,10 +37,34 @@ class DS2FCApp extends StatefulWidget {
 class _DS2FCAppState extends State<DS2FCApp> {
   ThemeMode _themeMode = ThemeMode.dark;
 
+  @override
+  void initState() {
+    super.initState();
+    _loadThemeFromPrefs();
+  }
+
+  Future<void> _loadThemeFromPrefs() async {
+    final prefs = await SharedPreferences.getInstance();
+    final themeStr = prefs.getString('themeMode');
+    setState(() {
+      if (themeStr == 'light') {
+        _themeMode = ThemeMode.light;
+      } else {
+        _themeMode = ThemeMode.dark;
+      } 
+    });
+  }
+
+  Future<void> _saveThemeToPrefs() async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString('themeMode', _themeMode.name);
+  }
+
   void toggleTheme() {
     setState(() {
       _themeMode = _themeMode == ThemeMode.light ? ThemeMode.dark : ThemeMode.light;
     });
+    _saveThemeToPrefs();
   }
 
   final Color primaryColor = const Color(0xFF50BFE6); // Sky Blue
@@ -142,71 +165,69 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
       drawer: Drawer(
-  child: ListView(
-    children: [
-      DrawerHeader(
-  decoration: const BoxDecoration(
-
-  ),
-  child: Image.asset(
-    'assets/images/logo/drawer_icon.png',
-    fit: BoxFit.contain,
-    width: double.infinity,
-    height: double.infinity,
-  ),
-),
-      ListTile(
-        title: Text('Home'.tr()),
-        onTap: () {
-          _onItemTapped(0);
-          Navigator.pop(context);
-        },
+        child: ListView(
+          children: [
+            DrawerHeader(
+              decoration: const BoxDecoration(),
+              child: Image.asset(
+                'assets/images/logo/drawer_icon.png',
+                fit: BoxFit.contain,
+                width: double.infinity,
+                height: double.infinity,
+              ),
+            ),
+            ListTile(
+              title: Text('Home'.tr()),
+              onTap: () {
+                _onItemTapped(0);
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              title: Text('Players'.tr()),
+              onTap: () {
+                _onItemTapped(1);
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              title: Text('Fixtures'.tr()),
+              onTap: () {
+                _onItemTapped(2);
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              title: Text('Results'.tr()),
+              onTap: () {
+                _onItemTapped(3);
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              title: Text('gallery.title'.tr()),
+              onTap: () {
+                _onItemTapped(4);
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              title: Text('join_us.title'.tr()),
+              onTap: () {
+                _onItemTapped(5);
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              title: Text('about_us.title'.tr()),
+              onTap: () {
+                _onItemTapped(6);
+                Navigator.pop(context);
+              },
+            ),
+          ],
+        ),
       ),
-      ListTile(
-        title: Text('Players'.tr()),
-        onTap: () {
-          _onItemTapped(1);
-          Navigator.pop(context);
-        },
-      ),
-      ListTile(
-        title: Text('Fixtures'.tr()),
-        onTap: () {
-          _onItemTapped(2);
-          Navigator.pop(context);
-        },
-      ),
-      ListTile(
-        title: Text('Results'.tr()),
-        onTap: () {
-          _onItemTapped(3);
-          Navigator.pop(context);
-        },
-      ),
-      ListTile(
-        title:  Text('gallery.title'.tr()),
-        onTap: () {
-          _onItemTapped(4);
-          Navigator.pop(context);
-        },
-      ),
-      ListTile(
-        title: Text('join_us.title'.tr()),
-        onTap: () {
-          _onItemTapped(5);
-          Navigator.pop(context);
-        },
-      ),
-      ListTile(
-        title: Text('about_us.title'.tr()),
-        onTap: () {
-          _onItemTapped(6);
-          Navigator.pop(context);
-        },
-      ),
-    ],
-  ),
-),
       body: pages[_selectedIndex],
     );
   }
