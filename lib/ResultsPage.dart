@@ -1,6 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'data/fixtures.dart';
+import 'package:intl/intl.dart';
+
+List<Map<String, Object>> getHappenedMatches(List<Map<String, Object>> fixtures) {
+  final now = DateTime.now();
+  final dateFormat = DateFormat('HH:mm, dd/MM/yyyy');
+
+  final happened = fixtures.where((match) {
+    final dateStr = match['date'] as String;
+    final matchDate = dateFormat.parse(dateStr);
+    return matchDate.isBefore(now);
+  }).toList();
+
+  happened.sort((a, b) {
+    final dateA = dateFormat.parse(a['date'] as String);
+    final dateB = dateFormat.parse(b['date'] as String);
+    return dateA.compareTo(dateB); // ascending
+  });
+
+  return happened;
+}
 
 class ResultsPage extends StatelessWidget {
   const ResultsPage({super.key});
@@ -10,21 +31,7 @@ class ResultsPage extends StatelessWidget {
     final theme = Theme.of(context);
     final textColor = theme.textTheme.bodyMedium?.color;
 
-    final List<Map<String, dynamic>> results = [
-      {
-        'date': '09/07/2025',
-        'opponent': 'ANH KHÔI FC',
-        'score': '6 - 5',
-        'location': 'Sân Kinh Đô',
-        'livestream': 'https://www.facebook.com/share/v/1CPgDwRomb/?mibextid=wwXIfr',
-        'scorers': [
-          {'name': 'Hoàng Hà', 'goals': 3},
-          {'name': 'Văn Thỏa', 'goals': 1},
-          {'name': 'Đức Chinh', 'goals': 1},
-          {'name': 'Quang Lãm', 'goals': 1},
-        ]
-      },
-    ];
+    final results = getHappenedMatches(fixtures);
 
     return Scaffold(
       appBar: AppBar(
@@ -37,10 +44,7 @@ class ResultsPage extends StatelessWidget {
           children: [
             Text(
               'results.kinhdo_league'.tr(),
-              style: const TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
+              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 16),
             Expanded(
@@ -48,10 +52,10 @@ class ResultsPage extends StatelessWidget {
                 itemCount: results.length,
                 itemBuilder: (context, index) {
                   final match = results[index];
+                  final scorers = match['scorers'] as List<dynamic>?;
+
                   return Card(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
-                    ),
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
                     margin: const EdgeInsets.only(bottom: 20),
                     elevation: 4,
                     color: theme.cardColor,
@@ -60,22 +64,30 @@ class ResultsPage extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text('${'results.date'.tr()}: ${match['date']}', style: TextStyle(fontSize: 16, color: textColor)),
+                          Text('${match['date']}', style: TextStyle(fontSize: 16, color: textColor)),
                           Text('${'results.opponent'.tr()}: ${match['opponent']}', style: TextStyle(fontSize: 16, color: textColor)),
-                          Text('${'results.score'.tr()}: ${match['score']}', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: theme.colorScheme.secondary)),
-                          Text('${'results.location'.tr()}: ${match['location']}', style: TextStyle(fontSize: 16, color: textColor)),
+                          Text('${'results.score'.tr()}: ${match['score'] ?? 'N/A'}',
+                              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: theme.colorScheme.secondary)),
+                          Text('${'results.location'.tr(args: [match['location'] as String])}', style: TextStyle(fontSize: 16, color: textColor)),
                           const SizedBox(height: 8),
-                          Text('results.scorers'.tr(), style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: theme.colorScheme.primary)),
-                          const SizedBox(height: 4),
-                          ...match['scorers'].map<Widget>((scorer) => Text(
-                                '- ${scorer['name']} (${scorer['goals']} ${'results.goal'.tr()})',
+                          if (scorers != null) ...[
+                            Text('results.scorers'.tr(), style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: theme.colorScheme.primary)),
+                            const SizedBox(height: 4),
+                            ...scorers.map<Widget>((scorer) {
+                              final name = scorer['name'] as String;
+                              final goals = scorer['goals'].toString();
+                              return Text(
+                                '- $name ($goals ${'results.goal'.tr()})',
                                 style: TextStyle(color: textColor),
-                              )),
+                              );
+                            }).toList(),
+                          ],
                           if (match['livestream'] != null) ...[
                             const SizedBox(height: 10),
                             TextButton.icon(
                               onPressed: () async {
-                                final url = Uri.parse(match['livestream']);
+                                final livestream = match['livestream'] as String;
+                                final url = Uri.parse(livestream);
                                 if (await canLaunchUrl(url)) {
                                   await launchUrl(url, mode: LaunchMode.externalApplication);
                                 }

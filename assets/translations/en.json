@@ -22,15 +22,14 @@
   "home.last_result": "Last Match Result",
   "home.scorers": "Scorers",
   "home.recent_scorers": "Recent Goal Scorers",
-  "home.stadium": "KINH ĐÔ Stadium",
+  "home.stadium": "{} Stadium",
   "fixtures": {
     "title": "Fixtures",
-    "match_vs": "Đ.S 2 FC vs {}",
       "regular_schedule": "Weekly Schedule",
   "regular_description": "Đ.S 2 FC plays every Monday and Friday at 6 PM.",
   "upcoming_matches": "The upcoming matches of the KINHDO PREMIER LEAGUE 2025",
   "match_vs": "Đ.S 2 FC vs {}",
-  "time_location": "Location: KINH DO Stadium"
+  "time_location": "Location: {} Stadium"
   },
     "results": {
   "title": "Results",
@@ -38,7 +37,7 @@
   "date": "Date",
   "opponent": "Opponent",
   "score": "Score",
-  "location": "Location",
+  "location": "Location: {} Stadium",
   "scorers": "Scorers",
   "goal": "goal(s)",
   "watch_livestream": "Watch Livestream"

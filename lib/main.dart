@@ -50,7 +50,7 @@ class _DS2FCAppState extends State<DS2FCApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Đ.S 2 FC',
+      title: teamName,
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         brightness: Brightness.light,
@@ -121,7 +121,7 @@ class _HomePageState extends State<HomePage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Đ.S 2 FC'),
+        title: Text(teamName),
         actions: [
           IconButton(
             icon: const Icon(Icons.brightness_6),
@@ -333,57 +333,63 @@ DateTime parseFixtureDate(String? dateStr) {
   }
 }
 
-Map<String, dynamic> getNextMatch(List<Map<String, String>> fixtures) {
+Map<String, dynamic> getNextMatch(List<Map<String, Object>> fixtures) {
   final now = getNowInGMT7();
 
-  // Skip internal match if it's over (past 2 hours)
+  // Internal match timing
   final internal = getNextInternalMatchDateTime();
 
-  int internalDuration = int.parse(internal_match_minutes!);
-  int hours = internalDuration ~/ 60;    // Integer division
-  int minutes = internalDuration % 60;   // Remainder
-  final internalEnd = internal.add(Duration(hours: hours, minutes: minutes)); // Match is 2 hours long
+  int internalDuration = int.parse(internal_match_minutes);
+  int hours = internalDuration ~/ 60;
+  int minutes = internalDuration % 60;
+  final internalEnd = internal.add(Duration(hours: hours, minutes: minutes));
   final internalAvailable = now.isBefore(internalEnd);
 
   DateTime? externalTime;
   String? externalOpponent;
   String? duration;
+  String? location;
 
   for (var fixture in fixtures) {
     try {
-      final dt = parseFixtureDate(fixture['date']);
-      int fixtureDuration = int.parse(fixture['duration']!);  
-      int hours = fixtureDuration ~/ 60;    // Integer division
-      int minutes = fixtureDuration % 60;   // Remainder
-      
-      final matchEnd = dt.add(Duration(hours: hours, minutes: minutes)); // Match is 2 hours long
+      final dt = parseFixtureDate(fixture['date'] as String);
+      final fixtureDuration = int.parse(fixture['duration'] as String);
+
+      final matchEnd = dt.add(Duration(
+        hours: fixtureDuration ~/ 60,
+        minutes: fixtureDuration % 60,
+      ));
 
       if (now.isBefore(matchEnd)) {
         if (externalTime == null || dt.isBefore(externalTime)) {
           externalTime = dt;
-          externalOpponent = fixture['opponent'];
-          duration = fixture['duration'];
+          externalOpponent = fixture['opponent'] as String;
+          duration = fixture['duration'] as String;
+          location = fixture['location'] as String;
         }
       }
-    } catch (_) {}
+    } catch (_) {
+      // ignore parse errors
+    }
   }
 
-  // ✅ External only overrides internal if earlier and still not ended
-  if (externalTime != null && (!internalAvailable || externalTime.isBefore(internal))) {
+  if (externalTime != null &&
+      (!internalAvailable || externalTime.isBefore(internal))) {
     return {
       'datetime': externalTime,
       'opponent': externalOpponent ?? '',
       'isExternal': true,
-      'duration':duration,
+      'duration': duration,
+      'location':location,
     };
   }
 
-  // ✅ Otherwise fallback to internal match
   return {
     'datetime': internal,
-    'opponent': 'Đ.S 2 FC',
+    'opponent': teamName,
     'isExternal': false,
-    'duration':internal_match_minutes,
+    'duration': internal_match_minutes,
+    'location':intermalStadium,
   };
 }
 
@@ -393,9 +399,7 @@ Map<String, dynamic> getNextMatch(List<Map<String, String>> fixtures) {
     final time = nextMatch['datetime'];
     final double bannerHeight = MediaQuery.of(context).size.width * 0.4;
     final lastMatch = getLastMatch(fixtures);
-    if (lastMatch != null) {
-      print('Last match vs ${lastMatch['opponent']} with result ${lastMatch['result']}');
-    }
+    final formatted = formatScorers(lastMatch!['scorers'] as List<dynamic>);
     return SingleChildScrollView(
       padding: const EdgeInsets.all(20),
       child: Column(
@@ -411,9 +415,9 @@ Map<String, dynamic> getNextMatch(List<Map<String, String>> fixtures) {
             matchDateTime: nextMatch['datetime'],
             livestreamUrl: 'https://www.facebook.com/Phuisg.tv',
             backgroundImage: 'assets/images/stadium.png',
-            team1: 'Đ.S 2 FC',
+            team1: teamName,
             team2: nextMatch['opponent'],
-            stadium: 'home.stadium'.tr(),
+            stadium: 'home.stadium'.tr(args: [nextMatch['location'] as String]),
             duration: int.parse(nextMatch['duration']),
             isExternalMatch: nextMatch['isExternal'],
           ),
@@ -518,18 +522,19 @@ Map<String, dynamic> getNextMatch(List<Map<String, String>> fixtures) {
           const SizedBox(height: 10),
           Text('home.month_location'.tr()),
           const SizedBox(height: 8),
-          ...fixtures.map((match) => Text(tr('home.match_vs', args: [match['opponent']!]))),
+          ...fixtures.map((match) => Text(
+            tr('home.match_vs', args: [match['opponent'] as String])
+          )),
           const SizedBox(height: 30),
           Text('home.last_result'.tr(), style: const TextStyle(fontSize: 22, fontWeight: FontWeight.w600)),
           const SizedBox(height: 10),
-          Text('${teamName} ${lastMatch!['result'] ?? ''} ${lastMatch!['opponent'] ?? ''}'),
-          Text('${'home.scorers'.tr()}: ${lastMatch!['scorers'] ?? ''}'),
+          Text('${teamName} ${lastMatch!['score'] ?? ''} ${lastMatch!['opponent'] ?? ''}'),
+          Text('${'home.scorers'.tr()}: ${formatted ?? ''}'),
           const SizedBox(height: 16),
           ElevatedButton.icon(
             onPressed: () async {
-              const url = 'https://www.facebook.com/share/v/1CPgDwRomb/?mibextid=wwXIfr';
-              if (await canLaunchUrl(Uri.parse(url))) {
-                await launchUrl(Uri.parse(url), mode: LaunchMode.externalApplication);
+              if (await canLaunchUrl(Uri.parse('${lastMatch!['livestream'] ?? ''}'))) {
+                await launchUrl(Uri.parse('${lastMatch!['livestream'] ?? ''}'), mode: LaunchMode.externalApplication);
               } else {
                 ScaffoldMessenger.of(context).showSnackBar(
                   const SnackBar(content: Text('Could not open livestream link')),

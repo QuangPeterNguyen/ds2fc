@@ -12,6 +12,8 @@ class FixturesPage extends StatelessWidget {
     final Color primaryColor = const Color(0xFF50BFE6); // Sky blue
     final Color accentColor = const Color(0xFF003366); // Navy
 
+    final upcomingMatches = getUpcomingMatches(fixtures);
+
     return Scaffold(
       appBar: AppBar(
         title: Text('fixtures.title'.tr()),
@@ -51,9 +53,9 @@ class FixturesPage extends StatelessWidget {
             ListView.builder(
               physics: const NeverScrollableScrollPhysics(),
               shrinkWrap: true,
-              itemCount: fixtures.length,
+              itemCount: upcomingMatches.length,
               itemBuilder: (context, index) {
-                final match = fixtures[index];
+                final match = upcomingMatches[index];
                 final dateTime = match['date']!;
                 return Card(
                   color: Theme.of(context).cardColor,
@@ -79,11 +81,11 @@ class FixturesPage extends StatelessWidget {
                         ),
                         const SizedBox(height: 4),
                         Text(
-                          'fixtures.match_vs'.tr(args: [match['opponent']!]),
+                          'fixtures.match_vs'.tr(args: [match['opponent'] as String]),
                           style: const TextStyle(fontSize: 16),
                         ),
                         const SizedBox(height: 4),
-                        Text('fixtures.time_location'.tr()),
+                        Text('fixtures.time_location'.tr(args: [match['location'] as String])),
                       ],
                     ),
                   ),
