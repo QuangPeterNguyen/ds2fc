@@ -23,6 +23,7 @@ do
 
   echo "📁 Step 3: Copying new build files to ${club}-club-ghpages/"
   cp -r ${FLUTTER_PROJECT_DIR}/build/web/* ./
+  cp -r ${FLUTTER_PROJECT_DIR}/CNAME ./
 
   echo "✅ Step 4: Committing changes"
   git add .
