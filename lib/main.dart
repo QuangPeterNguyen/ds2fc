@@ -392,7 +392,10 @@ Map<String, dynamic> getNextMatch(List<Map<String, String>> fixtures) {
     final nextMatch = getNextMatch(fixtures);
     final time = nextMatch['datetime'];
     final double bannerHeight = MediaQuery.of(context).size.width * 0.4;
-
+    final lastMatch = getLastMatch(fixtures);
+    if (lastMatch != null) {
+      print('Last match vs ${lastMatch['opponent']} with result ${lastMatch['result']}');
+    }
     return SingleChildScrollView(
       padding: const EdgeInsets.all(20),
       child: Column(
@@ -519,8 +522,8 @@ Map<String, dynamic> getNextMatch(List<Map<String, String>> fixtures) {
           const SizedBox(height: 30),
           Text('home.last_result'.tr(), style: const TextStyle(fontSize: 22, fontWeight: FontWeight.w600)),
           const SizedBox(height: 10),
-          Text('home.last_score'.tr()),
-          Text('home.scorers'.tr()),
+          Text('${teamName} ${lastMatch!['result'] ?? ''} ${lastMatch!['opponent'] ?? ''}'),
+          Text('${'home.scorers'.tr()}: ${lastMatch!['scorers'] ?? ''}'),
           const SizedBox(height: 16),
           ElevatedButton.icon(
             onPressed: () async {
