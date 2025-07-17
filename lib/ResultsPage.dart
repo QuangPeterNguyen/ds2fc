@@ -4,25 +4,6 @@ import 'package:url_launcher/url_launcher.dart';
 import 'data/fixtures.dart';
 import 'package:intl/intl.dart';
 
-List<Map<String, Object>> getHappenedMatches(List<Map<String, Object>> fixtures) {
-  final now = DateTime.now();
-  final dateFormat = DateFormat('HH:mm, dd/MM/yyyy');
-
-  final happened = fixtures.where((match) {
-    final dateStr = match['date'] as String;
-    final matchDate = dateFormat.parse(dateStr);
-    return matchDate.isBefore(now);
-  }).toList();
-
-  happened.sort((a, b) {
-    final dateA = dateFormat.parse(a['date'] as String);
-    final dateB = dateFormat.parse(b['date'] as String);
-    return dateA.compareTo(dateB); // ascending
-  });
-
-  return happened;
-}
-
 class ResultsPage extends StatelessWidget {
   const ResultsPage({super.key});
 
@@ -32,6 +13,9 @@ class ResultsPage extends StatelessWidget {
     final textColor = theme.textTheme.bodyMedium?.color;
 
     final results = getHappenedMatches(fixtures);
+    for (final match in results) {
+      print(match['date']);
+    }
 
     return Scaffold(
       appBar: AppBar(

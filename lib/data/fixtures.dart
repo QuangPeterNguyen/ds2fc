@@ -98,27 +98,29 @@ List<Map<String, Object>> getUpcomingMatches(List<Map<String, Object>> fixtures)
   upcoming.sort((a, b) {
     final dateA = dateFormat.parse(a['date'] as String);
     final dateB = dateFormat.parse(b['date'] as String);
+    print("getUpcomingMatches dateA = $dateA");
+    print("getUpcomingMatches dateB = $dateB");
     return dateA.compareTo(dateB); // ascending
   });
 
   return upcoming;
 }
 
+
 List<Map<String, Object>> getHappenedMatches(List<Map<String, Object>> fixtures) {
   final now = DateTime.now();
   final dateFormat = DateFormat('HH:mm, dd/MM/yyyy');
-
   final happened = fixtures
       .where((match) {
-        final matchDate = dateFormat.parse(match['date'] as String);
-        return matchDate.isBefore(now);
+        final parsedDate = dateFormat.parse(match['date'] as String); // Local time
+        return parsedDate.isBefore(now);
       })
       .toList();
 
   happened.sort((a, b) {
     final dateA = dateFormat.parse(a['date'] as String);
     final dateB = dateFormat.parse(b['date'] as String);
-    return dateA.compareTo(dateB); // ascending order
+    return dateB.compareTo(dateA); // Sort descending
   });
 
   return happened;
