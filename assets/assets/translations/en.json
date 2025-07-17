@@ -20,18 +20,16 @@
   "home.month_location": "July-August 2025 - Kinh Đô Stadium",
   "home.match_vs": "Đ.S 2 FC vs {}",
   "home.last_result": "Last Match Result",
-  "home.last_score": "Đ.S 2 FC 6 - 5 ANH KHÔI FC",
-  "home.scorers": "Scorers: HOÀNG HÀ (3), VĂN THỎA (1), ĐỨC CHINH (1), QUANG LÃM (1)",
+  "home.scorers": "Scorers",
   "home.recent_scorers": "Recent Goal Scorers",
-  "home.stadium": "KINH ĐÔ Stadium",
+  "home.stadium": "{} Stadium",
   "fixtures": {
     "title": "Fixtures",
-    "match_vs": "Đ.S 2 FC vs {}",
       "regular_schedule": "Weekly Schedule",
   "regular_description": "Đ.S 2 FC plays every Monday and Friday at 6 PM.",
   "upcoming_matches": "The upcoming matches of the KINHDO PREMIER LEAGUE 2025",
   "match_vs": "Đ.S 2 FC vs {}",
-  "time_location": "Location: KINH DO Stadium"
+  "time_location": "Location: {} Stadium"
   },
     "results": {
   "title": "Results",
@@ -39,7 +37,7 @@
   "date": "Date",
   "opponent": "Opponent",
   "score": "Score",
-  "location": "Location",
+  "location": "Location: {} Stadium",
   "scorers": "Scorers",
   "goal": "goal(s)",
   "watch_livestream": "Watch Livestream"

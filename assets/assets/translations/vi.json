@@ -20,18 +20,16 @@
   "home.month_location": "Tháng 7-8/2025 - Sân Kinh Đô",
   "home.match_vs": "Đ.S 2 FC vs {}",
   "home.last_result": "Kết quả gần nhất",
-  "home.last_score": "Đ.S 2 FC 6 - 5 ANH KHÔI FC",
-  "home.scorers": "Người ghi bàn: HOÀNG HÀ (3), VĂN THỎA (1), ĐỨC CHINH (1), QUANG LÃM (1)",
+  "home.scorers": "Người ghi bàn",
   "home.recent_scorers": "Cầu thủ ghi bàn gần đây",
-  "home.stadium": "Sân KINH ĐÔ",
+  "home.stadium": "Sân {}",
   "fixtures": {
     "title": "Lịch Thi Đấu",
-    "match_vs": "Đ.S 2 FC gặp {}",
       "regular_schedule": "Lịch đá hàng tuần",
   "regular_description": "Đội Đ.S 2 FC thi đấu vào mỗi Thứ 2 và Thứ 6 lúc 18:00 hàng tuần.",
   "upcoming_matches": "Các trận giải KINHDO PREMIER LEAGUE 2025 sắp tới",
   "match_vs": "Đ.S 2 FC gặp {}",
-  "time_location": "Địa Điểm: Sân KINH ĐÔ"
+  "time_location": "Địa Điểm: Sân {}"
   },
   "results": {
   "title": "Kết quả",
@@ -39,7 +37,7 @@
   "date": "Ngày",
   "opponent": "Đối thủ",
   "score": "Tỉ số",
-  "location": "Địa điểm",
+  "location": "Địa Điểm: Sân {}",
   "scorers": "Cầu thủ ghi bàn",
   "goal": "bàn",
   "watch_livestream": "Xem livestream"
