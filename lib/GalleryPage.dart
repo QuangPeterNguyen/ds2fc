@@ -11,17 +11,16 @@ class GalleryPage extends StatelessWidget {
     'assets/images/banner3.jpg',
     'assets/images/banner4.jpg',
     'assets/images/banner5.jpg',
-        'assets/images/banner6.jpg',
+    'assets/images/banner6.jpg',
     'assets/images/banner7.jpg',
     'assets/images/banner8.jpg',
     'assets/images/banner9.jpg',
     'assets/images/banner10.jpg',
-        'assets/images/banner11.jpg',
+    'assets/images/banner11.jpg',
     'assets/images/banner12.jpg',
     'assets/images/banner13.jpg',
     'assets/images/banner14.jpg',
     'assets/images/banner15.jpg',
-    // Add more as needed
   ];
 
 
