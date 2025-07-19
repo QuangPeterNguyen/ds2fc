@@ -49,7 +49,7 @@ class _AboutUsPageState extends State<AboutUsPage> {
             style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 10),
-          Text('about_us.history'.tr()),
+          Text('about_us.history'.tr(args:[teamName])),
           const SizedBox(height: 20),
           Text(
             'about_us.culture_title'.tr(),
