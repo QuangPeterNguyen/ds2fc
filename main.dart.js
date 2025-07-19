@@ -44506,7 +44506,7 @@ A.XL.prototype={
 bo(){this.dl()
 this.c.an(t.IB).r.a===$&&A.b()},
 S(a){var s=null,r=t.s
-return A.m3(A.l3(s,s,s,A.aS(A.bu("about_us.title",A.a(["\u0110.S 2 FC"],r)),s,s,s,s,s,s)),s,A.aFN(A.a([A.a8N(A.fq(12),A.ly("assets/images/about_us_banner.png",s,B.dO,s,s)),B.cZ,A.aS(A.bu("about_us.intro",A.a(["\u0110.S 2 FC"],r)),s,s,s,B.Gz,s,s),B.cZ,A.aS(A.bu("about_us.mission_title",s),s,s,s,B.jx,s,s),B.bC,A.aS(A.bu("about_us.mission",s),s,s,s,s,s,s),B.cZ,A.aS(A.bu("about_us.history_title",s),s,s,s,B.jx,s,s),B.bC,A.aS(A.bu("about_us.history",s),s,s,s,s,s,s),B.cZ,A.aS(A.bu("about_us.culture_title",s),s,s,s,B.jx,s,s),B.bC,A.aS(A.bu("about_us.culture",s),s,s,s,s,s,s)],t.p),B.dY),s)}}
+return A.m3(A.l3(s,s,s,A.aS(A.bu("about_us.title",A.a(["\u0110.S 2 FC"],r)),s,s,s,s,s,s)),s,A.aFN(A.a([A.a8N(A.fq(12),A.ly("assets/images/about_us_banner.png",s,B.dO,s,s)),B.cZ,A.aS(A.bu("about_us.intro",A.a(["\u0110.S 2 FC"],r)),s,s,s,B.Gz,s,s),B.cZ,A.aS(A.bu("about_us.mission_title",s),s,s,s,B.jx,s,s),B.bC,A.aS(A.bu("about_us.mission",s),s,s,s,s,s,s),B.cZ,A.aS(A.bu("about_us.history_title",s),s,s,s,B.jx,s,s),B.bC,A.aS(A.bu("about_us.history",A.a(["\u0110.S 2 FC"],r)),s,s,s,s,s,s),B.cZ,A.aS(A.bu("about_us.culture_title",s),s,s,s,B.jx,s,s),B.bC,A.aS(A.bu("about_us.culture",s),s,s,s,s,s,s)],t.p),B.dY),s)}}
 A.yj.prototype={
 az(){var s=A.Y(["date","","opponent","","duration","","score","","location","","livestream","","scorers",[]],t.N,t.z),r=$.aF()
 return new A.Fi(new A.bC(null,t.am),s,new A.eY(B.bs,r),new A.eY(B.bs,r),new A.eY(B.bs,r),new A.eY(B.bs,r),new A.eY(B.bs,r),new A.eY(B.bs,r))}}
