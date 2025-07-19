@@ -9,14 +9,25 @@ import 'ResultsPage.dart';
 import 'JoinUsPage.dart';
 import 'GalleryPage.dart';
 import 'AboutUsPage.dart';
+import 'AdminFixturesPage.dart';
+
+import 'firebase_options.dart';
 import 'components/PlayerCard.dart';
 import 'widgets/MatchCountdownWidget.dart';
 
 import 'data/fixtures.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
+
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
+  fixtures = await getFixturesForClub('ds2fc');
 
   runApp(EasyLocalization(
     supportedLocales: [Locale('en'), Locale('vi')],
@@ -140,6 +151,7 @@ class _HomePageState extends State<HomePage> {
       const GalleryPage(),
       const JoinUsPage(),
       const AboutUsPage(),
+      const AdminFixturesPage(clubId: 'ds2fc'),
     ];
 
     return Scaffold(
@@ -222,6 +234,13 @@ class _HomePageState extends State<HomePage> {
               title: Text('about_us.title'.tr()),
               onTap: () {
                 _onItemTapped(6);
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              title: Text('about_us.title'.tr()),
+              onTap: () {
+                _onItemTapped(7);
                 Navigator.pop(context);
               },
             ),
@@ -354,7 +373,7 @@ DateTime parseFixtureDate(String? dateStr) {
   }
 }
 
-Map<String, dynamic> getNextMatch(List<Map<String, Object>> fixtures) {
+Map<String, dynamic> getNextMatch(List<Map<String, dynamic>> fixtures) {
   final now = getNowInGMT7();
 
   // Internal match timing
