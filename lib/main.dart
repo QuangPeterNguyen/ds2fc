@@ -10,6 +10,7 @@ import 'JoinUsPage.dart';
 import 'GalleryPage.dart';
 import 'AboutUsPage.dart';
 import 'AdminFixturesPage.dart';
+import 'LoginPage.dart';
 
 import 'firebase_options.dart';
 import 'components/PlayerCard.dart';
@@ -18,6 +19,26 @@ import 'widgets/MatchCountdownWidget.dart';
 import 'data/fixtures.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+
+import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
+class AuthGate extends StatelessWidget {
+  final Widget child;
+  const AuthGate({super.key, required this.child});
+
+  @override
+  Widget build(BuildContext context) {
+    final user = FirebaseAuth.instance.currentUser;
+    if (user == null) {
+      // Not signed in → redirect to login
+      Future.microtask(() => Navigator.pushReplacementNamed(context, '/login'));
+      return const Scaffold(body: Center(child: CircularProgressIndicator()));
+    } else {
+      return child;
+    }
+  }
+}
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -86,7 +107,8 @@ class _DS2FCAppState extends State<DS2FCApp> {
     return MaterialApp(
 
       routes: {
-        '/admin': (context) => const AdminFixturesPage(clubId: 'ds2fc'),
+        '/admin': (context) => const AuthGate(child: AdminFixturesPage(clubId: 'ds2fc')),
+        '/login': (context) => const LoginPage(),
       },
       
       title: teamName,
