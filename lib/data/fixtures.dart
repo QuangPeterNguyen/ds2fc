@@ -27,7 +27,6 @@ Map<String, dynamic>? getLastMatch(List<Map<String, dynamic>> fixtures) {
 
   final pastMatchesWithResults = fixtures
       .where((match) =>
-          match.containsKey('score') &&
           dateFormat.parse(match['date'] as String).isBefore(now))
       .toList();
 
