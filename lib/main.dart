@@ -84,6 +84,11 @@ class _DS2FCAppState extends State<DS2FCApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+
+      routes: {
+        '/admin': (context) => const AdminFixturesPage(clubId: 'ds2fc'),
+      },
+      
       title: teamName,
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
@@ -234,13 +239,6 @@ class _HomePageState extends State<HomePage> {
               title: Text('about_us.title'.tr()),
               onTap: () {
                 _onItemTapped(6);
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              title: Text('about_us.title'.tr()),
-              onTap: () {
-                _onItemTapped(7);
                 Navigator.pop(context);
               },
             ),
