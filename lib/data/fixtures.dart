@@ -12,8 +12,8 @@ final List<Map<String, Object>> fixtures = [
     'location': 'KINH ĐÔ',
     'livestream': 'https://www.facebook.com/watch/?v=1128690712641187',
     'scorers': [
-      {'name': 'Hoàng Hà', 'goals': 3},
-      {'name': 'Văn Thỏa', 'goals': 1},
+      {'name': 'Hà Hoàng', 'goals': 3},
+      {'name': 'Thỏa Lê', 'goals': 1},
       {'name': 'Đức Chinh', 'goals': 1},
       {'name': 'Quang Lãm', 'goals': 1},
     ]
@@ -26,19 +26,19 @@ final List<Map<String, Object>> fixtures = [
     'location': 'KINH ĐÔ',
     'livestream': 'https://www.facebook.com/watch/?v=2009868119546685',
     'scorers': [
-      {'name': 'Hoàng Hà', 'goals': 2},
+      {'name': 'Hà Hoàng', 'goals': 2},
       {'name': 'Đức Chinh', 'goals': 1},
       {'name': 'Đô Nguyễn', 'goals': 1},
     ]
   },
   {
-    'date': '17:45, 23/07/2025',
+    'date': '17:45, 30/07/2025',
     'opponent': 'OBD FC',
     'duration': '90',
     'location': 'KINH ĐÔ',
   },
   {
-    'date': '17:45, 30/07/2025',
+    'date': '17:45, 23/07/2025',
     'opponent': 'ANH EM FC',
     'duration': '90',
     'location': 'KINH ĐÔ',
