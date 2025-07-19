@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'components/PlayerCard.dart';
+import 'config.dart';
 
 class PlayersPage extends StatelessWidget {
   const PlayersPage({super.key});
@@ -55,14 +56,11 @@ class PlayersPage extends StatelessWidget {
 
           ];
 
-    final Color primaryColor = const Color(0xFF50BFE6); // Sky blue
-    final Color accentColor = const Color(0xFF003366); // Navy blue
-
     return Scaffold(
       appBar: AppBar(
         title: Text('Players'.tr()),
         backgroundColor: Theme.of(context).brightness == Brightness.dark
-            ? accentColor
+            ? secondaryColor
             : primaryColor,
       ),
       body: Padding(

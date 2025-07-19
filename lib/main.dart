@@ -183,6 +183,10 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(teamName),
+        backgroundColor: Theme.of(context).brightness == Brightness.dark
+            ? secondaryColor
+            : primaryColor,
+
         actions: [
           IconButton(
             icon: const Icon(Icons.brightness_6),

@@ -29,10 +29,7 @@ class FixturesPage extends StatelessWidget {
               'fixtures.regular_schedule'.tr(),
               style: TextStyle(
                 fontSize: 20,
-                fontWeight: FontWeight.bold,
-                color: Theme.of(context).brightness == Brightness.dark
-                    ? primaryColor
-                    : secondaryColor,
+                fontWeight: FontWeight.bold
               ),
             ),
             const SizedBox(height: 8),
@@ -42,10 +39,7 @@ class FixturesPage extends StatelessWidget {
               'fixtures.upcoming_matches'.tr(),
               style: TextStyle(
                 fontSize: 20,
-                fontWeight: FontWeight.bold,
-                color: Theme.of(context).brightness == Brightness.dark
-                    ? primaryColor
-                    : secondaryColor,
+                fontWeight: FontWeight.bold
               ),
             ),
             const SizedBox(height: 8),
