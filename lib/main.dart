@@ -412,6 +412,7 @@ Map<String, dynamic> getNextMatch(List<Map<String, dynamic>> fixtures) {
   String? externalOpponent;
   String? duration;
   String? location;
+  String? livestream;
 
   for (var fixture in fixtures) {
     try {
