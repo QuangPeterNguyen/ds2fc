@@ -429,6 +429,7 @@ Map<String, dynamic> getNextMatch(List<Map<String, dynamic>> fixtures) {
           externalOpponent = fixture['opponent'] as String;
           duration = fixture['duration'] as String;
           location = fixture['location'] as String;
+          livestream = fixture['livestream'] as String;
         }
       }
     } catch (_) {
@@ -444,6 +445,7 @@ Map<String, dynamic> getNextMatch(List<Map<String, dynamic>> fixtures) {
       'isExternal': true,
       'duration': duration,
       'location':location,
+      'livestream':livestream,
     };
   }
 
@@ -453,6 +455,7 @@ Map<String, dynamic> getNextMatch(List<Map<String, dynamic>> fixtures) {
     'isExternal': false,
     'duration': internal_match_minutes,
     'location':intermalStadium,
+    'livestream':""
   };
 }
 
@@ -476,7 +479,7 @@ Map<String, dynamic> getNextMatch(List<Map<String, dynamic>> fixtures) {
           // ✅ Countdown
           MatchCountdownWidget(
             matchDateTime: nextMatch['datetime'],
-            livestreamUrl: 'https://www.facebook.com/Phuisg.tv',
+            livestreamUrl: nextMatch['livestream'],
             backgroundImage: 'assets/images/stadium.png',
             team1: teamName,
             team2: nextMatch['opponent'],
