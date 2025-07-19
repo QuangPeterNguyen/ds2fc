@@ -3,6 +3,8 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import 'config.dart';
+
 import 'PlayersPage.dart';
 import 'FixturesPage.dart';
 import 'ResultsPage.dart';
@@ -17,6 +19,7 @@ import 'components/PlayerCard.dart';
 import 'widgets/MatchCountdownWidget.dart';
 
 import 'data/fixtures.dart';
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -48,7 +51,7 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
-  fixtures = await getFixturesForClub('ds2fc');
+  fixtures = await getFixturesForClub(teamID);
 
   runApp(EasyLocalization(
     supportedLocales: [Locale('en'), Locale('vi')],
@@ -99,15 +102,12 @@ class _DS2FCAppState extends State<DS2FCApp> {
     _saveThemeToPrefs();
   }
 
-  final Color primaryColor = const Color(0xFF50BFE6); // Sky Blue
-  final Color secondaryColor = const Color(0xFF003366); // Navy Blue
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
 
       routes: {
-        '/admin': (context) => const AuthGate(child: AdminFixturesPage(clubId: 'ds2fc')),
+        '/admin': (context) => AuthGate(child: AdminFixturesPage(clubId: teamID)),
         '/login': (context) => const LoginPage(),
       },
       
@@ -178,7 +178,6 @@ class _HomePageState extends State<HomePage> {
       const GalleryPage(),
       const JoinUsPage(),
       const AboutUsPage(),
-      const AdminFixturesPage(clubId: 'ds2fc'),
     ];
 
     return Scaffold(
@@ -258,7 +257,7 @@ class _HomePageState extends State<HomePage> {
               },
             ),
             ListTile(
-              title: Text('about_us.title'.tr()),
+              title: Text('about_us.title'.tr(args:[teamName])),  
               onTap: () {
                 _onItemTapped(6);
                 Navigator.pop(context);
@@ -465,9 +464,9 @@ Map<String, dynamic> getNextMatch(List<Map<String, dynamic>> fixtures) {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('home.title'.tr(), style: const TextStyle(fontSize: 28, fontWeight: FontWeight.bold)),
+          Text('home.title'.tr(args:[teamName]), style: const TextStyle(fontSize: 28, fontWeight: FontWeight.bold)),
           const SizedBox(height: 10),
-          Text('home.subtitle'.tr(), style: const TextStyle(fontSize: 18)),
+          Text('home.subtitle'.tr(args:[teamName]), style: const TextStyle(fontSize: 18)),
           const SizedBox(height: 20),
 
           // ✅ Countdown
@@ -572,18 +571,18 @@ Map<String, dynamic> getNextMatch(List<Map<String, dynamic>> fixtures) {
           const SizedBox(height: 30),
           Text('home.schedule_title'.tr(), style: const TextStyle(fontSize: 22, fontWeight: FontWeight.w600)),
           const SizedBox(height: 10),
-          Text('home.schedule_description'.tr()),
+          Text('home.schedule_description'.tr(args: [teamName])),
           const SizedBox(height: 30),
           Text('home.event_title'.tr(), style: const TextStyle(fontSize: 22, fontWeight: FontWeight.w600)),
           const SizedBox(height: 10),
-          Text('home.event_description'.tr()),
+          Text('home.event_description'.tr(args: [teamName])),
           const SizedBox(height: 30),
           Text('home.upcoming_matches'.tr(), style: const TextStyle(fontSize: 22, fontWeight: FontWeight.w600)),
           const SizedBox(height: 10),
           Text('home.month_location'.tr()),
           const SizedBox(height: 8),
           ...fixtures.map((match) => Text(
-            tr('home.match_vs', args: [match['opponent'] as String])
+            tr('home.match_vs', args: [teamName, match['opponent'] as String])
           )),
           const SizedBox(height: 30),
           Text('home.last_result'.tr(), style: const TextStyle(fontSize: 22, fontWeight: FontWeight.w600)),

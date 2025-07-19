@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../config.dart';
 
 class PlayerCard extends StatelessWidget {
   final String name;
@@ -50,8 +51,6 @@ class PlayerCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Color primaryColor = const Color(0xFF50BFE6);
-    final Color accentColor = const Color(0xFF003366);
 
     return GestureDetector(
       onTap: () => _showFullscreenImage(context),
@@ -64,7 +63,7 @@ class PlayerCard extends StatelessWidget {
             side: BorderSide(
               color: Theme.of(context).brightness == Brightness.dark
                   ? primaryColor.withOpacity(0.3)
-                  : accentColor.withOpacity(0.2),
+                  : secondaryColor.withOpacity(0.2),
             ),
           ),
           elevation: 2,

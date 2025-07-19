@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
 
 import 'data/fixtures.dart';
+import 'config.dart';
 
 class FixturesPage extends StatelessWidget {
   const FixturesPage({super.key});
@@ -9,8 +10,6 @@ class FixturesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    final Color primaryColor = const Color(0xFF50BFE6); // Sky blue
-    final Color accentColor = const Color(0xFF003366); // Navy
 
     final upcomingMatches = getUpcomingMatches(fixtures);
 
@@ -18,7 +17,7 @@ class FixturesPage extends StatelessWidget {
       appBar: AppBar(
         title: Text('fixtures.title'.tr()),
         backgroundColor: Theme.of(context).brightness == Brightness.dark
-            ? accentColor
+            ? secondaryColor
             : primaryColor,
       ),
       body: SingleChildScrollView(
@@ -33,11 +32,11 @@ class FixturesPage extends StatelessWidget {
                 fontWeight: FontWeight.bold,
                 color: Theme.of(context).brightness == Brightness.dark
                     ? primaryColor
-                    : accentColor,
+                    : secondaryColor,
               ),
             ),
             const SizedBox(height: 8),
-            Text('fixtures.regular_description'.tr()),
+            Text('fixtures.regular_description'.tr(args: [teamName])),
             const SizedBox(height: 24),
             Text(
               'fixtures.upcoming_matches'.tr(),
@@ -46,7 +45,7 @@ class FixturesPage extends StatelessWidget {
                 fontWeight: FontWeight.bold,
                 color: Theme.of(context).brightness == Brightness.dark
                     ? primaryColor
-                    : accentColor,
+                    : secondaryColor,
               ),
             ),
             const SizedBox(height: 8),
@@ -81,7 +80,7 @@ class FixturesPage extends StatelessWidget {
                         ),
                         const SizedBox(height: 4),
                         Text(
-                          'fixtures.match_vs'.tr(args: [match['opponent'] as String]),
+                          'fixtures.match_vs'.tr(args: [teamName, match['opponent'] as String]),
                           style: const TextStyle(fontSize: 16),
                         ),
                         const SizedBox(height: 4),

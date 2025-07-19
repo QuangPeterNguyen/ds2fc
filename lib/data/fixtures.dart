@@ -1,9 +1,6 @@
 import 'package:intl/intl.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-final String teamName = "Đ.S 2 FC";
-final String intermalStadium = "KINH ĐÔ";
-
 List<Map<String, dynamic>> fixtures = [];
 
 final String internal_match_minutes = '90';

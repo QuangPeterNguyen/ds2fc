@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'config.dart';
 
 class AboutUsPage extends StatefulWidget {
   const AboutUsPage({super.key});
@@ -19,7 +20,7 @@ class _AboutUsPageState extends State<AboutUsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('about_us.title'.tr())),
+      appBar: AppBar(title: Text('about_us.title'.tr(args: [teamName]))),
       body: ListView(
         padding: const EdgeInsets.all(20),
         children: [
@@ -32,7 +33,7 @@ class _AboutUsPageState extends State<AboutUsPage> {
           ),
           const SizedBox(height: 20),
           Text(
-            'about_us.intro'.tr(),
+            'about_us.intro'.tr(args: [teamName]),
             style: const TextStyle(fontSize: 18),
           ),
           const SizedBox(height: 20),
