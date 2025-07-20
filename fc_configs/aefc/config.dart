@@ -1,11 +1,13 @@
+import 'text_styles.dart';
+import 'theme.dart';
 import 'package:flutter/material.dart';
 
 //generals
-final String teamID = "ds2fc";
+final String teamID = "aefc";
 final String teamName = "AE FC";
 final String intermalStadium = "KINH ĐÔ";
-final Color primaryColor = Colors.red; // Sky Blue
-final Color secondaryColor = Colors.yellow; // Navy Blue
+final Color primaryColor = const AppColors.primary; // Sky Blue
+final Color secondaryColor = const AppColors.secondary; // Navy Blue
 final String teamLogo = 'assets/images/logo.png';
 
 //main.dart
@@ -17,6 +19,15 @@ final List<String> bannerImages = [
 'assets/images/banner4.jpg',
 'assets/images/banner5.jpg',
 'assets/images/banner6.jpg',
+'assets/images/banner7.jpg',
+'assets/images/banner8.jpg',
+'assets/images/banner9.jpg',
+'assets/images/banner10.jpg',
+'assets/images/banner11.jpg',
+'assets/images/banner12.jpg',
+'assets/images/banner13.jpg',
+'assets/images/banner14.jpg',
+'assets/images/banner15.jpg',
 ];
 
 final List<Map<String, String>> recentScorers = [
@@ -40,14 +51,6 @@ final players = [
 {'name': 'Thanh Tra', 'image': 'assets/images/players/thanhtra.jpg'},
 {'name': 'Tran Nguyen Thailand', 'image': 'assets/images/players/trannguyenthailand.jpg'},
 {'name': 'Thỏa Lê', 'image': 'assets/images/players/thoale.jpg'},
-
-{'name': 'Tung Lam', 'image': 'assets/images/players/tunglam.png'},
-{'name': 'Binh Nguyen Danh', 'image': 'assets/images/players/binhnguyendanh.png'},
-{'name': 'Quang Lãm', 'image': 'assets/images/players/quanglam.png'},
-{'name': 'Vietho Cons', 'image': 'assets/images/players/viethocons.png'},
-{'name': 'Buôn Sỉ Nội Y Backda', 'image': 'assets/images/players/buonsinoiybackda.png'},
-{'name': 'Hiếu', 'image': 'assets/images/players/hieu.png'},
-{'name': 'Hưng', 'image': 'assets/images/players/hung.png'},            
 ];
 
 //GaleryPage.dart
@@ -58,4 +61,7 @@ final List<String> imagePaths = [
 'assets/images/banner4.jpg',
 'assets/images/banner5.jpg',
 'assets/images/banner6.jpg',
+'assets/images/banner7.jpg',
+'assets/images/banner8.jpg',
+'assets/images/banner9.jpg',
 ];

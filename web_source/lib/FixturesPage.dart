@@ -1,3 +1,5 @@
+import 'text_styles.dart';
+import 'theme.dart';
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
 
@@ -75,7 +77,7 @@ class FixturesPage extends StatelessWidget {
                         const SizedBox(height: 4),
                         Text(
                           'fixtures.match_vs'.tr(args: [teamName, match['opponent'] as String]),
-                          style: const TextStyle(fontSize: 16),
+                          style: AppTextStyles.body,
                         ),
                         const SizedBox(height: 4),
                         Text('fixtures.time_location'.tr(args: [match['location'] as String])),

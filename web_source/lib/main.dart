@@ -1,3 +1,5 @@
+import 'text_styles.dart';
+import 'theme.dart';
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -588,7 +590,7 @@ Map<String, dynamic> getNextMatch(List<Map<String, dynamic>> fixtures) {
               backgroundColor: Theme.of(context).primaryColor,
               foregroundColor: Colors.white,
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-              textStyle: const TextStyle(fontSize: 16),
+              textStyle: AppTextStyles.body,
             ),
           ),
         ],

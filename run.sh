@@ -13,6 +13,8 @@ do
   echo "📦 Step 1: Copying Files from $club folder to web_source folder..."
   #copy config.dart
   cp ${FLUTTER_PROJECT_DIR}/fc_configs/$club/config.dart ${FLUTTER_PROJECT_DIR}/web_source/lib/
+  #copy theme.dart
+  cp ${FLUTTER_PROJECT_DIR}/fc_configs/$club/theme.dart ${FLUTTER_PROJECT_DIR}/web_source/lib/
   #copy imagges
   cp -r ${FLUTTER_PROJECT_DIR}/fc_configs/$club/images/* ${FLUTTER_PROJECT_DIR}/web_source/assets/images/
   #copy translations

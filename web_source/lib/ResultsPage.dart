@@ -1,3 +1,5 @@
+import 'text_styles.dart';
+import 'theme.dart';
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -48,14 +50,14 @@ class ResultsPage extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text('${match['date']}', style: TextStyle(fontSize: 16, color: textColor)),
-                          Text('${'results.opponent'.tr()}: ${match['opponent']}', style: TextStyle(fontSize: 16, color: textColor)),
+                          Text('${match['date']}', style: AppTextStyles.body),
+                          Text('${'results.opponent'.tr()}: ${match['opponent']}', style: AppTextStyles.body),
                           Text('${'results.score'.tr()}: ${match['score'] ?? 'N/A'}',
                               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: theme.colorScheme.secondary)),
-                          Text('${'results.location'.tr(args: [match['location'] as String])}', style: TextStyle(fontSize: 16, color: textColor)),
+                          Text('${'results.location'.tr(args: [match['location'] as String])}', style: AppTextStyles.body),
                           const SizedBox(height: 8),
                           if (scorers != null) ...[
-                            Text('results.scorers'.tr(), style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: theme.colorScheme.primary)),
+                            Text('results.scorers'.tr(), style: AppTextStyles.body),
                             const SizedBox(height: 4),
                             ...scorers.map<Widget>((scorer) {
                               final name = scorer['name'] as String;

@@ -9,16 +9,18 @@ FLUTTER_PROJECT_DIR=$(pwd)
 # Loop through each club
 for club in "${clubs[@]}"
 do
-  echo "🔧 STARTING DEPLOYMENT for club: $club"
+  echo "🔧 STARTING Building for club: $club"
   echo "📦 Step 1: Copying Files from $club folder to web_source folder..."
   #copy config.dart
-  cp "${FLUTTER_PROJECT_DIR}/fc_configs/$club/config.dart" "${FLUTTER_PROJECT_DIR}/web_source/lib/"
+  cp ${FLUTTER_PROJECT_DIR}/fc_configs/$club/config.dart ${FLUTTER_PROJECT_DIR}/web_source/lib/
+  #copy theme.dart
+  cp ${FLUTTER_PROJECT_DIR}/fc_configs/$club/theme.dart ${FLUTTER_PROJECT_DIR}/web_source/lib/
   #copy imagges
-  cp -r "${FLUTTER_PROJECT_DIR}/fc_configs/$club/images/*" "${FLUTTER_PROJECT_DIR}/web_source/assets/images/"
+  cp -r ${FLUTTER_PROJECT_DIR}/fc_configs/$club/images/* ${FLUTTER_PROJECT_DIR}/web_source/assets/images/
   #copy translations
-  cp -r "${FLUTTER_PROJECT_DIR}/fc_configs/$club/translations/*" "${FLUTTER_PROJECT_DIR}/web_source/assets/translations/"
+  cp -r ${FLUTTER_PROJECT_DIR}/fc_configs/$club/translations/* ${FLUTTER_PROJECT_DIR}/web_source/assets/translations/
   #copy web
-  cp -r "${FLUTTER_PROJECT_DIR}/fc_configs/$club/web/*" "${FLUTTER_PROJECT_DIR}/web_source/web/"
+  cp -r ${FLUTTER_PROJECT_DIR}/fc_configs/$club/web/* ${FLUTTER_PROJECT_DIR}/web_source/web/
 
 
   echo "📦 Step 1: Building Flutter Web for $club..."

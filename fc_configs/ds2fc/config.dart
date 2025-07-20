@@ -1,11 +1,13 @@
+import 'text_styles.dart';
+import 'theme.dart';
 import 'package:flutter/material.dart';
 
 //generals
 final String teamID = "ds2fc";
 final String teamName = "Đ.S 2 FC";
 final String intermalStadium = "KINH ĐÔ";
-final Color primaryColor = const Color(0xFF50BFE6); // Sky Blue
-final Color secondaryColor = const Color(0xFF003366); // Navy Blue
+final Color primaryColor = const AppColors.primary; // Sky Blue
+final Color secondaryColor = const AppColors.secondary; // Navy Blue
 final String teamLogo = 'assets/images/logo.png';
 
 //main.dart
