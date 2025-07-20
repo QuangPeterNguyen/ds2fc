@@ -30,7 +30,7 @@ class PlayerCard extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Image.asset(
-                        'assets/images/logo/avatar_placeholder.png',
+                        teamLogo,
                         fit: BoxFit.contain,
                       ),
                       const SizedBox(height: 10),
