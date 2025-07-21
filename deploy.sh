@@ -24,11 +24,11 @@ do
 
 
   echo "📦 Step 1: Building Flutter Web for $club..."
-
+  cd web_source
   flutter build web
 
   echo "🧹 Step 2: Cleaning previous gh-pages files (except .git)..."
-  cd ../${club}-club-ghpages/
+  cd ../../${club}-club-ghpages/
 
   # Safely clean previous files (leave .git intact)
   git ls-files -z | xargs -0 rm -f
