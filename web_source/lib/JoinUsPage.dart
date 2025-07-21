@@ -70,7 +70,7 @@ class _JoinUsPageState extends State<JoinUsPage> {
             children: [
               Text(
                 'join_us.subtitle'.tr(),
-                style: const TextStyle(fontSize: 20),
+                style: AppTextStyles.sectionTitle(context),
               ),
               const SizedBox(height: 20),
               TextFormField(
@@ -102,11 +102,11 @@ class _JoinUsPageState extends State<JoinUsPage> {
                     _sendEmail();
                   }
                 },
-                icon: const Icon(Icons.send),
-                label: Text('join_us.send'.tr()),
+                icon: const Icon(Icons.send, color: AppColors.buttonTextIconColor),
+                label: Text('join_us.send'.tr(), style: AppTextStyles.body(context).copyWith(color: AppColors.buttonTextIconColor)),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Theme.of(context).primaryColor,
-                  foregroundColor: Colors.white,
+                  foregroundColor: AppColors.buttonTextIconColor,
                   padding: const EdgeInsets.symmetric(vertical: 14),
                 ),
               ),

@@ -519,8 +519,8 @@ Map<String, dynamic> getNextMatch(List<Map<String, dynamic>> fixtures) {
                 );
               }
             },
-            icon: const Icon(Icons.live_tv),
-            label: Text('results.watch_livestream'.tr(), style: AppTextStyles.body(context).copyWith(color: Colors.white)),
+            icon: const Icon(Icons.live_tv, color: AppColors.buttonTextIconColor),
+            label: Text('results.watch_livestream'.tr(), style: AppTextStyles.body(context).copyWith(color: AppColors.buttonTextIconColor)),
             style: ElevatedButton.styleFrom(
               backgroundColor: Theme.of(context).primaryColor,
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),

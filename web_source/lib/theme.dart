@@ -5,6 +5,7 @@ class AppColors {
   static const secondary = Color(0xFF003366);
   static const background = Colors.white;
   static const text = Colors.black87;
+  static const buttonTextIconColor = Colors.white;
   static const darkBackground = Color(0xFF121212);
   static const darkText = Colors.white;
 }
@@ -25,7 +26,7 @@ final ThemeData lightTheme = ThemeData(
 
 final ThemeData darkTheme = ThemeData(
   brightness: Brightness.dark,
-  primaryColor: AppColors.primary,
+  primaryColor: AppColors.secondary,
   scaffoldBackgroundColor: AppColors.darkBackground,
   appBarTheme: const AppBarTheme(
     backgroundColor: AppColors.secondary,
