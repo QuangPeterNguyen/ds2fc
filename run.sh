@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # List of club IDs to deploy: ds2fc, aefc
-declare -a clubs=("aefc") 
+declare -a clubs=("ds2fc") 
 
 # Path to your Flutter source project
 FLUTTER_PROJECT_DIR=$(pwd)
