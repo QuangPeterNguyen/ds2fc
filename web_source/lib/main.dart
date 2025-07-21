@@ -1,3 +1,4 @@
+// main.dart (Updated with AppTextStyles and AppColors)
 import 'text_styles.dart';
 import 'theme.dart';
 import 'package:flutter/material.dart';
@@ -36,7 +37,6 @@ class AuthGate extends StatelessWidget {
   Widget build(BuildContext context) {
     final user = FirebaseAuth.instance.currentUser;
     if (user == null) {
-      // Not signed in → redirect to login
       Future.microtask(() => Navigator.pushReplacementNamed(context, '/login'));
       return const Scaffold(body: Center(child: CircularProgressIndicator()));
     } else {
@@ -48,11 +48,7 @@ class AuthGate extends StatelessWidget {
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
-
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
-
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   fixtures = await getFixturesForClub(teamID);
 
   runApp(EasyLocalization(
@@ -84,11 +80,7 @@ class _DS2FCAppState extends State<DS2FCApp> {
     final prefs = await SharedPreferences.getInstance();
     final themeStr = prefs.getString('themeMode');
     setState(() {
-      if (themeStr == 'light') {
-        _themeMode = ThemeMode.light;
-      } else {
-        _themeMode = ThemeMode.dark;
-      } 
+      _themeMode = themeStr == 'light' ? ThemeMode.light : ThemeMode.dark;
     });
   }
 
@@ -107,40 +99,14 @@ class _DS2FCAppState extends State<DS2FCApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-
       routes: {
         '/admin': (context) => AuthGate(child: AdminFixturesPage(clubId: teamID)),
         '/login': (context) => const LoginPage(),
       },
-      
       title: teamName,
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        brightness: Brightness.light,
-        primaryColor: primaryColor,
-        scaffoldBackgroundColor: Colors.white,
-        appBarTheme: AppBarTheme(
-          backgroundColor: primaryColor,
-          foregroundColor: Colors.white,
-        ),
-        drawerTheme: const DrawerThemeData(
-          backgroundColor: Colors.white,
-        ),
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      darkTheme: ThemeData(
-        brightness: Brightness.dark,
-        primaryColor: primaryColor,
-        scaffoldBackgroundColor: const Color(0xFF121212),
-        appBarTheme: AppBarTheme(
-          backgroundColor: secondaryColor,
-          foregroundColor: Colors.white,
-        ),
-        drawerTheme: const DrawerThemeData(
-          backgroundColor: Color(0xFF1E1E1E),
-        ),
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
+      theme: lightTheme,
+      darkTheme: darkTheme,
       themeMode: _themeMode,
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,
@@ -169,7 +135,6 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
     final isVietnamese = context.locale.languageCode == 'vi';
 
     final List<Widget> pages = [
@@ -184,11 +149,7 @@ class _HomePageState extends State<HomePage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(teamName),
-        backgroundColor: Theme.of(context).brightness == Brightness.dark
-            ? secondaryColor
-            : primaryColor,
-
+        title: Text(teamName, style: AppTextStyles.headline(context)),
         actions: [
           IconButton(
             icon: const Icon(Icons.brightness_6),
@@ -220,63 +181,37 @@ class _HomePageState extends State<HomePage> {
                 height: double.infinity,
               ),
             ),
-            ListTile(
-              title: Text('Home'.tr()),
-              onTap: () {
-                _onItemTapped(0);
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              title: Text('Players'.tr()),
-              onTap: () {
-                _onItemTapped(1);
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              title: Text('Fixtures'.tr()),
-              onTap: () {
-                _onItemTapped(2);
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              title: Text('Results'.tr()),
-              onTap: () {
-                _onItemTapped(3);
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              title: Text('gallery.title'.tr()),
-              onTap: () {
-                _onItemTapped(4);
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              title: Text('join_us.title'.tr()),
-              onTap: () {
-                _onItemTapped(5);
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              title: Text('about_us.title'.tr(args:[teamName])),  
-              onTap: () {
-                _onItemTapped(6);
-                Navigator.pop(context);
-              },
-            ),
+            ...[
+              'Home',
+              'Players',
+              'Fixtures',
+              'Results',
+              'gallery.title',
+              'join_us.title',
+              'about_us.title'
+            ].asMap().entries.map((entry) {
+              final i = entry.key;
+              final key = entry.value;
+              return ListTile(
+                title: Text(i == 6 ? key.tr(args: [teamName]) : key.tr(), style: AppTextStyles.body(context)),
+                onTap: () {
+                  _onItemTapped(i);
+                  Navigator.pop(context);
+                },
+              );
+            }).toList(),
           ],
         ),
       ),
-      body: pages[_selectedIndex],
+      body: AnimatedSwitcher(
+        duration: const Duration(milliseconds: 300),
+        child: pages[_selectedIndex],
+      ),
     );
   }
 }
 
+// _HomeContent widget with theme and text style applied
 class _HomeContent extends StatefulWidget {
   @override
   State<_HomeContent> createState() => _HomeContentState();
@@ -335,7 +270,7 @@ class _HomeContentState extends State<_HomeContent> {
     super.dispose();
   }
 
-  // GMT+7 safe time
+ // GMT+7 safe time
 DateTime getNowInGMT7() {
   return DateTime.now().toUtc().add(const Duration(hours: 7));
 }
@@ -439,21 +374,20 @@ Map<String, dynamic> getNextMatch(List<Map<String, dynamic>> fixtures) {
   @override
   Widget build(BuildContext context) {
     final nextMatch = getNextMatch(fixtures);
-    final time = nextMatch['datetime'];
     final double bannerHeight = MediaQuery.of(context).size.width * 0.4;
     final lastMatch = getLastMatch(fixtures);
     final formatted = formatScorers(lastMatch!['scorers'] as List<dynamic>);
+
     return SingleChildScrollView(
       padding: const EdgeInsets.all(20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('home.title'.tr(args:[teamName]), style: const TextStyle(fontSize: 28, fontWeight: FontWeight.bold)),
+          Text('home.title'.tr(args: [teamName]), style: AppTextStyles.headline(context)),
           const SizedBox(height: 10),
-          Text('home.subtitle'.tr(args:[teamName]), style: const TextStyle(fontSize: 18)),
+          Text('home.subtitle'.tr(args: [teamName]), style: AppTextStyles.body(context)),
           const SizedBox(height: 20),
 
-          // ✅ Countdown
           MatchCountdownWidget(
             matchDateTime: nextMatch['datetime'],
             livestreamUrl: nextMatch['livestream'],
@@ -532,7 +466,7 @@ Map<String, dynamic> getNextMatch(List<Map<String, dynamic>> fixtures) {
             ),
           ),
           const SizedBox(height: 30),
-          Text('home.recent_scorers'.tr(), style: const TextStyle(fontSize: 22, fontWeight: FontWeight.w600)),
+          Text('home.recent_scorers'.tr(), style: AppTextStyles.sectionTitle(context)),
           const SizedBox(height: 10),
           GridView.builder(
             shrinkWrap: true,
@@ -553,31 +487,32 @@ Map<String, dynamic> getNextMatch(List<Map<String, dynamic>> fixtures) {
             },
           ),
           const SizedBox(height: 30),
-          Text('home.schedule_title'.tr(), style: const TextStyle(fontSize: 22, fontWeight: FontWeight.w600)),
+          Text('home.schedule_title'.tr(), style: AppTextStyles.sectionTitle(context)),
           const SizedBox(height: 10),
-          Text('home.schedule_description'.tr(args: [teamName])),
+          Text('home.schedule_description'.tr(args: [teamName]), style: AppTextStyles.body(context)),
           const SizedBox(height: 30),
-          Text('home.event_title'.tr(), style: const TextStyle(fontSize: 22, fontWeight: FontWeight.w600)),
+          Text('home.event_title'.tr(), style: AppTextStyles.sectionTitle(context)),
           const SizedBox(height: 10),
-          Text('home.event_description'.tr(args: [teamName])),
+          Text('home.event_description'.tr(args: [teamName]), style: AppTextStyles.body(context)),
           const SizedBox(height: 30),
-          Text('home.upcoming_matches'.tr(), style: const TextStyle(fontSize: 22, fontWeight: FontWeight.w600)),
+          Text('home.upcoming_matches'.tr(), style: AppTextStyles.sectionTitle(context)),
           const SizedBox(height: 10),
-          Text('home.month_location'.tr()),
+          Text('home.month_location'.tr(), style: AppTextStyles.body(context)),
           const SizedBox(height: 8),
           ...fixtures.map((match) => Text(
-            tr('home.match_vs', args: [teamName, match['opponent'] as String])
+            tr('home.match_vs', args: [teamName, match['opponent'] as String]),
+            style: AppTextStyles.body(context),
           )),
           const SizedBox(height: 30),
-          Text('home.last_result'.tr(), style: const TextStyle(fontSize: 22, fontWeight: FontWeight.w600)),
+          Text('home.last_result'.tr(), style: AppTextStyles.sectionTitle(context)),
           const SizedBox(height: 10),
-          Text('${teamName} ${lastMatch!['score'] ?? ''} ${lastMatch!['opponent'] ?? ''}'),
-          Text('${'home.scorers'.tr()}: ${formatted ?? ''}'),
+          Text('${teamName} ${lastMatch['score'] ?? ''} ${lastMatch['opponent'] ?? ''}', style: AppTextStyles.body(context)),
+          Text('${'home.scorers'.tr()}: ${formatted ?? ''}', style: AppTextStyles.body(context)),
           const SizedBox(height: 16),
           ElevatedButton.icon(
             onPressed: () async {
-              if (await canLaunchUrl(Uri.parse('${lastMatch!['livestream'] ?? ''}'))) {
-                await launchUrl(Uri.parse('${lastMatch!['livestream'] ?? ''}'), mode: LaunchMode.externalApplication);
+              if (await canLaunchUrl(Uri.parse('${lastMatch['livestream'] ?? ''}'))) {
+                await launchUrl(Uri.parse('${lastMatch['livestream'] ?? ''}'), mode: LaunchMode.externalApplication);
               } else {
                 ScaffoldMessenger.of(context).showSnackBar(
                   const SnackBar(content: Text('Could not open livestream link')),
@@ -585,12 +520,10 @@ Map<String, dynamic> getNextMatch(List<Map<String, dynamic>> fixtures) {
               }
             },
             icon: const Icon(Icons.live_tv),
-            label: Text('results.watch_livestream'.tr()),
+            label: Text('results.watch_livestream'.tr(), style: AppTextStyles.body(context).copyWith(color: Colors.white)),
             style: ElevatedButton.styleFrom(
               backgroundColor: Theme.of(context).primaryColor,
-              foregroundColor: Colors.white,
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-              textStyle: AppTextStyles.body,
             ),
           ),
         ],

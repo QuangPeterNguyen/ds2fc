@@ -77,7 +77,7 @@ class FixturesPage extends StatelessWidget {
                         const SizedBox(height: 4),
                         Text(
                           'fixtures.match_vs'.tr(args: [teamName, match['opponent'] as String]),
-                          style: AppTextStyles.body,
+                          style: AppTextStyles.body(context),
                         ),
                         const SizedBox(height: 4),
                         Text('fixtures.time_location'.tr(args: [match['location'] as String])),

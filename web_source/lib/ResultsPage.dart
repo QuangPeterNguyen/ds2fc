@@ -50,14 +50,14 @@ class ResultsPage extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text('${match['date']}', style: AppTextStyles.body),
-                          Text('${'results.opponent'.tr()}: ${match['opponent']}', style: AppTextStyles.body),
+                          Text('${match['date']}', style: AppTextStyles.body(context)),
+                          Text('${'results.opponent'.tr()}: ${match['opponent']}', style: AppTextStyles.body(context)),
                           Text('${'results.score'.tr()}: ${match['score'] ?? 'N/A'}',
                               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: theme.colorScheme.secondary)),
-                          Text('${'results.location'.tr(args: [match['location'] as String])}', style: AppTextStyles.body),
+                          Text('${'results.location'.tr(args: [match['location'] as String])}', style: AppTextStyles.body(context)),
                           const SizedBox(height: 8),
                           if (scorers != null) ...[
-                            Text('results.scorers'.tr(), style: AppTextStyles.body),
+                            Text('results.scorers'.tr(), style: AppTextStyles.body(context)),
                             const SizedBox(height: 4),
                             ...scorers.map<Widget>((scorer) {
                               final name = scorer['name'] as String;
