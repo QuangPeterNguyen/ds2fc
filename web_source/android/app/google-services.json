@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "601121143669",
+    "project_id": "clubzone-1d568",
+    "storage_bucket": "clubzone-1d568.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:601121143669:android:cdc6b5489094a70b00713c",
+        "android_client_info": {
+          "package_name": "com.example.ds2fc_website"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDTNWqn9XR_irgURHEE6Mwy8I0pVO_a7H0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
