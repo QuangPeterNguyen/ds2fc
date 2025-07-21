@@ -29,20 +29,14 @@ class FixturesPage extends StatelessWidget {
           children: [
             Text(
               'fixtures.regular_schedule'.tr(),
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold
-              ),
+              style: AppTextStyles.sectionTitle(context),
             ),
             const SizedBox(height: 8),
-            Text('fixtures.regular_description'.tr(args: [teamName])),
+            Text('fixtures.regular_description'.tr(args: [teamName]), style: AppTextStyles.body(context)),
             const SizedBox(height: 24),
             Text(
-              'fixtures.upcoming_matches'.tr(),
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold
-              ),
+              'fixtures.upcoming_matches'.tr(), style:
+              AppTextStyles.sectionTitle(context),
             ),
             const SizedBox(height: 8),
             ListView.builder(
@@ -66,13 +60,7 @@ class FixturesPage extends StatelessWidget {
                       children: [
                         Text(
                           "$dateTime (GMT+7)",
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            color: Theme.of(context).brightness == Brightness.dark
-                                ? Colors.white
-                                : Colors.black,
-                          ),
+                          style: AppTextStyles.cardTitle(context),
                         ),
                         const SizedBox(height: 4),
                         Text(
@@ -80,7 +68,7 @@ class FixturesPage extends StatelessWidget {
                           style: AppTextStyles.body(context),
                         ),
                         const SizedBox(height: 4),
-                        Text('fixtures.time_location'.tr(args: [match['location'] as String])),
+                        Text('fixtures.time_location'.tr(args: [match['location'] as String]), style: AppTextStyles.body(context)),
                       ],
                     ),
                   ),

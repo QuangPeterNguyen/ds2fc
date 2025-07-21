@@ -16,6 +16,12 @@ class AppTextStyles {
     color: Theme.of(context).textTheme.bodyLarge?.color,
   );
 
+  static TextStyle cardTitle(BuildContext context) => TextStyle(
+    fontSize: 18,
+    fontWeight: FontWeight.bold,
+    color: Theme.of(context).textTheme.bodyLarge?.color,
+  );
+
   static TextStyle body(BuildContext context) => TextStyle(
     fontSize: 16,
     height: 1.5,
