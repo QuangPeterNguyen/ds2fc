@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../config.dart';
+import '../text_styles.dart';
 
 class PlayerCard extends StatelessWidget {
   final String name;
@@ -36,7 +37,7 @@ class PlayerCard extends StatelessWidget {
                       const SizedBox(height: 10),
                       Text(
                         name,
-                        style: const TextStyle(color: Colors.white, fontSize: 16),
+                        style: AppTextStyles.body(context),
                       ),
                     ],
                   );
@@ -92,11 +93,7 @@ class PlayerCard extends StatelessWidget {
                             child: Text(
                               name,
                               textAlign: TextAlign.center,
-                              style: const TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w600,
-                                color: Colors.white,
-                              ),
+                              style: AppTextStyles.caption(context),
                             ),
                           ),
                         ),
