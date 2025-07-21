@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# List of club IDs to deploy
-declare -a clubs=("ds2fc")
+# List of club IDs to deploy: ds2fc, aefc
+declare -a clubs=("ds2fc") 
 
 # Path to your Flutter source project
 FLUTTER_PROJECT_DIR=$(pwd)
@@ -27,3 +27,5 @@ do
   cd web_source
   flutter run -d web-server
 done
+
+read -n 1 -s -r -p "👉 Press any key to exit..."

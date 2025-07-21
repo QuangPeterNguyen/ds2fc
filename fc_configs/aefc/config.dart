@@ -6,8 +6,8 @@ import 'package:flutter/material.dart';
 final String teamID = "aefc";
 final String teamName = "AE FC";
 final String intermalStadium = "KINH ĐÔ";
-final Color primaryColor = const AppColors.primary; // Sky Blue
-final Color secondaryColor = const AppColors.secondary; // Navy Blue
+final Color primaryColor = AppColors.primary; // Sky Blue
+final Color secondaryColor = AppColors.secondary; // Navy Blue
 final String teamLogo = 'assets/images/logo.png';
 
 //main.dart
