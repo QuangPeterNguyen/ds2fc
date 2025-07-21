@@ -341,7 +341,13 @@ Map<String, dynamic> getNextMatch(List<Map<String, dynamic>> fixtures) {
           externalOpponent = fixture['opponent'] as String;
           duration = fixture['duration'] as String;
           location = fixture['location'] as String;
-          livestream = fixture['livestream'] as String;
+          if(fixture['livestream'] == null)
+          {
+            livestream = '';
+          }else
+          {
+            livestream = fixture['livestream'] as String;
+          }
         }
       }
     } catch (_) {
