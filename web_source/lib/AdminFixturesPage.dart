@@ -14,6 +14,7 @@ class AdminFixturesPage extends StatefulWidget {
 class _AdminFixturesPageState extends State<AdminFixturesPage> {
   final _formKey = GlobalKey<FormState>();
   String? idToEdit;
+
   Map<String, dynamic> formData = {
     'date': '',
     'opponent': '',
@@ -31,8 +32,8 @@ class _AdminFixturesPageState extends State<AdminFixturesPage> {
   final TextEditingController locationController = TextEditingController();
   final TextEditingController livestreamController = TextEditingController();
 
-  String tempScorerName = '';
-  int tempScorerGoals = 0;
+  final TextEditingController scorerNameController = TextEditingController();
+  final TextEditingController scorerGoalsController = TextEditingController();
 
   void clearForm() {
     setState(() {
@@ -52,18 +53,24 @@ class _AdminFixturesPageState extends State<AdminFixturesPage> {
       scoreController.clear();
       locationController.clear();
       livestreamController.clear();
-      tempScorerName = '';
-      tempScorerGoals = 0;
+      scorerNameController.clear();
+      scorerGoalsController.clear();
     });
   }
 
   Future<void> saveFixture() async {
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
-      final ref = FirebaseFirestore.instance.collection('clubs').doc(widget.clubId).collection('fixtures');
+
+      formData['scorers'] = formData['scorers'] ?? [];
+
+      final ref = FirebaseFirestore.instance
+          .collection('clubs')
+          .doc(widget.clubId)
+          .collection('fixtures');
 
       if (idToEdit != null) {
-        await ref.doc(idToEdit).update(formData);
+        await ref.doc(idToEdit!).update(formData);
       } else {
         await ref.add(formData);
       }
@@ -72,34 +79,78 @@ class _AdminFixturesPageState extends State<AdminFixturesPage> {
     }
   }
 
+
+  Future<void> addScorers() async {
+        final name = scorerNameController.text.trim();
+        final goalsText = scorerGoalsController.text.trim();
+        final goals = int.tryParse(goalsText) ?? 0;
+
+        print(">>> name: '$name'");
+        print(">>> goalsText: '$goalsText'");
+        print(">>> parsed goals: $goals");
+
+        if (name.isEmpty || goals <= 0) {
+          print(">>> Cannot add scorer, invalid input.");
+          return;
+        }
+
+        setState(() {
+          formData['scorers'].add({
+            'name': name,
+            'goals': goals,
+          });
+          scorerNameController.clear();
+          scorerGoalsController.clear();
+          print("---formData = $formData");
+        });
+  }
+
   Future<void> deleteFixture(String id) async {
-    final ref = FirebaseFirestore.instance.collection('clubs').doc(widget.clubId).collection('fixtures');
+    final ref = FirebaseFirestore.instance
+        .collection('clubs')
+        .doc(widget.clubId)
+        .collection('fixtures');
     await ref.doc(id).delete();
   }
 
-void populateForm(DocumentSnapshot doc) {
-  final data = doc.data() as Map<String, dynamic>;
-  setState(() {
-    idToEdit = doc.id;
-    formData = Map<String, dynamic>.from(data);
+  void populateForm(DocumentSnapshot doc) {
+    final data = doc.data() as Map<String, dynamic>;
+    setState(() {
+      idToEdit = doc.id;
+      formData = Map<String, dynamic>.from(data);
+      formData['scorers'] = (formData['scorers'] as List?)
+              ?.map((e) => Map<String, dynamic>.from(e))
+              .toList() ??
+          [];
 
-    // Ensure scorers is a non-null list
-    formData['scorers'] = formData['scorers'] != null && formData['scorers'] is List
-        ? List<Map<String, dynamic>>.from(formData['scorers'])
-        : [];
+      dateController.text = formData['date'] ?? '';
+      opponentController.text = formData['opponent'] ?? '';
+      durationController.text = formData['duration'] ?? '';
+      scoreController.text = formData['score'] ?? '';
+      locationController.text = formData['location'] ?? '';
+      livestreamController.text = formData['livestream'] ?? '';
+    });
+  }
 
-    dateController.text = formData['date'] ?? '';
-    opponentController.text = formData['opponent'] ?? '';
-    durationController.text = formData['duration'] ?? '';
-    scoreController.text = formData['score'] ?? '';
-    locationController.text = formData['location'] ?? '';
-    livestreamController.text = formData['livestream'] ?? '';
-  });
-}
+  @override
+  void dispose() {
+    dateController.dispose();
+    opponentController.dispose();
+    durationController.dispose();
+    scoreController.dispose();
+    locationController.dispose();
+    livestreamController.dispose();
+    scorerNameController.dispose();
+    scorerGoalsController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
-    final ref = FirebaseFirestore.instance.collection('clubs').doc(widget.clubId).collection('fixtures');
+    final ref = FirebaseFirestore.instance
+        .collection('clubs')
+        .doc(widget.clubId)
+        .collection('fixtures');
 
     return Scaffold(
       appBar: AppBar(title: const Text('Manage Fixtures')),
@@ -192,34 +243,29 @@ void populateForm(DocumentSnapshot doc) {
                           ),
                         ),
                       Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Expanded(
                             child: TextFormField(
+                              controller: scorerNameController,
                               decoration: const InputDecoration(labelText: 'Scorer Name'),
-                              onChanged: (val) => tempScorerName = val,
                             ),
                           ),
                           const SizedBox(width: 8),
                           Expanded(
                             child: TextFormField(
+                              controller: scorerGoalsController,
                               decoration: const InputDecoration(labelText: 'Goals'),
                               keyboardType: TextInputType.number,
-                              onChanged: (val) => tempScorerGoals = int.tryParse(val) ?? 0,
                             ),
                           ),
-                          IconButton(
-                            icon: const Icon(Icons.add),
-                            onPressed: () {
-                              if (tempScorerName.trim().isEmpty || tempScorerGoals <= 0) return;
-                              setState(() {
-                                formData['scorers'].add({
-                                  'name': tempScorerName,
-                                  'goals': tempScorerGoals,
-                                });
-                                tempScorerName = '';
-                                tempScorerGoals = 0;
-                              });
-                            },
+                          const SizedBox(width: 8),
+                          SizedBox(
+                            height: 56,
+                            child: IconButton(
+                              icon: const Icon(Icons.add),
+                              onPressed:addScorers,
+                            ),
                           ),
                         ],
                       ),
