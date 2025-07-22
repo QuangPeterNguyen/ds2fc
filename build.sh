@@ -36,7 +36,7 @@ do
 
   echo "📁 Step 4: Copying new build files to ${club}-club-ghpages/"
   cp -r ${FLUTTER_PROJECT_DIR}/web_source/build/web/* ./
-  cp -r ${FLUTTER_PROJECT_DIR}/web_source/CNAME ./
+  cp ${FLUTTER_PROJECT_DIR}/fc_configs/$club/CNAME ./
 
   echo "✅ FINISHED bulding for $club"
   echo "------------------------------"
