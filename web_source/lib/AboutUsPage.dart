@@ -24,7 +24,7 @@ class _AboutUsPageState extends State<AboutUsPage> {
     return Scaffold(
       appBar: AppBar(title: Text('about_us.title'.tr(args: [teamName]))),
       body: ListView(
-        padding: const EdgeInsets.all(20),
+        padding: const EdgeInsets.all(16.0),
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(12),

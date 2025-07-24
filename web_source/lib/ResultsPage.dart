@@ -25,17 +25,21 @@ class ResultsPage extends StatelessWidget {
         title: Text('results.title'.tr()),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(0.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            Padding(
+        padding: const EdgeInsets.only(top: 16.0, left: 16.0, right: 16.0),
+        child:
             Text(
               'results.kinhdo_league'.tr(),
               style: AppTextStyles.sectionTitle(context),
-            ),
+            )),
             const SizedBox(height: 16),
             Expanded(
               child: ListView.builder(
+                padding: const EdgeInsets.only(top: 0, left: 16.0, right: 16.0, bottom: 16.0),
                 itemCount: results.length,
                 itemBuilder: (context, index) {
                   final match = results[index];

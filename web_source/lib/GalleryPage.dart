@@ -15,8 +15,9 @@ class GalleryPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: Text('gallery.title'.tr())),
       body: Padding(
-        padding: const EdgeInsets.all(12),
+        padding: const EdgeInsets.all(0),
         child: GridView.builder(
+          padding: const EdgeInsets.all(16.0),
           itemCount: imagePaths.length,
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 3, // 3 columns (adjust based on screen)

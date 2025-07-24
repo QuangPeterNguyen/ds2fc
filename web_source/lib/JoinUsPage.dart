@@ -63,10 +63,11 @@ class _JoinUsPageState extends State<JoinUsPage> {
     return Scaffold(
       appBar: AppBar(title: Text('join_us.title'.tr())),
       body: Padding(
-        padding: const EdgeInsets.all(20.0),
+        padding: const EdgeInsets.all(0.0),
         child: Form(
           key: _formKey,
           child: ListView(
+            padding: const EdgeInsets.all(16.0),
             children: [
               Text(
                 'join_us.subtitle'.tr(),
