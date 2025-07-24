@@ -13,12 +13,6 @@ class PlayersPage extends StatelessWidget {
   Widget build(BuildContext context) {
     
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Players'.tr()),
-        backgroundColor: Theme.of(context).brightness == Brightness.dark
-            ? secondaryColor
-            : primaryColor,
-      ),
       body: Padding(
         padding: const EdgeInsets.all(0.0),
         child: GridView.builder(

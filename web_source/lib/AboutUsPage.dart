@@ -22,7 +22,6 @@ class _AboutUsPageState extends State<AboutUsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('about_us.title'.tr(args: [teamName]))),
       body: ListView(
         padding: const EdgeInsets.all(16.0),
         children: [

@@ -61,7 +61,6 @@ class _JoinUsPageState extends State<JoinUsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('join_us.title'.tr())),
       body: Padding(
         padding: const EdgeInsets.all(0.0),
         child: Form(

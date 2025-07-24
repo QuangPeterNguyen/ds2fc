@@ -13,7 +13,6 @@ class GalleryPage extends StatelessWidget {
 
     context.locale;
     return Scaffold(
-      appBar: AppBar(title: Text('gallery.title'.tr())),
       body: Padding(
         padding: const EdgeInsets.all(0),
         child: GridView.builder(

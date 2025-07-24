@@ -146,10 +146,18 @@ class _HomePageState extends State<HomePage> {
       const JoinUsPage(),
       const AboutUsPage(),
     ];
-
+    final menuItems = [
+              'Home',
+              'Players',
+              'Fixtures',
+              'Results',
+              'gallery.title',
+              'join_us.title',
+              'about_us.title'
+            ];
     return Scaffold(
       appBar: AppBar(
-        title: Text(teamName),
+        title: Text(_selectedIndex == 6 ? menuItems[_selectedIndex].tr(args: [teamName]) : menuItems[_selectedIndex].tr()),
         actions: [
           IconButton(
             icon: const Icon(Icons.brightness_6),

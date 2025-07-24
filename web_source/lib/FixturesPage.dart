@@ -16,12 +16,6 @@ class FixturesPage extends StatelessWidget {
     final upcomingMatches = getUpcomingMatches(fixtures);
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text('fixtures.title'.tr()),
-        backgroundColor: Theme.of(context).brightness == Brightness.dark
-            ? secondaryColor
-            : primaryColor,
-      ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
         child: Column(
