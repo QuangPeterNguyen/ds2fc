@@ -24,27 +24,27 @@ do
   #copy web
   cp -r ${FLUTTER_PROJECT_DIR}/fc_configs/$club/web/* ${FLUTTER_PROJECT_DIR}/web_source/web/
 
-
-  echo "📦 Step 1: Building Flutter Web for $club..."
+  echo "📦 Step 2: Building Flutter Web for $club..."
   cd web_source
+  flutter clean
   flutter build web
 
-  echo "🧹 Step 2: Cleaning previous gh-pages files (except .git)..."
+  echo "🧹 Step 3: Cleaning previous gh-pages files (except .git)..."
   cd ../../${club}-club-ghpages/
 
   # Safely clean previous files (leave .git intact)
   git ls-files -z | xargs -0 rm -f
   git clean -fdx
 
-  echo "📁 Step 3: Copying new build files to ${club}-club-ghpages/"
+  echo "📁 Step 4: Copying new build files to ${club}-club-ghpages/"
   cp -r ${FLUTTER_PROJECT_DIR}/web_source/build/web/* ./
   cp ${FLUTTER_PROJECT_DIR}/fc_configs/$club/CNAME ./
 
-  #echo "✅ Step 4: Committing changes"
+  echo "✅ Step 5: Committing changes"
   git add .
   git commit -m "Deploy $club on $(date)"
 
-  #echo "📤 Step 5: Pushing to GitHub Pages"
+  echo "📤 Step 6: Pushing to GitHub Pages"
   git push origin release
 
   echo "✅ FINISHED deployment for $club"

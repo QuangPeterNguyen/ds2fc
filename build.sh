@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # List of club IDs to deploy
-declare -a clubs=("ds2fc")
+declare -a clubs=("ds2fc" "aefc")
 
 # Path to your Flutter source project
 FLUTTER_PROJECT_DIR=$(pwd)
@@ -23,10 +23,10 @@ do
   cp -r ${FLUTTER_PROJECT_DIR}/fc_configs/$club/translations/* ${FLUTTER_PROJECT_DIR}/web_source/assets/translations/
   #copy web
   cp -r ${FLUTTER_PROJECT_DIR}/fc_configs/$club/web/* ${FLUTTER_PROJECT_DIR}/web_source/web/
-
-
+  
   echo "📦 Step 2: Building Flutter Web for $club..."
   cd web_source
+  flutter clean
   flutter build web
 
   echo "🧹 Step 3: Cleaning previous gh-pages files (except .git)..."

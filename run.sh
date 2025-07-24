@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # List of club IDs to deploy: ds2fc, aefc
-declare -a clubs=("ds2fc") 
+declare -a clubs=("aefc") 
 
 # Path to your Flutter source project
 FLUTTER_PROJECT_DIR=$(pwd)
@@ -24,9 +24,9 @@ do
   #copy web
   cp -r ${FLUTTER_PROJECT_DIR}/fc_configs/$club/web/* ${FLUTTER_PROJECT_DIR}/web_source/web/
 
-
   echo "📦 Step 2: Building Flutter Web for $club..."
   cd web_source
+  flutter clean
   flutter run -d web-server
 done
 
