@@ -3,9 +3,9 @@ const MANIFEST = 'flutter-app-manifest';
 const TEMP = 'flutter-temp-cache';
 const CACHE_NAME = 'flutter-app-cache';
 
-const RESOURCES = {"assets/AssetManifest.bin": "f54d5a3cd9ed5a3732c036aab029d453",
-"assets/AssetManifest.bin.json": "0764a0d793d6cf6f631ac98f6222802e",
-"assets/AssetManifest.json": "6abfe59d972d00b0606669d84e09f7f3",
+const RESOURCES = {"assets/AssetManifest.bin": "ec9d71df0f550d30891159817688bbe6",
+"assets/AssetManifest.bin.json": "5ef0a927a422b459d19f78957f2a52a5",
+"assets/AssetManifest.json": "8f408e8d1edfb1f052c00d8c8f16f79c",
 "assets/assets/icons/us.png": "ab291a3ffa8e81386f77c94056c06a5b",
 "assets/assets/icons/vn.png": "47e1003cdb97f364c0bafa85503330ec",
 "assets/assets/images/about_us_banner.png": "bc989cf6145e7e669febbbb4cdae29e2",
@@ -55,6 +55,7 @@ const RESOURCES = {"assets/AssetManifest.bin": "f54d5a3cd9ed5a3732c036aab029d453
 "assets/assets/images/players/quangteo.png": "32f03e501999d3421c694dd0d69fd8ee",
 "assets/assets/images/players/sinhgia2020.jpg": "30a8c77b6bff3e7c8bff0eaf124739fa",
 "assets/assets/images/players/thanhtra.jpg": "b94c534d540a86c28a12e825d6085d43",
+"assets/assets/images/players/thanhtra.png": "9aa635aadc7f44edf57631e36842fd06",
 "assets/assets/images/players/thoale.jpg": "10b92daf6ffb7ffeeab7f54965e84c5e",
 "assets/assets/images/players/tiennguyen.png": "deecf50f74669dccabca15b25caed714",
 "assets/assets/images/players/tranhung.png": "eeeeb1c5a34ddb437d2d72eaddfd72fd",
@@ -89,7 +90,7 @@ const RESOURCES = {"assets/AssetManifest.bin": "f54d5a3cd9ed5a3732c036aab029d453
 "canvaskit/skwasm.wasm": "39dd80367a4e71582d234948adc521c0",
 "favicon.png": "4e1c00567e5fd8927d26abb9fc4010e8",
 "flutter.js": "83d881c1dbb6d6bcd6b42e274605b69c",
-"flutter_bootstrap.js": "3520b319bb4bc5dbfc68d07a50100db5",
+"flutter_bootstrap.js": "93178b286b421ee8d9c52fe81deae757",
 "icons/Icon-192.png": "b858eec0d5dfa6aa3181e070f0afdded",
 "icons/Icon-512.png": "90395b7ead299b7700b1ed3760e1d29e",
 "icons/Icon-maskable-192.png": "b858eec0d5dfa6aa3181e070f0afdded",
