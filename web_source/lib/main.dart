@@ -156,7 +156,7 @@ class _HomePageState extends State<HomePage> {
               'gallery.title',
               'join_us.title',
               'about_us.title',
-              'PartyRules.title',
+              'party_rules.title',
             ];
     return Scaffold(
       appBar: AppBar(
@@ -200,7 +200,7 @@ class _HomePageState extends State<HomePage> {
               'gallery.title',
               'join_us.title',
               'about_us.title',
-              'PartyRules.title',
+              'party_rules.title',
             ].asMap().entries.map((entry) {
               final i = entry.key;
               final key = entry.value;

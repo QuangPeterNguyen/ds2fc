@@ -87,5 +87,28 @@
     "location": "Location: {}",
     "matchup": "{} vs {}",
     "watch_livestream": "Watch Livestream"
+  },
+  "party_rules": {
+    "title": "Party Rules",
+    "title_0": "No one gets left behind",
+    "content_0": "Anyone who plays football is encouraged to join the party. It doesn't matter who scores or concedes 😁",
+    "title_1": "Respect the inviter – respect the return invite",
+    "content_1": "If someone brings beer, others bring food. We are fair and loyal!",
+    "title_2": "No leaving until drunk (unless your wife calls 😅)",
+    "content_2": "But if you're drunk, someone must take care of you – no one drinks alone.",
+    "title_3": "Lose and drink away sadness – Win and drink to celebrate",
+    "content_3": "Whatever the result, we stay happy and united. That’s the real victory.",
+    "title_4": "On the table we’re teammates – Off the table we’re brothers",
+    "content_4": "No talking about losses – only fun. Absolutely no arguing or harsh words when tipsy.",
+    "title_5": "Don’t talk about absent members at the party",
+    "content_5": "If someone isn’t here, talk to them next time. No gossip behind their back!",
+    "title_6": "Drink with heart – Wash with honor",
+    "content_6": "Latecomers help clean. Early leavers wash first. No help = no vote for food next time 😎",
+    "title_7": "Singing needs music – Drinking needs joy",
+    "content_7": "Bring speakers, guitars, and your voice! Show your passion – no judging!",
+    "title_8": "Happy ending – Safe journey home",
+    "content_8": "Drink responsibly. Never drive yourself home after drinking. Someone always drives you home.",
+    "title_9": "Pay on time – Party with joy",
+    "content_9": "Every party has a fund. Pay on time, pay fully – lasting drinks, lasting bond."
   }
 }
