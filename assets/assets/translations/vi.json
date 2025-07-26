@@ -99,5 +99,28 @@
     "location": "Địa điểm: {}",
     "matchup": "{} vs {}",
     "watch_livestream": "Xem trực tiếp"
+  },
+   "party_rules": {
+    "title": "NỘI QUY ĂN NHẬU",
+    "title_0": "Không ai bị bỏ lại phía sau",
+    "content_0": "Ai tham gia đá bóng thì được (và khuyến khích) tham gia nhậu. Không phân biệt ghi bàn hay thủ môn thủng lưới 😁",
+    "title_1": "Tôn trọng người mời – tôn trọng người mời lại",
+    "content_1": "Ai mời bia thì người khác mời lại bằng đồ nhắm. Đội mình là đội công bằng và nghĩa tình!",
+    "title_2": "Không say không về (trừ khi có vợ gọi 😅)",
+    "content_2": "Nhưng say phải có người dắt – tuyệt đối không ai được để bạn say một mình.",
+    "title_3": "Thua trận uống cho quên buồn – Thắng trận uống mừng thêm",
+    "content_3": "Dù kết quả ra sao, anh em vẫn vui vẻ quây quần bên nhau. Đó mới là chiến thắng lớn nhất.",
+    "title_4": "Lên bàn là đồng đội – Xuống bàn là anh em",
+    "content_4": "Không nói chuyện thua – chỉ nói chuyện vui. Tuyệt đối không cãi vã, nói lời khó nghe khi đã có men.",
+    "title_5": "Không lôi người vắng mặt ra bàn nhậu",
+    "content_5": "Ai không tham gia hôm đó thì để bữa sau nói sau. Không nói sau lưng – nói trước mặt!",
+    "title_6": "Ăn nhậu có tâm – rửa chén có tầm",
+    "content_6": "Người đến sau phụ dọn bàn. Người về sớm rửa chén trước. Ai không làm thì lần sau không được chọn món 😎",
+    "title_7": "Hát là phải có nhạc – Nhậu là phải có vui",
+    "content_7": "Đội khuyến khích mang theo loa kéo, guitar, và cả giọng ca tiềm ẩn. Thể hiện đam mê, không chê bai!",
+    "title_8": "Kết thúc vui vẻ – Về nhà an toàn",
+    "content_8": "Uống có kiểm soát. Tuyệt đối không tự lái xe về nếu đã có men. Đội luôn có người chở nhau về tận nhà.",
+    "title_9": "Góp tiền đúng giờ – Nhậu mới nở hoa",
+    "content_9": "Mỗi buổi nhậu đều có quỹ. Góp đúng, góp đủ – nhậu mới bền, tình mới sâu."
   }
 }
