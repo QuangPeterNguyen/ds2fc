@@ -89,7 +89,7 @@
     "watch_livestream": "Watch Livestream"
   },
   "party_rules": {
-    "title": "Party Rules",
+    "title": "Party rules",
     "title_0": "No one gets left behind",
     "content_0": "Anyone who plays football is encouraged to join the party. It doesn't matter who scores or concedes 😁",
     "title_1": "Respect the inviter – respect the return invite",
@@ -110,5 +110,16 @@
     "content_8": "Drink responsibly. Never drive yourself home after drinking. Someone always drives you home.",
     "title_9": "Pay on time – Party with joy",
     "content_9": "Every party has a fund. Pay on time, pay fully – lasting drinks, lasting bond."
-  }
+  },
+    "title_penalty_game": "Penalty Shootout Game",
+  "shooter_name": "Shooter Name",
+  "shoot_button": "Shoot ({}/5)",
+  "shot_number": "Shot {}",
+  "goal_text": "🥅 Goal!",
+  "save_text": "🧤 Save!",
+  "total_goals": "Total Goals: {}",
+  "declare_winner": "Declare Winner",
+  "winner_text": "🏆 Winner: {}",
+  "play_again": "Play Again",
+  "enter_name_prompt": "Please enter the player's name first!"
 }

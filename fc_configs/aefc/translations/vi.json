@@ -101,7 +101,7 @@
     "watch_livestream": "Xem trực tiếp"
   },
    "party_rules": {
-    "title": "NỘI QUY ĂN NHẬU",
+    "title": "Nội quy ăn nhậu",
     "title_0": "Không ai bị bỏ lại phía sau",
     "content_0": "Ai tham gia đá bóng thì được (và khuyến khích) tham gia nhậu. Không phân biệt ghi bàn hay thủ môn thủng lưới 😁",
     "title_1": "Tôn trọng người mời – tôn trọng người mời lại",
@@ -122,5 +122,16 @@
     "content_8": "Uống có kiểm soát. Tuyệt đối không tự lái xe về nếu đã có men. Đội luôn có người chở nhau về tận nhà.",
     "title_9": "Góp tiền đúng giờ – Nhậu mới nở hoa",
     "content_9": "Mỗi buổi nhậu đều có quỹ. Góp đúng, góp đủ – nhậu mới bền, tình mới sâu."
-  }
+  },
+    "title_penalty_game": "Trò chơi sút luân lưu",
+  "shooter_name": "Tên người sút",
+  "shoot_button": "Sút ({}/5)",
+  "shot_number": "Lượt sút {}",
+  "goal_text": "🥅 Vào!",
+  "save_text": "🧤 Cản phá!",
+  "total_goals": "Tổng số bàn thắng: {}",
+  "declare_winner": "Công bố người chiến thắng",
+  "winner_text": "🏆 Người chiến thắng: {}",
+  "play_again": "Chơi lại",
+  "enter_name_prompt": "Vui lòng nhập tên người sút trước!"
 }

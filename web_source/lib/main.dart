@@ -17,6 +17,7 @@ import 'AboutUsPage.dart';
 import 'AdminFixturesPage.dart';
 import 'LoginPage.dart';
 import 'PartyRules.dart';
+import 'ShooterGamePage.dart';
 
 import 'firebase_options.dart';
 import 'components/PlayerCard.dart';
@@ -147,6 +148,7 @@ class _HomePageState extends State<HomePage> {
       const JoinUsPage(),
       const AboutUsPage(),
       const PartyRules(),
+      const ShooterGamePage(),
     ];
     final menuItems = [
               'Home',
@@ -157,6 +159,7 @@ class _HomePageState extends State<HomePage> {
               'join_us.title',
               'about_us.title',
               'party_rules.title',
+              'title_penalty_game.title',
             ];
     return Scaffold(
       appBar: AppBar(
@@ -201,6 +204,7 @@ class _HomePageState extends State<HomePage> {
               'join_us.title',
               'about_us.title',
               'party_rules.title',
+              'title_penalty_game.title',
             ].asMap().entries.map((entry) {
               final i = entry.key;
               final key = entry.value;
