@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'dart:math';
 import 'package:easy_localization/easy_localization.dart';
 import 'config.dart';
+import 'text_styles.dart';
+import 'theme.dart';
 
 class ShooterGamePage extends StatefulWidget {
   const ShooterGamePage({super.key});
@@ -19,14 +21,6 @@ class _ShooterGamePageState extends State<ShooterGamePage> {
   bool _winnerDeclared = false;
 
 void _shoot() {
-  if (_shotsTaken >= 5 || _shooterController.text.trim().isEmpty) {
-    if (_shooterController.text.trim().isEmpty) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('enter_name_prompt'.tr())),
-      );
-    }
-    return;
-  }
 
   setState(() {
     bool isGoal = _random.nextBool();
@@ -57,51 +51,55 @@ void _shoot() {
     return Builder(
       builder: (context) => Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Column(
+        child: Center(child:Column(
           children: [
-            TextField(
-              controller: _shooterController,
-              readOnly: _winnerDeclared, 
-              decoration: InputDecoration(
-                labelText: 'shooter_name'.tr(),
-                border: const OutlineInputBorder(),
-              ),
-            ),
-            const SizedBox(height: 16),
-            ElevatedButton(
+            if(!_winnerDeclared) ...[
+            ElevatedButton.icon(
             onPressed: (_shotsTaken < 5) ? _shoot : null,
-            child: Text(tr('shoot_button', args: ['$_shotsTaken'])),
+            icon: const Icon(Icons.sports_soccer, color: AppColors.buttonTextIconColor),
+            label: Text(tr('shoot_button', args: ['$_shotsTaken']), style: AppTextStyles.body(context).copyWith(color: AppColors.buttonTextIconColor)),
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Theme.of(context).primaryColor,
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
             ),
+            ),],
+            if(!_winnerDeclared) ...[
             const SizedBox(height: 16),
             Expanded(
               child: ListView.builder(
                 itemCount: _results.length,
                 itemBuilder: (context, index) {
                   return ListTile(
-                    leading: Text(tr('shot_number', args: ['${index + 1}'])),
-                    title: Text(_results[index].tr()),
+                    leading: Text(tr('shot_number', args: ['${index + 1}']), style: AppTextStyles.body(context)),
+                    title: Text(_results[index].tr(), style: AppTextStyles.sectionTitle(context)),
                   );
                 },
               ),
-            ),
+            ),],
             const SizedBox(height: 16),
             if (_shotsTaken == 5) ...[
               Text(
                 tr('total_goals', args: ['${_results.where((r) => r == 'goal_text').length}']),
-                style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                style: AppTextStyles.sectionTitle(context),
               ),
+              if(!_winnerDeclared) ...[
               const SizedBox(height: 8),
-              ElevatedButton(
+              ElevatedButton.icon(
                 onPressed: _winnerDeclared ? null : _setWinner,
-                child: Text('declare_winner'.tr()),
-              ),
+                icon: const Icon(Icons.emoji_events, color: AppColors.buttonTextIconColor),
+                label: Text('declare_winner'.tr(), style: AppTextStyles.body(context).copyWith(color: AppColors.buttonTextIconColor)),
+                style: ElevatedButton.styleFrom(
+                backgroundColor: Theme.of(context).primaryColor,
+                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                ),
+              ),],
               const SizedBox(height: 8),
               if (_selectedWinner != null)
                 Column(
                   children: [
                     Text(
                       tr('winner_text', args: [_selectedWinner!['name']!]),
-                      style: const TextStyle(fontSize: 20, color: Colors.green),
+                      style: AppTextStyles.sectionTitle(context),
                     ),
                     const SizedBox(height: 8),
                     Image.asset(
@@ -113,12 +111,16 @@ void _shoot() {
                 ),
             ],
             const SizedBox(height: 16),
-            OutlinedButton(
+            ElevatedButton.icon(
               onPressed: _resetGame,
-              child: Text('play_again'.tr()),
-            ),
+                icon: const Icon(Icons.replay, color: AppColors.buttonTextIconColor),
+                label: Text('play_again'.tr(), style: AppTextStyles.body(context).copyWith(color: AppColors.buttonTextIconColor)),
+                style: ElevatedButton.styleFrom(
+                backgroundColor: Theme.of(context).primaryColor,
+                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+            )),
           ],
-        ),
+        )),
       ),
     );
   }
