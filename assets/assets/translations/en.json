@@ -121,5 +121,15 @@
   "declare_winner": "Declare Winner",
   "winner_text": "🏆 Winner: {}",
   "play_again": "Play Again",
-  "enter_name_prompt": "Please enter the player's name first!"
+  "enter_name_prompt": "Please enter the player's name first!",
+  "browse_clubs_title": "Browse Football Clubs",
+  "no_clubs_found": "No other clubs found.",
+  "offer_match_button": "Offer Match",
+  "offer_match_snackbar": "Offer match to {}",
+    "email_label": "Email",
+  "password_label": "Password",
+  "login_button": "Login",
+  "login_failed_message": "Login failed. Check credentials.",
+  "login_drawer_item": "Login",
+  "AdminFixturesPage_title": "Admin"
 }

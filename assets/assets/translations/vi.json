@@ -133,5 +133,15 @@
   "declare_winner": "Công bố người chiến thắng",
   "winner_text": "🏆 Người chiến thắng: {}",
   "play_again": "Chơi lại",
-  "enter_name_prompt": "Vui lòng nhập tên người sút trước!"
+  "enter_name_prompt": "Vui lòng nhập tên người sút trước!",
+  "browse_clubs_title": "Khám phá các câu lạc bộ bóng đá",
+  "no_clubs_found": "Không tìm thấy câu lạc bộ nào khác.",
+  "offer_match_button": "Mời thi đấu",
+  "offer_match_snackbar": "Mời thi đấu với {}",
+    "email_label": "Email",
+  "password_label": "Mật khẩu",
+  "login_button": "Đăng nhập",
+  "login_failed_message": "Đăng nhập thất bại. Vui lòng kiểm tra thông tin.",
+  "login_drawer_item": "Đăng nhập",
+  "AdminFixturesPage_title": "Quản trị"
 }
