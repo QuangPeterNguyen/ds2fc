@@ -143,5 +143,6 @@
   "login_button": "Đăng nhập",
   "login_failed_message": "Đăng nhập thất bại. Vui lòng kiểm tra thông tin.",
   "login_drawer_item": "Đăng nhập",
-  "AdminFixturesPage_title": "Quản trị"
+  "AdminFixturesPage_title": "Quản trị",
+  "AdminFixturesPage_login_title": "Đang đăng nhập quyền Quản Trị"
 }

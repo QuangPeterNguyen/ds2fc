@@ -131,5 +131,6 @@
   "login_button": "Login",
   "login_failed_message": "Login failed. Check credentials.",
   "login_drawer_item": "Login",
-  "AdminFixturesPage_title": "Admin"
+  "AdminFixturesPage_title": "Admin",
+  "AdminFixturesPage_login_title": "Logged in as admin"
 }
