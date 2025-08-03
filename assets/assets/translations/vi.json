@@ -144,5 +144,9 @@
   "login_failed_message": "Đăng nhập thất bại. Vui lòng kiểm tra thông tin.",
   "login_drawer_item": "Đăng nhập",
   "AdminFixturesPage_title": "Quản trị",
-  "AdminFixturesPage_login_title": "Đang đăng nhập quyền Quản Trị"
+  "AdminFixturesPage_login_title": "Đang đăng nhập quyền Quản Trị",
+  "confirm_delete_title": "Xác nhận xóa",
+  "confirm_delete_message": "Bạn có chắc muốn xóa trận đấu này không?",
+  "cancel": "Hủy",
+  "delete": "Xóa"
 }
