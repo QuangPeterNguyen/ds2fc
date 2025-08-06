@@ -3,9 +3,9 @@ const MANIFEST = 'flutter-app-manifest';
 const TEMP = 'flutter-temp-cache';
 const CACHE_NAME = 'flutter-app-cache';
 
-const RESOURCES = {"assets/AssetManifest.bin": "5d61d6d01cea8ce6c693f6feae8bdb6e",
-"assets/AssetManifest.bin.json": "d3dc13e0796c600143a3584f995770d8",
-"assets/AssetManifest.json": "215bb328b2777075789e9224b95eb885",
+const RESOURCES = {"assets/AssetManifest.bin": "a9d8610e5775eea63797b8268abf1ad4",
+"assets/AssetManifest.bin.json": "536dff0fed252e5bc8bcda950de217aa",
+"assets/AssetManifest.json": "02219c35246d8b2507ac702338b70680",
 "assets/assets/icons/us.png": "ab291a3ffa8e81386f77c94056c06a5b",
 "assets/assets/icons/vn.png": "47e1003cdb97f364c0bafa85503330ec",
 "assets/assets/images/about_us_banner.png": "bc989cf6145e7e669febbbb4cdae29e2",
@@ -71,8 +71,11 @@ const RESOURCES = {"assets/AssetManifest.bin": "5d61d6d01cea8ce6c693f6feae8bdb6e
 "assets/assets/images/players/vhieu.png": "71bc3fa94599bd7660fa2ce107aef307",
 "assets/assets/images/players/viethocons.png": "6b6b01d6a757feb7f96d890c1ae5ea4c",
 "assets/assets/images/players/viettien.png": "af10e9611934958c99b2055a3e22ebc9",
+"assets/assets/images/recent_scorers/backda.jpg": "89d0f2aa128a3bac440e1c2bd13738a2",
 "assets/assets/images/recent_scorers/chienloi.jpg": "857d4d097ca1c8995113413c820670ee",
 "assets/assets/images/recent_scorers/haohoang.jpg": "86a1139097537a0584062d8ad7b61fa2",
+"assets/assets/images/recent_scorers/haule.jpg": "27f58883206b3dac4463ff2c29431e20",
+"assets/assets/images/recent_scorers/nguyenthuy.jpg": "be3c434c5c86c32b7dbad6328b98e776",
 "assets/assets/images/recent_scorers/quanglam.jpg": "e82a5d2f5b731bf04924520223d6b7f1",
 "assets/assets/images/recent_scorers/thoale.jpg": "4f45184a0579e465061278432c167381",
 "assets/assets/images/recent_scorers/trannguyenthailand.jpg": "866e3426072c2927325b0ddcd397c39d",
@@ -97,7 +100,7 @@ const RESOURCES = {"assets/AssetManifest.bin": "5d61d6d01cea8ce6c693f6feae8bdb6e
 "canvaskit/skwasm.wasm": "39dd80367a4e71582d234948adc521c0",
 "favicon.png": "4e1c00567e5fd8927d26abb9fc4010e8",
 "flutter.js": "83d881c1dbb6d6bcd6b42e274605b69c",
-"flutter_bootstrap.js": "dd101ceea67f1e78dbdbdf1e7d2ed388",
+"flutter_bootstrap.js": "33436e5b29f51dae3e60404b95f35e23",
 "icons/Icon-192.png": "b858eec0d5dfa6aa3181e070f0afdded",
 "icons/Icon-512.png": "90395b7ead299b7700b1ed3760e1d29e",
 "icons/Icon-maskable-192.png": "b858eec0d5dfa6aa3181e070f0afdded",
@@ -105,7 +108,7 @@ const RESOURCES = {"assets/AssetManifest.bin": "5d61d6d01cea8ce6c693f6feae8bdb6e
 "index.html": "312d8a7cb1260c71a1c43bd109299345",
 "/": "312d8a7cb1260c71a1c43bd109299345",
 "logo.png": "b858eec0d5dfa6aa3181e070f0afdded",
-"main.dart.js": "3ebf3da38c4e7762058dbab0c3139b01",
+"main.dart.js": "f3c571addd30c2b20753a63ccbb53762",
 "manifest.json": "035c1d591809bc1a370955f90c588f05",
 "preview.png": "bc989cf6145e7e669febbbb4cdae29e2",
 "version.json": "0da2078bb565906cba8cf11c7f3ffa04"};
