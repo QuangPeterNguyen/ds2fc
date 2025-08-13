@@ -3,9 +3,9 @@ const MANIFEST = 'flutter-app-manifest';
 const TEMP = 'flutter-temp-cache';
 const CACHE_NAME = 'flutter-app-cache';
 
-const RESOURCES = {"assets/AssetManifest.bin": "a9d8610e5775eea63797b8268abf1ad4",
-"assets/AssetManifest.bin.json": "536dff0fed252e5bc8bcda950de217aa",
-"assets/AssetManifest.json": "02219c35246d8b2507ac702338b70680",
+const RESOURCES = {"assets/AssetManifest.bin": "a60158c6408d85597f5a341839e63f98",
+"assets/AssetManifest.bin.json": "d7d33115cd2ed6c8740075106fb3b975",
+"assets/AssetManifest.json": "f58161414bcfec14117a59bf79e051b2",
 "assets/assets/icons/us.png": "ab291a3ffa8e81386f77c94056c06a5b",
 "assets/assets/icons/vn.png": "47e1003cdb97f364c0bafa85503330ec",
 "assets/assets/images/about_us_banner.png": "bc989cf6145e7e669febbbb4cdae29e2",
@@ -75,6 +75,7 @@ const RESOURCES = {"assets/AssetManifest.bin": "a9d8610e5775eea63797b8268abf1ad4
 "assets/assets/images/recent_scorers/chienloi.jpg": "857d4d097ca1c8995113413c820670ee",
 "assets/assets/images/recent_scorers/haohoang.jpg": "86a1139097537a0584062d8ad7b61fa2",
 "assets/assets/images/recent_scorers/haule.jpg": "27f58883206b3dac4463ff2c29431e20",
+"assets/assets/images/recent_scorers/hung.jpg": "af6dab0233d5c6b7cb42e7b0cdfe0c1a",
 "assets/assets/images/recent_scorers/nguyenthuy.jpg": "be3c434c5c86c32b7dbad6328b98e776",
 "assets/assets/images/recent_scorers/quanglam.jpg": "e82a5d2f5b731bf04924520223d6b7f1",
 "assets/assets/images/recent_scorers/thoale.jpg": "4f45184a0579e465061278432c167381",
@@ -100,7 +101,7 @@ const RESOURCES = {"assets/AssetManifest.bin": "a9d8610e5775eea63797b8268abf1ad4
 "canvaskit/skwasm.wasm": "39dd80367a4e71582d234948adc521c0",
 "favicon.png": "4e1c00567e5fd8927d26abb9fc4010e8",
 "flutter.js": "83d881c1dbb6d6bcd6b42e274605b69c",
-"flutter_bootstrap.js": "60abf3c30c5b8928e71c7109c1cd6a81",
+"flutter_bootstrap.js": "00ab8028f5045f7baaa8a1212aea8884",
 "icons/Icon-192.png": "b858eec0d5dfa6aa3181e070f0afdded",
 "icons/Icon-512.png": "90395b7ead299b7700b1ed3760e1d29e",
 "icons/Icon-maskable-192.png": "b858eec0d5dfa6aa3181e070f0afdded",
@@ -108,7 +109,7 @@ const RESOURCES = {"assets/AssetManifest.bin": "a9d8610e5775eea63797b8268abf1ad4
 "index.html": "312d8a7cb1260c71a1c43bd109299345",
 "/": "312d8a7cb1260c71a1c43bd109299345",
 "logo.png": "b858eec0d5dfa6aa3181e070f0afdded",
-"main.dart.js": "f3c571addd30c2b20753a63ccbb53762",
+"main.dart.js": "d5b53c3d986443539d1951661b10a6d9",
 "manifest.json": "035c1d591809bc1a370955f90c588f05",
 "preview.png": "bc989cf6145e7e669febbbb4cdae29e2",
 "version.json": "0da2078bb565906cba8cf11c7f3ffa04"};
